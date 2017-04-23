@@ -1,0 +1,1 @@
+fis server stop && fis server clean &&  fis server start

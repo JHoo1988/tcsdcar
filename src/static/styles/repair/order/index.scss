@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@import "../../variables";
+@import "../../utilities";
+
+.home-repair-order {
+  #frm-repair-order {
+    margin-bottom: 2rem;
+    .img-wrapper {
+      .img-icon {
+        width: px2rem(60);
+        height: px2rem(60);
+        vertical-align: middle;
+        margin-right: px2rem(18);
+      }
+    }
+  }
+  .gray {
+    color: #999;
+  }
+  .label-title {
+    padding: px2rem(18) px2rem(30);
+    color: #666666;
+    font-size: px2rem(28);
+  }
+  .weui_cells {
+    margin-top: 0;
+    font-size: px2rem(28);
+    .weui_cell{
+      padding: 12px 15px;
+    }
+  }
+  .select-form {
+    .weui_cell_primary {
+      color: #666666;
+      font-size: px2rem(28);
+    }
+    .address-icon {
+      background: url(../../../images/icons/dizhi.png) no-repeat left;
+      background-size: px2rem(30);
+      padding-left: px2rem(45);
+    }
+    .time-icon {
+      background: url(../../../images/icons/shijian.png) no-repeat left;
+      background-size: px2rem(30);
+      padding-left: px2rem(45);
+    }
+  }
+  .order-info-show {
+    background-color: #ffffff;
+    margin-top: px2rem(12);
+    padding: px2rem(15) px2rem(30);
+    color: #999999;
+    .line-info {
+      line-height: px2rem(60);
+      font-size: px2rem(27);
+    }
+    .price-num {
+      float: right;
+    }
+    .actual-price.price-num {
+      color: #00BBFF;
+    }
+  }
+  .action-bottom {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 -3px 3px rgba(213, 213, 214, 0.5);
+    padding: px2rem(15) px2rem(30);
+  }
+}
+.calendars {
+  width: 100%;
+  border: 0;
+  -webkit-appearance: none;
+}

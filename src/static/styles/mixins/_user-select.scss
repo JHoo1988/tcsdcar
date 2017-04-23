@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@mixin user-select($value) {
+    -ms-user-select: $value;
+    -moz-user-select: $value;
+    -webkit-user-select: $value;
+    user-select: $value;
+}

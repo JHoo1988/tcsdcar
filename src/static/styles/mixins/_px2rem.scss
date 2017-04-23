@@ -1,0 +1,10 @@
+@charset "UTF-8";
+@function px2rem($size) {
+  $remSize: $size / $base-font-size;
+  @return $remSize * 1rem;
+}
+
+@function px2rem_1080($size) {
+  $remSize: $size / 108;
+  @return $remSize * 1rem;
+}

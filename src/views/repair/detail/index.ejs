@@ -1,0 +1,270 @@
+<%
+var categoryDetail = data.categoryDetail;
+var detailList = categoryDetail.list;
+var detailListlLen = detailList.length;
+var detailDesc = categoryDetail.desc;
+var productInfo = data.productInfo;
+var business = data.business;
+%>
+<div class="home-repair-detail">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            <%= productInfo.categoryName || productInfo.productSmallCategory %><%= business.orderType == 2 ? '维修' : '安装' %>
+        </span>
+    </header>
+    <div class="banner">
+        <img class="banner-img" src="../../../static/images/repair/detail/banner.jpg">
+    </div>
+
+    <div class="container">
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <span class="line"></span>
+                    <span>服务介绍</span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="content-info">
+                    <p>
+                        <%= business.orderType == 2 ? productInfo.categoryServiceInfo : productInfo.categoryInstallInfo %>
+                    </p>
+                </div>
+                <% if (productInfo.productTypeCode == 3 ) { %>
+                <div class="content-info">
+                    <p><%= detailDesc %></p>
+                </div>
+                <% } %>
+                <div class="content-table text-center">
+                    <% if (productInfo.productTypeCode == 2 ) { %>
+                    <table class="price-tab">
+                        <thead>
+                        <tr>
+                            <th class="tab-cell">类型</th>
+                            <th class="tab-cell">费用标准</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(var i = 0;i < detailListlLen;i++){ %>
+                        <tr>
+                            <td class="tab-cell"><%= detailList[i].productSymptom %></td>
+                            <td class="tab-cell"><%= detailList[i].productPrice %>元/个</td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+                    <% } %>
+
+                    <% if (productInfo.productTypeCode == 3 ) { %>
+                    <table class="price-tab">
+                        <thead>
+                        <tr>
+                            <th class="tab-cell">特殊配件名称</th>
+                            <th class="tab-cell">配件费用标准</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(var i = 0;i < detailListlLen;i++){ %>
+                        <tr>
+                            <td class="tab-cell"><%= detailList[i].name %></td>
+                            <td class="tab-cell"><%= detailList[i].priceText %></td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+                    <% } %>
+
+                    <% if (typeof productInfo.productTypeCode === 'undefined') { %>
+                    <table class="price-tab">
+                        <thead>
+                        <tr>
+                            <th class="tab-cell">类型</th>
+                            <th class="tab-cell">上门检测费</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tab-cell"><%= productInfo.categoryName %><%= business.orderType == 2 ? '维修' : '安装' %></td>
+                            <td class="tab-cell"><%= productInfo.categoryPrice %>元/台</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-heading gray-bg bordered">
+                <div class="panel-title">
+                    <span class="line"></span>
+                    <span>服务范围：全国</span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="content-area">
+                    <!--<label>全国范围</label>-->
+                </div>
+            </div>
+        </div>
+
+        <% if(business.orderType == 2){ %>
+        <div class="panel">
+            <div class="panel-heading gray-bg bordered">
+                <div class="panel-title">
+                    <span class="line"></span>
+                    <span>维修流程</span>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d1.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">1、在线预约</span>
+                        </div>
+                        <div>
+                            <span class="gray">专业工程师上门服务</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d2.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">2、故障检测</span>
+                        </div>
+                        <div>
+                            <span class="gray">科学方法，全面检测</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d3.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">3、服务确认</span>
+                        </div>
+                        <div>
+                            <span class="gray">告知故障原因，确认需求</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d4.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">4、故障维修</span>
+                        </div>
+                        <div>
+                            <span class="gray">专业工具、贴心服务</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d5.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">5、客户验收</span>
+                        </div>
+                        <div>
+                            <span class="gray">成果验收，安全放心</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/d6.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">6、售后服务</span>
+                        </div>
+                        <div>
+                            <span class="gray">清理现场，填写单据</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% if(business.orderType == 3){ %>
+        <div class="panel">
+            <div class="panel-heading gray-bg bordered">
+                <div class="panel-title">
+                    <span class="line"></span>
+                    <span>安装流程</span>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/i1.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">1、在线预约</span>
+                        </div>
+                        <div>
+                            <span class="gray">专业工程师上门服务</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/i2.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">2、安装施工</span>
+                        </div>
+                        <div>
+                            <span class="gray">施工标准严格，安全放心</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/i3.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">3、客户验收</span>
+                        </div>
+                        <div>
+                            <span class="gray">成果验收，温馨提示</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="img-wraper">
+                            <img src="../../../static/images/repair/detail/i4.jpg">
+                        </div>
+                        <div>
+                            <span class="blue">4、售后服务</span>
+                        </div>
+                        <div>
+                            <span class="gray">清理现场，热情告别</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+    <!--填充块-->
+    <div style="height: 1px"></div>
+    <div class="sui-btn-area">
+        <a class="btn-submit" id="btn-to-back" href="javascript:;">
+			<span>
+				立即下单
+			</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@mixin font-size($size) {
+    font-size: round($size / 2) * 1px;
+    [data-dpr="2"] & {
+        font-size: $size * 1px;
+    }
+    [data-dpr="2.5"] & {
+        font-size: ($size * 2.5 / 2) * 1px;
+    }
+    [data-dpr="2.75"] & {
+        font-size: ($size * 2.75 / 2) * 1px;
+    }
+    [data-dpr="3"] & {
+        font-size: ($size * 3 / 2) * 1px;
+    }
+    [data-dpr="4"] & {
+        font-size: ($size * 4 / 2) * 1px;
+    }
+}

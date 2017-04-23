@@ -1,0 +1,30 @@
+@charset "UTF-8";
+$base-font-size: 75;
+$black:                 #342E2C !default;
+$blackLight:            #37322e !default;
+$blackDarker:           #342F2C !default;
+$grayDarker:            #222222 !default;
+$grayDark:              #cccccc !default;
+$gray:                  #999999 !default;
+$gray2:                 #d9d9d9 !default;
+$gray3:                 #AAAAAA !default;
+$gray4:                 #666666 !default;
+$gray5:                 #888888 !default;
+$grayLight:             #f1f1f1 !default;
+$white:                 #fff !default;
+
+$red:                   #ff6d6d !default;
+$red2:                  #FF7B7B !default;
+/*$blue:                  #04B6F8 !default;*/
+$blue:                  #00BBFF !default;
+$blue2:                 #BCEDFF !default;
+$blueDark:              #0078E7 !default;
+$orange:                #FF7F00 !default;
+$orangeDarker:          #d56b00 !default;
+$green:                 #51B148 !default;
+$green2:                #21BDBD !default;
+$yellow:                #ffc40d !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+$primary:               $blue !default;//主色

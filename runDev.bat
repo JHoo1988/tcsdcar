@@ -1,0 +1,1 @@
+fis release -wL --file fis-dev.js --root ./src

@@ -1,0 +1,26 @@
+<div class="page select-test-user-page">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            选择测试账号
+        </span>
+    </header>
+
+    <main class="com-main">
+        <div class="weui_cells">
+            <% testOpenidList.forEach(function (item, index) { %>
+            <div class="weui_cell weui_cell_access test-user-item"
+                 data-openid="<%= item.openid %>"
+                 data-index="<%= index %>">
+                <div class=""></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p><%= item.name %></p>
+                </div>
+                <div class="weui_cell_ft <% if (testUserIndex == index) { %>weui_icon_success<% } %>"></div>
+            </div>
+            <% }) %>
+        </div>
+    </main>
+</div>

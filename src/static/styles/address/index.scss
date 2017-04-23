@@ -1,0 +1,144 @@
+@charset "UTF-8";
+@import "../variables";
+
+.page-address {
+  .com-main {
+    bottom: 0;
+    .sf-cell-bd {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      color: #333;
+      word-break: break-all;
+    }
+  }
+  .address-item {
+    cursor: pointer;
+  }
+  .address-title {
+    margin: 0;
+    color: #222;
+    line-height: .58667rem;
+    font-size: 16px;
+  }
+  .address-desc {
+    margin: .32rem 0 0;
+    color: #AAA;
+    line-height: .64rem;
+  }
+  .address-add {
+    color: #AAA;
+    cursor: pointer;
+    p {
+      margin: 0;
+      line-height: 22px;
+    }
+  }
+  .sf-cells {
+    margin-top: .26667rem;
+    position: relative;
+    background-color: #fff;
+  }
+  .sf-cell {
+    display: block;
+    overflow-x: hidden;
+    position: relative;
+    padding: .32rem .42667rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .sf-cell:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    color: #ccc;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left: 15px;
+  }
+  .color-primary {
+    margin-right: .13333rem;
+    color: #0BF;
+  }
+}
+
+.sf-cells:before {
+  top: 0;
+  border-top: 1px solid #ccc;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.sf-cells:after {
+  bottom: 0;
+  border-bottom: 1px solid #ccc;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+
+.sf-cells:after, .sf-cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  color: #ccc;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.action-edit, .action-del {
+  width: 1.12rem;
+  height: 1.12rem;
+  line-height: 1.12rem;
+  text-align: center;
+  cursor: pointer;
+  .img {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    vertical-align: middle;
+    background: url(../../images/icon-me-address-action.png) 0 0 no-repeat;
+    background-size: 200%;
+    background-position: -.8rem 0;
+  }
+}
+
+.action-edit {
+  width: 1.12rem;
+  height: 1.12rem;
+  line-height: 1.12rem;
+  text-align: center;
+  cursor: pointer;
+  .img {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    vertical-align: middle;
+    background: url(../../images/icon-me-address-action.png) 0 0 no-repeat;
+    background-size: 200%;
+  }
+}
+
+.gd-right {
+  float: right;
+  display: inline;
+}

@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../mixins/_mixins";
+
+.com-footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -0.05rem 0.02rem rgba(213, 213, 214, .5);
+
+    .nav-item {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        display: block;
+        padding: px2rem(10) 0;
+        height: px2rem(100);
+    }
+    .nav-item span {
+        display: block;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: contain;
+        width: px2rem(80);
+        height: px2rem(80);
+        line-height: px2rem(80*3);
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    .nav-home {
+        background-image: url("../../images/common/icon-nav-home-normal.png");
+    }
+
+    .on .nav-home {
+        background-image: url("../../images/common/icon-nav-home-pressed.png");
+    }
+
+    .nav-order {
+        background-image: url("../../images/common/icon-nav-order-normal.png");
+    }
+
+    .on .nav-order {
+        background-image: url("../../images/common/icon-nav-order-pressed.png");
+    }
+
+    .nav-my {
+        background-image: url("../../images/common/icon-nav-me-normal.png");
+    }
+
+    .on .nav-my {
+        background-image: url("../../images/common/icon-nav-me-pressed.png");
+    }
+}
+

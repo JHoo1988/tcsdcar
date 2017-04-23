@@ -1,0 +1,299 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+.banner-img{
+  width: 100%;
+  display: block;
+}
+.home-household-order{
+  padding-bottom: px2rem(133.5);
+  .shopcart_none {
+    text-align: center;
+    background: #fff;
+    position: relative;
+    margin-top: px2rem(21);
+    padding: px2rem(30);
+    .title{
+      display: block;
+      padding: px2rem(60) 0;
+    }
+  }
+
+  .shopcart_info{
+    .weui_cells_access {
+      margin-top: px2rem(30);
+    }
+    .weui_cells_access.select-form{
+      margin-top: 0rem;
+    }
+    .weui_cells_title {
+      color: #333;
+      font-size: px2rem(27);
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+      line-height: px2rem(30);
+      padding-top: px2rem(19);
+      padding-bottom: px2rem(19);
+      .line-span {
+        position: absolute;
+        display: inline-block;
+        background: $primary;
+        width: px2rem(6);
+        height: px2rem(30);
+        left: 0;
+        bottom: 0;
+      }
+      span{
+        position: relative;
+        padding-left: px2rem(24);
+        color: #666;
+        height: px2rem(30);
+        display: inline-block;
+      }
+      .no-left{
+        padding-left: 0;
+      }
+    }
+
+    .select-result {
+      .weui_cell_primary {
+        padding: 0 px2rem(50) 0 0;
+        color: #333;
+      }
+      .weui_cell {
+        padding-top: px2rem(30);
+        padding-bottom: px2rem(30);
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .select-ele-action{
+        //margin-right: px2rem(21);
+        .sub,.add,.text{
+          display: block;
+          float: left;
+          z-index: 1;
+          text-align: center;
+          border: 1px solid #cccccc;
+          height: px2rem(60);
+          min-width: px2rem(60);
+          line-height: px2rem(60);
+          font-size: px2rem(30);
+          img{
+            width: 40%;
+          }
+        }
+        .sub,.add{
+          &:active{
+            background-color: $grayLight;
+          }
+        }
+        .text{
+          color: $primary;
+          border-right: none;
+          border-left: none;
+          padding: 0 10px;
+        }
+      }
+      .select-ele-del {
+        height: px2rem(60);
+        min-width: px2rem(60);
+        line-height: px2rem(66);
+        font-size: px2rem(30);
+        img {
+          width: 40%;
+          margin-right: px2rem(3);
+        }
+      }
+
+    }
+    .product{
+      .product-name{
+        color: #333;
+      }
+      .product-price{
+        color: #999;
+      }
+      .product-desc{
+        color: #999;
+        font-size: px2rem(22);
+      }
+      .product-unit{
+        height: px2rem(60);
+        line-height: px2rem(60);
+        font-size: px2rem(30);
+        color: #999;
+        //margin-right: px2rem(21);
+      }
+    }
+
+
+    .select-form,.select-recommend{
+      .weui_cell_primary{
+        color: #333;
+      }
+
+      input::-webkit-input-placeholder {
+        color: #333;
+      }
+    }
+
+  }
+
+  .order-info-show{
+    background-color: #ffffff;
+    margin-top: px2rem(13);
+    padding: px2rem(16) px2rem(30);
+    color: #999999;
+    .line-info{
+      line-height: px2rem(60);
+      font-size: px2rem(27);
+    }
+    .price-num{
+      float: right;
+    }
+    .actual-price.price-num{
+      color: $primary;
+    }
+  }
+
+  /* 底部提示
+  ---------------*/
+  .household-tip{
+    margin: px2rem(33) px2rem(30) px2rem(120);
+    color: #999;
+    background-color: #f1f1f1;
+    h4 {
+      padding: px2rem(6);
+      font-weight: 400;
+      font-size: px2rem(24);
+    }
+    ol {
+      margin-left: px2rem(45);
+      text-align: justify;
+      li {
+        margin: px2rem(6) 0;
+        font-size: px2rem(24);
+      }
+    }
+
+  }
+  /*下单须知：下单前给出提示信息
+  -------------*/
+  .mask-container{
+    .mask-bg {
+      background: rgba(0,0,0,.6);
+      position: fixed;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .dialog {
+      position: fixed;
+      z-index: 101;
+      width: 85%;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      text-align: center;
+      border-radius: 3px;
+      height: auto;
+      .box{
+        .box-heading{
+          background-color: #F2F4F7;
+        }
+      }
+    }
+    .click-img{
+      position: fixed;
+      top: 0;
+      right: px2rem(33);
+      z-index: 101;
+      width: 100%;
+      max-width: px2rem(300);
+    }
+    .box{
+      background: #fff;
+      border-radius: px2rem(12);
+      .box-heading{
+        padding: px2rem(24);
+        border-bottom: 1px solid #ccc;
+        border-top-left-radius: px2rem(12);
+        border-top-right-radius: px2rem(12);
+        -webkit-border-top-left-radius: px2rem(12);
+        -webkit-border-top-right-radius: px2rem(12);
+        .heading-title{
+          font-size: px2rem(33);
+          color: #333;
+          font-family: "微软雅黑 Light";
+          position: relative;
+          overflow: hidden;
+          .close-img{
+            width: px2rem(33);
+            height: px2rem(33);
+            position: absolute;
+            right: 0;
+            top: px2rem(6);
+          }
+        }
+      }
+      .box-body{
+        padding: px2rem(30) px2rem(42) px2rem(54) px2rem(42);
+        font-size: px2rem(24);
+        color: #333;
+        font-family: "微软雅黑 Light";
+      }
+      .ok-bottom{
+        padding: 0 px2rem(42) px2rem(54) px2rem(42);
+      }
+    }
+
+    .rule-list{
+      text-align: justify;
+      .red_color{
+        color: #f64b4b;
+      }
+    }
+    .gray{
+      color: #999;
+    }
+
+  }
+  .action-bottom{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 -0.06rem 0.06rem rgba(213, 213, 214, 0.5);
+    padding: px2rem(15) px2rem(30);
+  }
+  .pull-right {
+    float: right !important;
+  }
+  .weui_btn{
+    font-size: 16px;
+  }
+  .weui_cells{
+    font-size: 15px;
+  }
+}
+.yhm-icon {
+  background: url(../../images/icons/youhuima.png) no-repeat left;
+  background-size: px2rem(30);
+  padding-left: px2rem(45);
+  cursor: pointer;
+  color: #342E2C;
+}
+.address-icon {
+  background: url(../../images/icons/dizhi.png) no-repeat left;
+  background-size: px2rem(30);
+  padding-left: px2rem(45);
+  color: #342E2C;
+}

@@ -1,0 +1,40 @@
+<%
+var list = data;
+%>
+<div class="page home-household">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            家居安装
+        </span>
+    </header>
+    <div class="banner">
+        <a class="js-detail" href="javascript:;">
+            <img src="../../static/images/household/banner.jpg" class="banner-img"/>
+        </a>
+    </div>
+    <div class="page-main">
+        <div class="weui-row weui-no-gutter linkage-list">
+            <div class="weui-col-20 left-brand">
+                <div class="item-label">大类</div>
+                <div class="brand-list">
+                    <%
+                    for(var i= 0,len=list.length;i<len;i++){
+                        var d = list[i];
+                    %>
+                    <div class="check-label" data-json='<%=JSON.stringify(d)%>'><%= d.productBigCategory %></div>
+                    <%}%>
+                </div>
+            </div>
+            <div class="weui-col-80 right-model">
+                <div class="item-label check-label">小类</div>
+                <div class="model-list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

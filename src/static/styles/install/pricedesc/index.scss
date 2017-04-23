@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import "../../variables";
+@import "../../utilities";
+
+.home-repair-install-desc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .home-repair-tip {
+    position: relative;
+    z-index: 2;
+    margin: px2rem(33) px2rem(30) px2rem(36);
+    background-color: #f1f1f1;
+    color: #333;
+
+    ol {
+      margin-left: px2rem(45);
+    }
+    li {
+      margin: px2rem(12) 0;
+      font-size: 12px;
+    }
+  }
+  .slogan {
+    position: absolute;
+    bottom: px2rem(12);
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: url(../../../images/install/slogan.png);
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position-x: 50%;
+  }
+}

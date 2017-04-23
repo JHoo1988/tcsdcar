@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import "variables";
+@import "mixins/_mixins";
+
+.gd-clearfix {
+  @include clearfix();
+}
+
+/*
+清除浮动
+================================*/
+.gd-clearfix {
+  @include clearfix();
+}
+
+.gd-left {
+  float: left;
+}
+
+.gd-right {
+  float: right;
+}
+
+/*
+UL横向显示
+================================*/
+.gd-list-inline {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.gd-list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+/*
+多栏布局
+================================*/
+.gd-row {
+  width: 100%;
+  @include clearfix();
+}
+
+.gd-col-2,
+.gd-col-3,
+.gd-col-4,
+.gd-col-6 {
+  float: left;
+}
+
+.gd-col-2 {
+  width: 20%;
+}
+
+.gd-col-3 {
+  width: 25%;
+}
+
+.gd-col-4 {
+  width: 33.33%;
+}
+
+.gd-col-6 {
+  width: 50%;
+}
+
+/*
+业务全局
+================================*/
+$window-min-w: 1080px;
+.gd-container {
+  width: $window-min-w;
+  margin: 0 auto;
+}
+
+.gd-hide {
+  display: none;
+}
+
+.gd-unvisible {
+  visibility: hidden;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.no-border-b:after {
+  border-bottom: none;
+}
+
+.weui_select.empty {
+  color: $gray
+}
+
+.hide {
+  display: none!important;
+}

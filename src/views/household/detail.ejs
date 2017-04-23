@@ -1,0 +1,87 @@
+<%
+var list = list;
+var len = list.length;
+var selectedList = selectedList;
+var slen = selectedList.length;
+%>
+<header class="com-header">
+    <div class="action">
+        <a class="back" href="javascript:window.history.go(-1);"></a>
+    </div>
+    <span class="title">
+            <%= subCategory %>
+        </span>
+</header>
+<main class="com-main">
+    <div class="home-household-subclass">
+        <div class="banner">
+            <img src="../../static/images/household/detail/<%= subCategory %>.jpg" class="banner-img"
+                 alt="<%= subCategory %>" onerror="this.src='../../static/images/household/detail/default.jpg'"/>
+        </div>
+        <div class="container">
+            <div class="weui_cells item-list">
+                <%
+                for(var i = 0;i < len;i++){
+                    var d = list[i];
+                    var selectedFlag = false;
+                    var selectedNum = 0;
+                    for (var j = 0; j < slen; j++) {
+                        var s = selectedList[j];
+                        if (d.productId == s.productId) {
+                            selectedFlag = true;
+                            selectedNum = s.num || 0;//记录用户上次选择的数量
+                            break;
+                        }
+                    }
+                %>
+                <div class="weui_cell item <%= selectedFlag ? 'active' : '' %>" data-json='<%= JSON.stringify(d) %>'>
+                    <div class="weui_cell_hd">
+                        <div class="inline-block check-flag"><i
+                                    class="icon-check <%= selectedFlag ? 'checked' : '' %>"></i></div>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p class="item-title"><%= d.productName %></p>
+                        <div class="row">
+                            <span class="item-price"><%= d.productConsumerPrice + '元&nbsp;/&nbsp;' + d.productUnit %></span>
+                            <% if(d.productPriceType < 3){ %>
+                            <div class="item-num right text-right">
+                                <span><%= d.productExt11 || d.productExt9 %>：</span>
+                                <div class="select-ele-action">
+                                    <span class="sub"><img src="../../static/images/icon-wash-order-plus.png"></span>
+                                    <input type="tel"
+                                           data-range="<%= d.productExt4 || d.productExt5 || d.productExt6 %>"
+                                           data-min="<%= d.productExt4Begin || d.productExt5Begin || d.productExt6Begin || 1 %>"
+                                           data-max="<%= d.productExt4End || d.productExt5End || d.productExt6End %>"
+                                           class="text"
+                                           value="<%= selectedNum || d.productExt4Begin || d.productExt5Begin || d.productExt6Begin || 1 %>">
+                                    <span class="add"><img src="../../static/images/icon-wash-order-add.png"></span>
+                                </div>
+                                <span><%= d.productUnit %></span>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="shop-cart-menu menu-bottom">
+            <ul class="notification-menu">
+                <li>
+                    <a href="javascript:;" class="btn shop-cart info-number">
+                        <div class="shopcart-ico shopcart-ico-num">
+                            <div class="badge">0</div>
+                        </div>
+                        <span class="shopcart-price-txt">共计：</span><span class="shopcart-price">￥0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="btn blue-bg shop-cart">
+                        <div class="shopcart-ico shopcart-ico-set"></div>
+                        <span>去结算</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>

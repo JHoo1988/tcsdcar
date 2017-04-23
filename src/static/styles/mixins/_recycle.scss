@@ -1,0 +1,1110 @@
+@charset "UTF-8";
+
+@mixin list-line-top($border:1px solid $gray){
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: $border;
+  color: #cccccc;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+}
+
+@mixin list-line-bottom($border:1px solid $gray){
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: $border;
+  color: #cccccc;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+}
+/*回收列表*/
+.home-recycle-list{
+  height: 100%;
+  display: block;
+  /*background: url("../imgs/icons/slogan.png") 50% 90% / 40% no-repeat fixed;*/
+  .slogan{
+    margin: 2rem auto;
+  }
+  .good-classes{
+    .class-icon{
+      width: 2.222rem;
+      height: 2.222rem;
+      text-align: center;
+      margin-right: 0.6667rem;
+      vertical-align: middle;
+    }
+    .good-class{
+      min-height: 3.0667rem;
+      padding: 0 0.933rem;
+      font-size: 1.0666rem;
+      color: #333;
+      &:before{
+        left: 0;
+      }
+    }
+  }
+}
+/*回收二级列表*/
+$recycle-class-size : .9333rem;
+$recycle-class-height : 3.0666rem;
+.home-recycle-class{
+  color: #333333;
+  .linkage-list{
+    position: relative;
+    /*margin-top: .8rem;*/
+    &:before{
+      @include list-line-top(1px solid #cccccc);
+    }
+    .check-label{
+      height: $recycle-class-height;
+      line-height: $recycle-class-height;
+
+      width: 100%;
+      position: relative;
+      .num-icon{
+        line-height: 1.2em;
+        display: inline-block;
+        min-width: 1.2em;
+        font-size: 0.8rem;
+        text-align: center;
+        border-radius: 0.2em;
+        background-color: #CCCCCC;
+        color: $white;
+        margin-right: 0.4444rem;
+      }
+      .num-icon[data-num="1"]{
+        background-color: #0066cb;
+      }
+      .num-icon[data-num="2"]{
+        background-color: #0099ff;
+      }
+      .num-icon[data-num="3"]{
+        background-color: #00BBFF;
+      }
+    }
+    .check-label:before{
+      @include list-line-bottom(1px solid #cccccc);
+    }
+  }
+  nav{
+  }
+  .left-brand{
+    width: 23% !important;
+    background-color: #F1F1F1;
+    .check-label{
+      text-align: center;
+      font-size: $recycle-class-size;
+      @extend %ellipsis-basic;
+    }
+    .check-label.checked{
+      &:before{
+        display: none;
+      }
+      border-left: 4px solid $primary;
+      background-color: $white;
+      color: $primary;
+    }
+    .item-label{
+      font-size: $recycle-class-size;
+    }
+    .brand-list{
+
+    }
+  }
+
+  .right-model{
+    width: 77% !important;
+    background-color: $white;
+    .check-label{
+      font-size: $recycle-class-size;
+      text-align: left;
+      padding-left: 1.7777rem;
+      padding-right: 0.5rem;
+      @extend %ellipsis-basic;
+    }
+    .item-label{
+      font-size: $recycle-class-size;
+    }
+    .model-list{
+
+    }
+  }
+  .weui_search_btn {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    color: #9B9B9B;
+    background: #FFFFFF;
+    text-align: center;
+    span{
+      font-size: 14px;
+    }
+  }
+
+}
+@mixin assess-padding{
+  padding: 0 1.1111rem;
+}
+$recycle-assess-size: .9333rem;
+/*手机评估页面*/
+.home-recycle-assess{
+  .main {
+    padding-bottom: 5rem;
+  }
+  nav{
+    .title{
+      display: inline-block;
+      width: 70%;
+      @extend %ellipsis-basic;
+    }
+  }
+  .good-name{
+    margin-top: 0.8rem;
+    @include assess-padding;
+    line-height: 2.9333rem;
+    @extend %ellipsis-basic;
+    background-color: $white;
+    .name-label{
+    }
+    .name-data{
+      color: #999;
+    }
+  }
+  .step-item[data-step='3'] .desc-list .cells{
+    padding-top: 0.9333rem;
+  }
+  .step-item{
+    position: relative;
+
+    .step-title{
+      @include assess-padding;
+      line-height: 2.2666rem;
+      color: $primary;
+      font-size: $recycle-assess-size;
+      .btn-amend{
+        font-size: $recycle-assess-size;
+        float: right;
+        color: $primary;
+        padding-left: 1rem;
+      }
+    }
+    .desc-list{
+      @include assess-padding;
+      position: relative;
+      color: #999999;
+      background-color: $white;
+      font-size: 0.9333rem;
+
+      .desc-item.line{
+        &:before{
+          @include list-line-top(1px solid #CCCCCC);
+        }
+      }
+      .desc-item{
+        position: relative;
+        .result-list{
+          position: relative;
+          min-height: 2.9333rem;
+          .default-cell{
+            position: absolute;
+            line-height: 2.9333rem;
+            bottom: 0;
+          }
+          .result-cell{
+            display: none;
+            position: relative;
+            min-height: 2.9333rem;
+            max-height: 2.9333rem;
+            line-height: 2.9333rem;
+            &:before{
+              @include list-line-bottom(1px solid #cccccc);
+            }
+          }
+          .result-cell.no-line{
+            &:before{
+              display: none;
+            }
+          }
+          .result-cell.checked{
+            display:block;
+          }
+        }
+        .title-bar{
+          @extend %ellipsis-basic;
+          line-height: 3.0666rem;
+          .title{
+            vertical-align: middle;
+          }
+          .choose-info{
+            @extend %ellipsis-basic;
+            display: inline-block;
+            line-height: 1.2em;
+            max-width: 70%;
+            vertical-align: middle;
+            .choose-value{
+              color: $primary;
+            }
+          }
+          .btn-amend{
+            float: right;
+            color: $primary;
+            padding-left: 1rem;
+          }
+          .btn-finish{
+            float: right;
+            color: #04ff21;
+          }
+        }
+        .cells{
+          text-align: left;
+          font-size: 0;
+          vertical-align: top;
+          .cell{
+            vertical-align: top;
+            font-size: 0.9333rem;
+            padding: 0.4444rem;
+            line-height: 2.2222rem;
+            @include border-radius(0.4rem);
+            border: 1px solid #CCCCCC;
+            margin-right: 2%;
+            margin-bottom: 4%;
+            text-align: center;
+            min-width: 48%;
+            max-width: 48%;
+            display: inline-block;
+            min-height: 4.4888rem;
+            .cell-name{
+              @extend %ellipsis-basic;
+              color: #999999;
+              line-height: 1.3777rem;
+              height: 1.3777rem;
+            }
+            .cell-remark{
+              font-size: 0.6666rem;
+              line-height: 1.3333rem;
+              color: #cccccc;
+              height: 2.6666rem;
+              text-align: center;
+              overflow: hidden;
+            }
+          }
+          .cell.set-right{
+            margin-bottom: 4%;
+            margin-left: 2%;
+            margin-right: 0;
+          }
+          /*.cell[data-remark=""]{
+            .cell-name{
+              line-height: 4.4888rem;
+              height: 4.4888rem;
+            }
+            .cell-remark{
+              display: none;
+            }
+          }*/
+          .cell.checked{
+            color: #00CBFE;
+            border: 1px solid #00CBFE;
+            .cell-name{
+              color: #00CBFE;
+            }
+            .cell-remark{
+              color: #00CBFE;
+            }
+          }
+        }
+
+      }
+      .desc-item.finish-status{
+        .title-bar{
+          .btn-amend{
+            display: inherit;
+          }
+          .btn-finish{
+            display: none;
+          }
+        }
+        .cells{
+          display: none;
+        }
+        .result-list{
+          display: block;
+        }
+      }
+
+      .desc-item.having-status{
+        .title-bar{
+          .btn-amend{
+            display: none;
+          }
+        }
+        .cells{
+          display: inherit;
+
+        }
+        .result-list{
+          display: none;
+        }
+      }
+      .desc-item.shut-status{
+        .title-bar{
+          .btn-amend{
+            display: none;
+          }
+          .btn-finish{
+            display: none;
+          }
+        }
+        .cells{
+          display: none;
+        }
+        .result-list{
+          display: none;
+        }
+      }
+      /*完成展示状态*/
+      .desc-item.show-status{
+        .title-bar{
+          .btn-amend{
+            display: none;
+          }
+          .btn-finish{
+            display: none;
+          }
+        }
+        .cells{
+          display: none;
+        }
+        .result-list{
+          display: block;
+        }
+      }
+
+    }
+  }
+  /*信息关闭状态*/
+  .step-item.shut-status{
+    margin-top: 1rem;
+    .step-title{
+      line-height: 2.9333rem;
+      color: #666666;
+      background-color: $white;
+      .btn-amend{
+        display: none;
+      }
+    }
+    .desc-list{
+      display: none;
+    }
+  }
+  /*信息选择完毕状态*/
+  .step-item.finish-status{
+    .step-title{
+      color: #666666;
+      background-color: #F1F1F1;
+      .btn-amend{
+        display: inline;
+      }
+    }
+  }
+  .step-item.having-status{
+    .step-title{
+      color: #00CBFE;
+      background-color: #F1F1F1;
+    }
+    .btn-amend{
+      display: none;
+    }
+  }
+  .step-item.show-status{
+    .step-title{
+      color: #00CBFE;
+      background-color: #F1F1F1;
+    }
+    .btn-amend{
+      display: none;
+    }
+  }
+  /*评估价格信息*/
+  .assess-info{
+    line-height: 3rem;
+    color: #323232;
+    .price-info{
+      @include assess-padding;
+      font-size: 0.8rem;
+      .price{
+        color: #02CBFF;
+        font-weight: bold;
+        font-size: 1.0666rem;
+      }
+    }
+
+    .desc-info{
+      background-color: $white;
+      .desc-title{
+        @include assess-padding;
+        position: relative;
+        &:before{
+          @include list-line-bottom(1px solid #cdcdcd);
+          left: 0;
+        }
+      }
+      .tab-list{
+        display: table;
+        width: 100%;
+        padding: 0 0.5555rem;
+        .tab-col{
+          font-size: 0.8rem;
+          line-height: 1.5rem;
+          text-align: center;
+          display: table-cell;
+          width: 20%;
+          color: #bfbfbf;
+          padding-bottom: 1.3333rem;
+          padding-top: 1.3333rem;
+        }
+        .tab-col{
+          .box-1{
+            text-align: center;
+            .label-img{
+              width: 2.2222rem;
+              height: 2.2222rem;
+              display: inline-block;
+              background-size: 100% 100%;
+            }
+          }
+        }
+        .tab-col[data-id="1"]{
+          .label-img{
+            background-image: url("../imgs/recycle/protect-regular@3x.png");
+          }
+        }
+        .tab-col[data-id="1"].checked{
+          .label-img{
+            background-image: url("../imgs/recycle/protect-press@3x.png");
+          }
+        }
+        .tab-col[data-id="2"]{
+          .label-img{
+            background-image: url("../imgs/recycle/24-regular@3x.png");
+          }
+        }
+        .tab-col[data-id="2"].checked{
+          .label-img{
+            background-image: url("../imgs/recycle/24-press@3x.png");
+          }
+        }
+        .tab-col[data-id="3"]{
+          .label-img{
+            width: 2.6666rem;
+            height: 2.6666rem;
+            background-image: url("../imgs/recycle/express-regular@3x.png");
+          }
+        }
+        .tab-col[data-id="3"].checked{
+          .label-img{
+            width: 2.6666rem;
+            height: 2.6666rem;
+            background-image: url("../imgs/recycle/express-press@3x.png");
+          }
+        }
+        .tab-col[data-id="4"]{
+          .label-img{
+            background-image: url("../imgs/recycle/insurance-regular@3x.png");
+          }
+        }
+        .tab-col[data-id="4"].checked{
+          .label-img{
+            background-image: url("../imgs/recycle/insurance-press@3x.png");
+          }
+        }
+        .tab-col[data-id="5"]{
+          .label-img{
+            background-image: url("../imgs/recycle/lock-regular@3x.png");
+          }
+        }
+        .tab-col[data-id="5"].checked{
+          .label-img{
+            background-image: url("../imgs/recycle/lock-press@3x.png");
+          }
+        }
+        .tab-col.checked{
+          color: $primary;
+        }
+      }
+      .txt-desc{
+        position: relative;
+        &:before{
+          @include list-line-top(1px solid #CBCBCB);
+          left: 1rem;
+          right: 1rem;
+          width: auto;
+        }
+        padding: 0 1rem;
+        font-size: 0.8rem;
+        line-height: 2.5777rem;
+        color: #333333;
+        .txt-label{
+          color: #fe5420;
+        }
+      }
+    }
+
+  }
+
+  .bar-btn-group{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 2.9333rem;
+    background: #fff;
+    box-shadow: 0 -0.1111rem 0.1111rem rgba(213, 213, 214, 0.5);
+    padding: 0.43rem 1rem;
+
+
+    .btn-assess{
+      display: inline-block;
+      line-height: 2.667rem;
+      border-radius: 0.44rem;
+      font-size: 1rem;
+      background-color: #CCCCCC;
+      color: #fff;
+      width: 100%;
+    }
+    .btn-assess.ok{
+      background-color: $primary;
+      color: $white;
+    }
+    .btn-reassess{
+      background-color: $white;
+      color: #333333;
+      display: inline-block;
+      width: 46%;
+      border: 1px solid #ccc;
+      margin-right: 0.667rem;
+      border-radius: 0.44rem;
+    }
+    .btn-go-order{
+      display: inline-block;
+      background-color: $primary;
+      color: $white;
+      width: 46%;
+      border-radius: 0.44rem;
+    }
+  }
+}
+/*回收下单页面*/
+@mixin recycle-order-padding{
+  padding: 0 1.2rem;
+}
+.home-recycle-order{
+  .order-info{
+    margin-top: 0;
+    .bar-label{
+      @include recycle-order-padding;
+      line-height: 2rem;
+      color: #02CBFF;
+      background-color: #F1F1F1;
+    }
+    .weui_cell{
+      max-height: 2.9333rem;
+      position: relative;
+      &:before{
+        @include list-line-top(1px solid #ccccc);
+      }
+      &:after{
+        @include list-line-bottom(1px solid #ccccc);
+      }
+      .char-txt{
+        padding-left: 0.5rem;
+        font-size: 0.8rem;
+      }
+      .express-icon{
+        width: 3rem;
+        vertical-align: middle;
+      }
+      .good-icon{
+        width: 1.2222rem;
+        height: 1.2222rem;
+      }
+      .unit{
+        color: #00CCFE;
+        font-size: 0.8em;
+        vertical-align: middle;
+      }
+      .price{
+        color: #00CCFE;
+        font-size: 1.3333rem;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+    }
+  }
+  .order-info.weui_cells{
+    .weui_cell{
+      max-height: 2.9333rem;
+      &:before{
+        display: none;
+        left: 0;
+      }
+    }
+  }
+
+  .cell-btn-group{
+    background-color: #F1F1F1;
+    .weui_cell{
+      max-height: 2.9333rem;
+      background-color: $white;
+      &:before{
+        left: 0;
+      }
+    }
+    .gatheringInfo{
+      .detail-info{
+        max-height: none;
+        .head-icon{
+          width: 3rem;
+          height: 3rem;
+          @include border-radius(50%);
+        }
+        .bank-icon{
+          width: 3rem;
+          height: 3rem;
+          @include border-radius(50%);
+        }
+        p{
+          margin-left: 0.5rem;
+        }
+      }
+
+    }
+    .addressInfo{
+      .detail-info{
+        max-height: none;
+
+      }
+    }
+
+    .gatheringInfo[data-pay-type="0"]{
+      .wechat-type{
+
+      }
+      .ebank-type{
+        display: none;
+      }
+    }
+    .gatheringInfo[data-pay-type="3"]{
+      .ebank-type{
+
+      }
+      .wechat-type{
+        display: none;
+      }
+    }
+    .gatheringInfo{
+      margin-bottom: 0.8rem;
+    }
+  }
+  .cell-btn-group.pay-shut-status{
+    .btn-select-pay-type.box-head{
+
+    }
+    .gatheringInfo{
+      display: none;
+    }
+  }
+  .cell-btn-group.address-shut-status{
+    .btn-select-address.box-head{
+
+    }
+    .addressInfo{
+      display: none;
+    }
+  }
+  .cell-btn-group.pay-finish-status{
+    .btn-select-pay-type.box-head{
+      display: none;
+    }
+    .gatheringInfo{
+
+    }
+  }
+  .cell-btn-group.address-finish-status{
+    .btn-select-address.box-head{
+
+      display: none;
+    }
+    .addressInfo{
+      margin-top: 0.8rem;
+    }
+  }
+
+  .bar-btn-group{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 2.9333rem;
+    background: #fff;
+    box-shadow: 0 -0.1111rem 0.1111rem rgba(213, 213, 214, 0.5);
+    padding: 0.5rem 1rem;
+    .btn-submit-order{
+      width: 100%;
+      text-align: center;
+      background-color: $primary;
+      color: #ffffff;
+      display: inline-block;
+      line-height: 2.667rem;
+      border-radius: 0.44rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+
+/* 国美回收页面
+----------------------------*/
+.home-recycle-guomei-order{
+  .weui_cell_ft {
+    line-height: 1;
+  }
+  .order-info{
+    margin-top: 0;
+    .weui_cell{
+      max-height: 2.9333rem;
+      position: relative;
+      .weui_label {
+        color: #666666;
+        min-width: 5.4rem;
+        width: auto;
+      }
+      .weui_select {
+        color: #666;
+      }
+      .char-txt{
+        padding-left: 0.5rem;
+        font-size: 1rem;
+        color: #666;
+      }
+      .express-icon{
+        width: 3rem;
+        vertical-align: middle;
+      }
+      .good-icon{
+        width: 1.2222rem;
+        height: 1.2222rem;
+      }
+      .unit{
+        color: #00CCFE;
+        font-size: 0.8em;
+        vertical-align: middle;
+      }
+      .price{
+        color: #00CCFE;
+        font-size: 1.3333rem;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+    }
+  }
+  .cell-btn-group{
+    input::-webkit-input-placeholder {
+      color: #333;
+    }
+  }
+
+  .bar-btn-group{
+    width: 100%;
+    text-align: center;
+    line-height: 2.9333rem;
+    /*background: #fff;
+    box-shadow: 0 -0.1111rem 0.1111rem rgba(213, 213, 214, 0.5);*/
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    .btn-submit-order{
+      width: 100%;
+      text-align: center;
+      background-color: $primary;
+      color: #ffffff;
+      display: inline-block;
+      line-height: 2.667rem;
+      border-radius: 0.44rem;
+      font-size: 1rem;
+    }
+  }
+}
+/*国美家电回收 日期选择器样式*/
+#frm-recycle-guomei-order-date{
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color:#333;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#333;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#333;
+  }
+  .weui_select{
+    color: #333;
+  }
+}
+
+
+/*选择收款方式*/
+.recycle-gathering{
+  .gathering-types{
+    .weui_cell{
+      max-height: 3.4rem;
+      .weui_cell_hd{
+        width: 3rem;
+        text-align: center;
+        .class-icon{
+          display: inline-block;
+          height: 1.5rem;
+        }
+      }
+      &:before{
+        left: 0;
+      }
+      .char-txt{
+        margin-left: 0.4rem;
+      }
+      .icon-select{
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0.15rem;
+        border: 1px solid #CCCCCC;
+        @include border-radius(0.2rem);
+      }
+      .icon-select.checked{
+        &:before{
+          display: block;
+          content: " ";
+          width: 100%;
+          @include border-radius(1px);
+          height: 100%;
+          background-color: $primary;
+        }
+      }
+    }
+  }
+  .wechat-form{
+    .weui_cell{
+      &:before{
+        left: 0;
+      }
+      .weui_label{
+        width: 5rem;
+      }
+    }
+    .weui_cell.weui_vcode{
+      line-height: 3.5rem;
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+      .btn-get-vcode{
+        width: 7rem;
+        text-align: center;
+        color: #03CBFF;
+        border-left: 1px solid #cccccc;
+      }
+      .btn-get-vcode.weui_btn_disabled{
+        color: #CCCCCC;
+      }
+    }
+  }
+  .ebank-form{
+    .weui_cell{
+      &:before{
+        left: 0;
+      }
+      .weui_label{
+        width: 5rem;
+      }
+    }
+  }
+  .bar-btn-group{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 2.9333rem;
+    background: #fff;
+    box-shadow: 0 -0.1111rem 0.1111rem rgba(213, 213, 214, 0.5);
+    padding: 0.5rem 1rem;
+
+    .btn-ok-use{
+      background-color: $primary;
+      color: $white;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      line-height: 2.667rem;
+      border-radius: 0.44rem;
+      font-size: 1rem;
+    }
+  }
+}
+.recycle-bank-list{
+  .bank-list{
+    .bank-label{
+      padding: 0 0.6666rem;
+      min-height: 2.9555rem;
+      max-height: 2.9555rem;
+      &:before{
+        left: 0;
+      }
+      .bank-icon{
+        width: 1.6222rem;
+        height: 1.6222rem;
+        @include border-radius(50%);
+        vertical-align: middle;
+      }
+      .txt-bankname{
+        margin-left: 0.6666rem;
+      }
+    }
+  }
+}
+
+
+//
+.home-recycle-order-success-msg,
+.home-phone-repair-order-success-msg,
+.home-recycle-guomei-order-success-msg,
+.me-vip-pay-msg{
+
+  .text-center{
+    text-align: center !important;
+  }
+  .weui_msg{
+    padding-top: 0;
+  }
+  .small{
+    font-size: 0.844rem;
+  }
+  .gray{
+    color: #999 !important;
+  }
+
+  .panel{
+    .panel-heading{
+      text-align: left;
+      font-size: 0.9333rem;
+      color: #222;
+    }
+    .panel-body{
+      margin-bottom: 0;
+      padding: 1.333rem 1rem;
+      text-align: left;
+      .img-responsive{
+        width: 100%;
+      }
+    }
+  }
+  .weui_panel:first-child {
+    margin-top: 0;
+  }
+  .weui_msg_title{
+    font-size: 1.2rem;
+    color: $primary;
+    img{
+      width: 1.333rem;
+      vertical-align: middle;
+    }
+    span{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .msg-info{
+    font-size: 0.844rem;
+  }
+
+  .recycle-order-info-wrapper{
+    text-align: center;
+    padding: 0;
+  }
+  .white-bg{
+    background: #fff;
+    color: #222;
+  }
+  .recycle-order-info{
+    padding: 1rem 2rem;
+    font-size: 0.923rem;
+  }
+  .recycle-order-info  ul{
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    list-style: none;
+
+    .info{
+      color: #000;
+    }
+    .tips{
+      font-size: 0.769rem;
+      padding-top: 1rem;
+      display: inline-block;
+    }
+  }
+
+  .line-up{
+    background: url('../imgs/recycle/bg_up.png') repeat-x bottom;
+    height: 1.3rem;
+    background-size: 1rem;
+  }
+  .line-down{
+    background: url('../imgs/recycle/bg_down.png') repeat-x top;
+    height: 1.3rem;
+    background-size: 1rem;
+  }
+  .bar-btn-group {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 2.9333rem;
+    background: #fff;
+    box-shadow: 0 -0.1111rem 0.1111rem rgba(213, 213, 214, 0.5);
+    padding: 0.43rem 1rem;
+
+    .btn:first-child{
+      background-color: $white;
+      color: #333333;
+      display: inline-block;
+      width: 46%;
+      border: 1px solid #ccc;
+      margin-right: 0.667rem;
+      border-radius: 0.44rem;
+    }
+
+    .btn:last-child {
+      display: inline-block;
+      background-color: $primary;
+      color: $white;
+      width: 46%;
+      border-radius: 0.44rem;
+    }
+  }
+
+
+}

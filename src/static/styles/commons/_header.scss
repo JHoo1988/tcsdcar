@@ -1,0 +1,75 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../mixins/_mixins";
+
+.com-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: px2rem(88);
+  background-color: #fff;
+  box-shadow: 0 .06rem .06rem rgba(0, 0, 0, .2);
+  text-align: center;
+  line-height: px2rem(88);
+
+  .action {
+    position: absolute;
+    top: 0;
+    display: block;
+  }
+
+  .map {
+    display: block;
+    line-height: px2rem(88);
+    font-size: 16px;
+    color: #333;
+    padding-left: px2rem(20);
+    padding-right: px2rem(36);
+    background: url("../../images/index/down.png") no-repeat right 50%;
+    background-size: px2rem(28);
+  }
+
+  .back {
+    display: block;
+    width: px2rem(88);
+    height: px2rem(88);
+    background: url("../../images/common/icon-back.png") no-repeat 50% 50%;
+    background-size: px2rem(44);
+  }
+
+  .title {
+    font-size: 18px;
+    color: #0BF;
+  }
+
+  .other {
+    min-width: px2rem(88);
+    position: absolute;
+    top: 0;
+    right: px2rem(20);
+    display: block;
+  }
+
+  .other .text {
+    display: block;
+    line-height: px2rem(88);
+    color: #999;
+  }
+
+  .more {
+    display: block;
+    width: px2rem(88);
+    height: px2rem(88);
+    background: url("../../images/common/icon-more.png") no-repeat 50% 50%;
+    background-size: contain;
+  }
+
+  .info {
+    display: block;
+    width: px2rem(88);
+    height: px2rem(88);
+    background: url("../../images/common/icon-info.png") no-repeat 50% 50%;
+    background-size: px2rem(44);
+  }
+}
+

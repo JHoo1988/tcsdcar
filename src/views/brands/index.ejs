@@ -1,0 +1,28 @@
+<div class="brands">
+    <header class="com-header">
+        <!--<div class="action">-->
+            <!--<a class="back" href="javascript:window.history.go(-1);"></a>-->
+        <!--</div>-->
+        <span class="title">
+            选择品牌
+        </span>
+        <!--<div class="info" style="display: none;">-->
+            <!--<a id="btn-address-detail-cancel" href="javascript:;" class="text">-->
+                <!--取消-->
+            <!--</a>-->
+        <!--</div>-->
+    </header>
+    <main class="com-main">
+        <div class="brand-list">
+            <% if(data.length > 0 ){ %>
+            <div class="sf-cells list-wrapper">
+                <% for(var i = 0;i < data.length;i++){ %>
+                <div class="sf-cell address-item" data-id="<%=data[i].addressId%>" data-json='<%=JSON.stringify(data[i]) %>'>
+
+                </div>
+                <%}%>
+            </div>
+            <%}%>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,200 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+.banner-img{
+  width: 100%;
+  display: block;
+}
+.home-household-subclass{
+  padding-bottom: px2rem(180);
+  .check-flag{
+    padding-right: px2rem(30);
+  }
+
+  .row{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .right{
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+  }
+
+  .item{
+    line-height: 1;
+    .item-title{
+      color: #333;
+      font-size: px2rem(33);
+      margin: px2rem(12) auto px2rem(21) auto;
+    }
+    .item-desc{
+      color: #999;
+      font-size: px2rem(27);
+    }
+    .item-price{
+      color: $primary;
+      font-size: px2rem(33);
+      vertical-align: middle;
+    }
+    .item-num{
+      font-size: px2rem(24);
+      color: #999;
+      span{
+        vertical-align: middle;
+      }
+      .select-ele-action{
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .select-ele-action{
+    .sub,
+    .add,
+    .text{
+      display: block;
+      float: left;
+      z-index: 1;
+      text-align: center;
+      border: 1px solid #cccccc;
+      height: px2rem(60);
+      width: px2rem(60);
+      min-width: px2rem(60);
+      line-height: px2rem(60);
+      font-size: px2rem(30);
+      img{
+        width: 40%;
+      }
+    }
+
+    .sub,.add{
+      &:active{
+        background-color: $grayLight;
+      }
+    }
+
+    .text{
+      color: $primary;
+      border-right: none;
+      border-left: none;
+      font-size: px2rem(24);
+      border-radius: 0;
+    }
+
+  }
+
+  /* 页面底部购物车
+  ---------------------*/
+  .menu-bottom{
+    padding: 5px 0px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    opacity: 1;
+    box-shadow: 0 -3px px2rem(3) rgba(213, 213, 214, 0.5);
+  }
+
+  .notification-menu {
+    width: 100%;
+    list-style: none;
+  }
+  .notification-menu span{
+    vertical-align: middle;
+    font-size: px2rem(32);
+  }
+  .notification-menu > li {
+    display: inline-block;
+    position: relative;
+    vertical-align:middle;
+
+  }
+  .notification-menu > li:first-child {
+    text-align: left;
+    width: 65%;
+  }
+  .notification-menu > li:last-child {
+    width: 30%;
+    text-align: right;
+    .btn{
+      width: px2rem(220);
+      text-align: center;
+      border-radius: px2rem(12);
+      padding: px2rem(10);
+    }
+  }
+  .red-bg{
+    background-color : #f43530;
+    color: #fff !important;;
+  }
+  .blue-bg{
+    background-color : $primary;
+    color: #fff !important;;
+  }
+  .btn {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    padding: px2rem(7) px2rem(32);
+    text-align:left;
+    color: $primary;
+    transition: all 0.15s ease-out 0s;
+  }
+
+  .info-number .badge {
+    background: #f43530;
+    color: #fff;
+    border-radius: px2rem(32);
+    -webkit-border-radius: px2rem(32);
+    min-width: px2rem(36);
+    height: px2rem(36);
+    line-height: 1.0;
+    font-size: px2rem(28);
+    top: - px2rem(3);
+    right: - px2rem(6);
+    position: absolute;
+    border: 1px solid #f1f1f1;
+    text-align: center;
+  }
+  .shopcart-ico{
+    width: px2rem(70);
+    height: px2rem(70);
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: px2rem(10);
+  }
+  .shopcart-ico-num{
+    background: url("../../images/shopcart/shopcart.png") no-repeat;
+    background-size: 100%;
+  }
+  .notification-menu .shopcart-price-txt{
+    color: #666666;
+    font-size: px2rem(28);
+  }
+  .notification-menu .shopcart-price{
+    font-size: px2rem(30);
+  }
+  .shopcart-ico-set{
+    display: none;
+  }
+  .un-use{
+    font-size: 80%;
+    color: #666;
+    text-decoration: line-through;
+  }
+}

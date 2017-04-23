@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../mixins/_mixins";
+
+.com-main {
+  position: absolute;
+  top: px2rem(88);
+  bottom: px2rem(100);
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.com-title {
+  padding: px2rem(20) px2rem(32);
+  color: #666;
+  .line {
+    border-left: px2rem(8) solid #0BF;
+    padding-left: px2rem(20);
+  }
+}
+
+.com-slogan {
+  width: 100%;
+  height: px2rem(72);
+  background: url("../../images/icons/slogan.png") no-repeat;
+  background-size: contain;
+  background-position-x: 50%;
+  margin-bottom: .5rem;
+}

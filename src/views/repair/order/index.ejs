@@ -1,0 +1,176 @@
+<div class="home-repair-order">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            家电维修
+        </span>
+    </header>
+    <form id="frm-repair-order">
+        <div class="select-result weui_cells">
+            <div class="weui_cell">
+                <% if (typeof data.productTypeCode !== 'undefined' && (data.productTypeCode == 2 || data.productTypeCode == 3)) { %>
+                <div class="weui_cell_hd img-wrapper">
+                    <img class="img-icon" src="../../../static/images/repair/<%= data.productId %>.png">
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <span><%= data.productSmallCategory %></span>
+
+                    <% if(data.symptom && data.symptom.length > 0){
+                    if (data.symptom[0].symptomName){ %>
+                    <span class="gray"> ：<%= data.symptom[0].symptomName %></span>
+                    <% }else if(data.symptom[0].productSymptom){ %>
+                    <span class="gray"> ：<%= data.symptom[0].productSymptom %></span>
+                    <% }} else if(data.productSymptom){ %>
+                    <span class="gray"> ：<%= data.productSymptom %></span>
+                    <% } %>
+
+                </div>
+                <% } else { %>
+                <div class="weui_cell_hd img-wrapper">
+                    <img class="img-icon" src="<%= '../../../static/images/repair/' + data.categoryId + '.png' %>" alt=""/>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <span><%= data.categoryName %></span>
+                    <% if(data.symptom && data.symptom.length > 0){
+                    if (data.symptom[0].symptomName){ %>
+                    <span class="gray"> ：<%= data.symptom[0].symptomName %></span>
+                    <% }else if(data.symptom[0].productSymptom){ %>
+                    <span class="gray"> ：<%= data.symptom[0].productSymptom %></span>
+                    <% }} else if(data.symptomName){ %>
+                    <span class="gray"> ：<%= data.symptomName %></span>
+                    <% } %>
+
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="label-title">服务地址与时间</div>
+        <div class="select-form weui_cells weui_cells_access">
+            <a class="weui_cell select_address">
+                <div class="weui_cell_bd weui_cell_primary address-icon">
+                    <p id="repair-order-address">
+                        <%
+                        if (address) {
+                        %>
+                        <%= address.finalAddress %>
+                        <%
+                        } else {
+                        %>
+                        <%= '请选择服务地址' %>
+                        <%
+                        }
+                        %>
+
+                    </p>
+                    <input type="hidden" name="addressId" class="ha-valid" data-null-msg="请选择服务地址">
+                    <input type="hidden" name="provinceId">
+                    <input type="hidden" name="cityId">
+                    <input type="hidden" name="areaId">
+                </div>
+                <div class="weui_cell_ft weui_cell_ft_mini"></div>
+            </a>
+            <a id="btn-repair-order-item-date" class="weui_cell js-cell-time" >
+                <div class="weui_cell_bd weui_cell_primary time-icon">
+                    <!--<p id="repair-order-date">请选择服务时间</p>-->
+                    <input readonly type="text" class="calendars" placeholder="请选择服务时间" id="repair-order-date"/>
+                    <input type="hidden" name="appointedTime"/>
+                    <!--<input type="hidden" name="appointedTime" class="ha-valid" data-null-msg="请选择服务时间">-->
+                    <input type="hidden" name="appointedDesc">
+                </div>
+                <div class="weui_cell_ft weui_cell_ft_mini"></div>
+            </a>
+        </div>
+        <div class="label-title">其它需求描述</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea"
+                              maxlength="140"
+                              placeholder="请输入需求"
+                              name="orderDesc"
+                              data-len="140"
+                              data-len-msg="需求不能超过{0}个字符"
+                              rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="order-info-show">
+            <% if (typeof data.productTypeCode !== 'undefined' && (data.productTypeCode == 2 || data.productTypeCode == 3)) { %>
+            <div class="line-info">
+                <span>订单总额：</span>
+                <%if(data.symptom && data.symptom.length > 0&&data.symptom[0].productAPrice){%>
+                <span class="should-price price-num">￥<%= data.symptom[0].productAPrice %></span>
+                <%}else{%>
+                <span class="should-price price-num">￥<%= data.productAPrice %></span>
+                <%}%>
+            </div>
+            <% } else { %>
+            <div class="line-info">
+                <span>检测费：</span>
+                <span class="serve-price price-num">￥<%= data.categoryPrice %></span>
+            </div>
+            <div class="line-info">
+                <span>订单总额：</span>
+                <span class="should-price price-num">￥<%= data.categoryPrice %></span>
+            </div>
+            <% } %>
+            <%
+            var categoryPrice = data.categoryPrice;
+            if(vipDiscountInfo != null && typeof data.productTypeCode === 'undefined'){
+            if(vipDiscountInfo.incomeValueType == 0){
+            if(vipDiscountInfo.incomeValue != '无'){
+                categoryPrice = 0;
+            %>
+            <div class="line-info">
+                <span><%= vipDiscountInfo.levelName %>专享：</span>
+                <span class="actual-price price-num">减免上门检测费</span>
+            </div>
+            <% }
+            }else if(vipDiscountInfo.incomeValueType == 2){
+            if(vipDiscountInfo.incomeValue != 10){
+                categoryPrice = categoryPrice * (vipDiscountInfo.incomeValue * 10) / 10;
+            %>
+            <div class="line-info">
+                <span><%= vipDiscountInfo.levelName %>专享：</span>
+                <span class="actual-price price-num">减免上门检测费</span>
+            </div>
+            <%
+            }
+            }else if(vipDiscountInfo.incomeValueType == 3){
+            if(vipDiscountInfo.incomeValue != 100){
+                categoryPrice = categoryPrice * vipDiscountInfo.incomeValue / 100;
+            %>
+            <div class="line-info">
+                <span><%= vipDiscountInfo.levelName %>专享：</span>
+                <span class="actual-price price-num">减免上门检测费</span>
+            </div>
+            <%
+            }
+            }
+            }
+            %>
+
+            <%
+            if (typeof data.productTypeCode !== 'undefined' && (data.productTypeCode == 2 || data.productTypeCode == 3)) {
+                if (data.symptom && data.symptom.length > 0 && data.symptom[0].productAPrice) {
+                    categoryPrice = data.symptom[0].productAPrice;
+                } else {
+                    categoryPrice = data.productAPrice;
+                }
+            }
+            %>
+            <div class="line-info">
+                <span>应付金额：</span>
+                <span class="actual-price price-num">￥<%= categoryPrice %></span>
+            </div>
+        </div>
+    </form>
+
+    <div class="action-bottom">
+        <a id="btn-repair-order-ensure" href="javascript:;" class="weui_btn weui_btn_primary">
+            确认付款
+        </a>
+    </div>
+</div>

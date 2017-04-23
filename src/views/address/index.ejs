@@ -1,0 +1,133 @@
+<div class="page-address">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            我的地址
+        </span>
+        <div class="info" style="display: none;">
+            <a id="btn-address-detail-cancel" href="javascript:;" class="text">
+                取消
+            </a>
+        </div>
+    </header>
+
+    <!--<main class="com-main">-->
+        <!--<div class="address-list">-->
+            <!--<% if(data.length > 0 ){ %>-->
+            <!--<div class="sf-cells list-wrapper">-->
+                <!--<% for(var i = 0;i < data.length;i++){ %>-->
+                <!--<label class="weui_cell weui_check_label block" data-id="<%= data[i].addressId %>">-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                        <!--<p class="address-title">-->
+                            <!--<span data-id="name"><%= data[i].contactName %></span>-->
+                            <!--<span class="" data-id="mobile"><%= data[i].contactMobile %></span>-->
+                        <!--</p>-->
+                        <!--<p class="address-desc">-->
+                            <!--&lt;!&ndash;<span>地址：</span>&ndash;&gt;-->
+                            <!--<span class="address-info">-->
+                                <!--<span data-id="province"><%= data[i].provinceName %></span><span-->
+                                        <!--data-id="city"><%= data[i].cityName %></span><span-->
+                                        <!--data-id="area"><%= data[i].areaName %></span><span-->
+                                        <!--data-id="street"><%= data[i].streetName %></span><span-->
+                                        <!--data-id="detail"><%= data[i].addressDetail %></span>-->
+                            <!--</span>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_ft">-->
+                        <!--<div class="action-list">-->
+                            <!--<div class="gd-clearfix">-->
+                                <!--<div class="action-del gd-right">-->
+                                    <!--<div class="img"></div>-->
+                                <!--</div>-->
+                                <!--<div class="action-edit gd-right">-->
+                                    <!--<div class="img"></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<input type="hidden" name="provinceId" value="<%= data[i].provinceId %>">-->
+                    <!--<input type="hidden" name="cityId" value="<%= data[i].cityId %>">-->
+                    <!--<input type="hidden" name="areaId" value="<%= data[i].areaId %>">-->
+                    <!--<input type="hidden" name="streetId" value="<%= data[i].streetId %>">-->
+                    <!--<input type="hidden" name="regionType" value="<%= data[i].regionType || 0 %>">-->
+                    <!--<input type="hidden" name="regionServiceInstallType"-->
+                           <!--value="<%= data[i].regionServiceInstallType || 0 %>">-->
+                    <!--<input type="hidden" name="recoveryHouseholdSupport"-->
+                           <!--value="<%= data[i].recoveryHouseholdSupport || 0 %>">&lt;!&ndash;国美家电回收&ndash;&gt;-->
+                    <!--<input type="hidden" name="regionRepairSupport" value="<%= data[i].regionRepairSupport || 0 %>">-->
+                    <!--&lt;!&ndash;手机维修&ndash;&gt;-->
+                    <!--<input type="hidden" name="hasOnlinePay" value="<%= data[i].hasOnlinePay %>">-->
+                <!--</label>-->
+                <!--<% } %>-->
+            <!--</div>-->
+            <!--<% } %>-->
+
+            <!--<div class="weui_cells">-->
+                <!--<a id="btn-address-add" class="weui_cell address-add" href="javascript:;">-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                        <!--<p><span class="color-primary margin-right-5">+</span> 新增地址</p>-->
+                    <!--</div>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</main>-->
+    <main class="com-main">
+
+        <div class="address-list">
+            <% if(data.length > 0 ){ %>
+            <div class="sf-cells list-wrapper">
+                <% for(var i = 0;i < data.length;i++){ %>
+                <div class="sf-cell address-item" data-id="<%=data[i].addressId%>" data-json='<%=JSON.stringify(data[i]) %>'>
+                    <div class="sf-cell-bd">
+
+                        <p class="address-title">
+                            <span data-id="name"><%=data[i].contactName %></span>
+                            <span data-id="mobile"><%=data[i].contactMobile%></span>
+                        </p>
+
+                        <p class="address-desc">
+                            <span class="address-info">
+                                <span data-id="province"><%=data[i].provinceName%></span>
+                                <span data-id="city"><%=data[i].cityName%></span>
+                                <span data-id="area"><%=data[i].areaName%></span>
+                                <span data-id="street"><%=data[i].streetName%></span>
+                                <span data-id="detail"><%=data[i].addressDetail%></span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="sf-cell-ft">
+                        <div class="action-list">
+                            <div class="cf">
+                                <div class="action-del gd-right">
+                                    <div class="img"></div>
+                                </div>
+                                <div class="action-edit gd-right">
+                                    <div class="img"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="provinceId" value="<%=data[i].provinceId%>">
+                    <input type="hidden" name="cityId" value="<%=data[i].cityId%>">
+                    <input type="hidden" name="areaId" value="<%=data[i].areaId%>">
+                    <input type="hidden" name="streetId" value="<%=data[i].streetId%>">
+                    <input type="hidden" name="regionType" value="<%=data[i].regionType%>">
+                    <input type="hidden" name="regionServiceInstallType" value="<%=data[i].regionServiceInstallType%>">
+                    <input type="hidden" name="hasOnlinePay" value="{<%=data[i].hasOnlinePay%>">
+                </div>
+                <%}%>
+            </div>
+            <%}%>
+            <div class="sf-cells address-add">
+                <div class="sf-cell js-add-address">
+                    <div class="weui_cell_bd">
+                        <p><span class="color-primary">+</span> 新增地址</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
