@@ -2,14 +2,32 @@
 @import "../variables";
 @import "../utilities";
 
-.brands{
-  .com-main{
-    .brand-list{
-      .list-wrapper{
-        .address-item{
+.brands {
+  .com-main {
+    .brand-list {
+      .list-wrapper {
+        .address-item {
           cursor: pointer;
+          .inline-block {
+            display: inline-block!important;
+          }
+          a {
+            cursor: pointer;
+            color: #342E2C;
+          }
+          .weui_label {
+            font-size: px2rem(30);
+            width: auto;
+            color: #333;
+          }
         }
-
+        .brands_szm {
+          background-color: #f8f8f8;
+          padding-left: px2rem(30);
+          span{
+            font-size: px2rem(24);
+          }
+        }
       }
     }
   }
