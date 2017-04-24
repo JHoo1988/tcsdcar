@@ -22,12 +22,13 @@
 })(this, function (exports, module) {
     "use strict";
 
-    var debug = '__SFDJ_DEBUG__',
+    var debug = '',//__SFDJ_DEBUG__
         isDebug = debug !== '',
         testApiUrl = 'http://localhost:8088/', // 测试后台地址
         // testApiUrl = 'http://base.5ujd.net:88/ha-wechat/v1/', // 测试后台地址
         //testApiUrl = 'http://120.76.101.218:89/ha-wechat/v1/', // 测试后台地址
-        prodApiUrl = 'http://wechat-api.tclsfdj.com:88/ha-wechat/v1/', // 线上后台地址
+        // prodApiUrl = 'http://wechat-api.tclsfdj.com:88/ha-wechat/v1/', // 线上后台地址
+        prodApiUrl = 'http://119.23.34.22:8080/', // 线上后台地址
         base = isDebug ? testApiUrl : prodApiUrl,
         testAppId = 'wx2919594911b28214',//测试appId
         prodAppId = 'wxefe2041fd6eb765f',//正式环境appId
