@@ -65,6 +65,8 @@
         url: {
             //brands
             findAllProductBrands:base+'mobile/findAllProductBrands',
+            // 查询产品
+            findProductList:base+'mobile/findProductList',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
@@ -460,7 +462,7 @@
             },
             brands: {
                 select: 'ha_selected_brands',
-                provinces: 'ha_location_provinces',
+                select_product: 'ha_selected_product',
                 cities: 'ha_location_cities'
             },
             wash: {

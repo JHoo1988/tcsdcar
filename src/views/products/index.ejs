@@ -1,7 +1,7 @@
 <div class="brands">
     <header class="com-header">
         <div class="action">
-        <a class="back" href="javascript:window.history.go(-1);"></a>
+            <a class="back" href="javascript:window.history.go(-1);"></a>
         </div>
         <span class="title">
             选择产品
@@ -17,22 +17,15 @@
             <% if(data.length > 0 ){ %>
             <div class="sf-cells list-wrapper">
                 <% for(var i = 0;i < data.length;i++){ %>
-                <div class="brands_szm">
-                    <span><%= data[i].firstChar %></span>
-                </div>
-                <%
-                    var content = data[i].content;
-                for(var j = 0;j < content.length;j++){ %>
-                <div class="sf-cell address-item" data-id="<%= content[j].id %>"
-                     data-json='<%= JSON.stringify(content[j]) %>'>
-                    <a class="inline-block product-detail" href="javascript:;" data-name="<%= content[j].id %>">
+                <div class="sf-cell address-item" data-id="<%= data[i].id %>"
+                     data-json='<%= JSON.stringify(data[i]) %>'>
+                    <a class="inline-block product-detail" href="javascript:;" data-name="<%= data[i].id %>">
                         <div class="inline-block img-wrapper">
-                            <img class="img-icon" src="../../../images/brand/<%= content[j].id %>.png">
+                            <img class="img-icon" src="../../../images/product/<%= data[i].id %>.png">
                         </div>
-                        <label class="inline-block weui_label"><%= content[j].name %></label>
+                        <label class="inline-block weui_label"><%= data[i].productName %></label>
                     </a>
                 </div>
-                <% } %>
                 <% } %>
             </div>
             <% } %>

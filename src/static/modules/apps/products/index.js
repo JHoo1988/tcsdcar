@@ -24,7 +24,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             this.renderPage();
             this.bind();
             fastclick.attach(document.body);
-            console.log(utilBrands.brands.getBrand());
+            console.log(utilBrands.product.getProduct());
         },
 
         /**
@@ -33,11 +33,11 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          */
         renderPage: function () {
             var origin = this.origin;
-            this.getAddressList(function (addressList) {
+            this.getProductList(function (addressList) {
                 var pageData = {};
                 if (origin === -1) {
                 }
-                pageData.data = addressList;
+                pageData.data = addressList.content;
                 var html = new EJS({ url: '../views/products/index.ejs' }).render(pageData);
                 $('body').prepend(html);
             });
@@ -59,10 +59,15 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          * @func
          * @desc 获取品牌列表
          */
-        getAddressList: function (callback) {
-            var url = config.url.findAllProductBrands;
+        getProductList: function (callback) {
+            var url = config.url.findProductList;
+            var par = {};
+            var brand = utilBrands.brands.getBrand();
+            par.brands=brand.id;
+            par.pageIndex=1;
+            par.pageSize=999999;
             // var userId = utilUser.user.getUserId();
-            jea.get(url, null, function (result) {
+            jea.get(url, par, function (result) {
                 if (result&&result.code=='200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }
@@ -88,7 +93,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             });
         },
         setUserSelected: function (data) {
-            utilBrands.brands.setBrand(data);
+            utilBrands.product.setProduct(data);
         }
     };
     return new App();
