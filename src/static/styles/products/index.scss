@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+
+.brands {
+  .com-main {
+    .brand-list {
+      .list-wrapper {
+        .address-item {
+          cursor: pointer;
+          .inline-block {
+            display: inline-block!important;
+          }
+          a {
+            cursor: pointer;
+            color: #342E2C;
+          }
+          .weui_label {
+            font-size: px2rem(30);
+            width: auto;
+            color: #333;
+            position: relative;
+            bottom: px2rem(18);
+            left:px2rem(24);
+          }
+          .img-icon{
+            width: px2rem(58);
+          }
+        }
+        .brands_szm {
+          background-color: #F0EFF5;
+          padding-left: px2rem(30);
+          span{
+            font-size: px2rem(24);
+          }
+        }
+      }
+    }
+  }
+}

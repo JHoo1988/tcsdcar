@@ -38,7 +38,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 if (origin === -1) {
                 }
                 pageData.data = addressList;
-                var html = new EJS({ url: '../views/brands/index.ejs' }).render(pageData);
+                var html = new EJS({ url: '../views/products/index.ejs' }).render(pageData);
                 $('body').prepend(html);
             });
         },
@@ -82,20 +82,12 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='../products/index.html';
+                // window.location.href='../products/index.html';
                 // window.location.replace(backUrl);
-                // window.history.go(-1);
+                window.history.go(-1);
             });
         },
         setUserSelected: function (data) {
-            // var keys = {
-            //     "1": "address", // 家电清洗
-            //     "3": "install", // 家电安装
-            //     "2": "repair", // 家电维修
-            //     "4": "phoneRepair",   // 手机维修 - 上门
-            //     "5": "phoneRepair"   // 手机维修 - 邮寄
-            // };
-            // var key = keys[this.origin] || keys['1'];
             utilBrands.brands.setBrand(data);
         }
     };
