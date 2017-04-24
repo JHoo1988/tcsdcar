@@ -45,6 +45,6 @@ fis.config.merge({
     //    }
     //},
     roadmap: {
-        domain: "/wechat2017"  // 测试服务器的访问地址
+        domain: "/dist"  // 测试服务器的访问地址
     }
 });
