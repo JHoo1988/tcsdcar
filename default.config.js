@@ -14,6 +14,7 @@ module.exports = {
             util_repair_order: 'static/modules/commons/repair.order.util.js',
             util_business: 'static/modules/commons/business.util.js',
             util_address: 'static/modules/commons/address.util.js',
+            util_brands: 'static/modules/commons/brands.util.js',
 
             util_location_city: 'static/modules/commons/location.city.util.js',
             util_location_cities: 'static/modules/commons/location.cities.util.js',

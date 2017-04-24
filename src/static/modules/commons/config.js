@@ -22,8 +22,7 @@
 })(this, function (exports, module) {
     "use strict";
 
-    var debug = '',//__SFDJ_DEBUG__
-        isDebug = debug !== '',
+    var isDebug = true,
         testApiUrl = 'http://localhost:8088/', // 测试后台地址
         // testApiUrl = 'http://base.5ujd.net:88/ha-wechat/v1/', // 测试后台地址
         //testApiUrl = 'http://120.76.101.218:89/ha-wechat/v1/', // 测试后台地址
@@ -456,6 +455,11 @@
             business: 'ha_business',//业务类型，维修和安装
             location: {
                 city: 'ha_location_city',
+                provinces: 'ha_location_provinces',
+                cities: 'ha_location_cities'
+            },
+            brands: {
+                select: 'ha_selected_brands',
                 provinces: 'ha_location_provinces',
                 cities: 'ha_location_cities'
             },
