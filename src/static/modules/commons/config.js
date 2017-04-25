@@ -67,6 +67,8 @@
             findAllProductBrands:base+'mobile/findAllProductBrands',
             // 查询产品
             findProductList:base+'mobile/findProductList',
+            //根据code获取openid接口
+            getWeiXinOpenIdByCode: base + 'weixin/getWeiXinOpenIdByCode/',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',

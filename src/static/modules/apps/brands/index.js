@@ -2,7 +2,7 @@
  * Created by ryandu on 2017/3/21.
  */
 
-define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function ($, jea, config, fastclick,layer) {
+define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea, config, fastclick) {
     'use strict';
 
     var utilPage = require('util_page');

@@ -511,6 +511,28 @@ define(['jquery','weui','config','jea'],function ($,weui,config,jea) {
             }
             var date = new Date(val);
             return date;
+        },
+        checkIsMobile : function(mobile) {// 验证手机号
+            if(mobile == ""){
+                return false;
+            }
+            if(isNaN(mobile) || (mobile.length != 11)) {
+                return false;
+            }
+            var _d = /^1[3578][01379]\d{8}$/g;
+            var _l = /^1[34578][01256]\d{8}$/g;
+            var _y = /^(134[012345678]\d{7}|1[34578][012356789]\d{8})$/g;
+            // var reg =/^0{0,1}(13[0-9]|15[0-9]|18[0-9])[0-9]{8}$/;
+            if(_d.test(mobile)) {
+                return true;
+            }
+            if(_l.test(mobile)) {
+                return true;
+            }
+            if(_y.test(mobile)) {
+                return true;
+            }
+            return false;
         }
 
 
