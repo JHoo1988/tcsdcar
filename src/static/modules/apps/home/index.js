@@ -25,7 +25,7 @@ define(['jquery', 'fastclick', 'weui', 'ejs'], function ($, fastclick) {
          * @desc 渲染页面
          */
         renderPage: function (callback) {
-            var html = new EJS({url: '../views/home/index.ejs'}).render();
+            var html = new EJS({url: 'views/home/index.ejs'}).render();
             $('body').prepend(html);
         },
 

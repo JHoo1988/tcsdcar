@@ -45,7 +45,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             var data = {};
             data.brand = this.brand;
             data.product = this.product;
-            var html = new EJS({ url: '../views/order/index.ejs' }).render(data);
+            var html = new EJS({ url: 'views/order/index.ejs' }).render(data);
             $('body').prepend(html);
         },
 

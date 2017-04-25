@@ -36,7 +36,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
             this.getAddressList(function (addressList) {
                 var pageData = {};
                 pageData.data = addressList;
-                var html = new EJS({ url: '../views/brands/index.ejs' }).render(pageData);
+                var html = new EJS({ url: 'views/brands/index.ejs' }).render(pageData);
                 $('body').prepend(html);
             });
         },
@@ -80,7 +80,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='../products/index.html';
+                window.location.href='products.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });

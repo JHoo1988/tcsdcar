@@ -38,7 +38,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 if (origin === -1) {
                 }
                 pageData.data = addressList.content;
-                var html = new EJS({ url: '../views/products/index.ejs' }).render(pageData);
+                var html = new EJS({ url: 'views/products/index.ejs' }).render(pageData);
                 $('body').prepend(html);
             });
         },
@@ -87,7 +87,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='../order/index.html';
+                window.location.href='order.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });

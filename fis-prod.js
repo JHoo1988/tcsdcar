@@ -45,6 +45,6 @@ fis.config.merge({
     //    }
     //},
     roadmap: {
-        domain: "/dist"  // 测试服务器的访问地址
+        domain: "/m"  // 测试服务器的访问地址
     }
 });
