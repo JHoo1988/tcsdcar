@@ -463,7 +463,7 @@
             brands: {
                 select: 'ha_selected_brands',
                 select_product: 'ha_selected_product',
-                cities: 'ha_location_cities'
+                origin: 'ha_origin'
             },
             wash: {
                 order: 'ha_wash_order',

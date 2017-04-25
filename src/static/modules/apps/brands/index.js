@@ -11,6 +11,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
 
     var App = function () {
         this.origin = this.getOrigin();
+        utilBrands.origin.setOrigin(this.origin);//保存店铺编码
     };
 
     App.prototype = {
@@ -32,11 +33,8 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          * @desc 渲染页面
          */
         renderPage: function () {
-            var origin = this.origin;
             this.getAddressList(function (addressList) {
                 var pageData = {};
-                if (origin === -1) {
-                }
                 pageData.data = addressList;
                 var html = new EJS({ url: '../views/brands/index.ejs' }).render(pageData);
                 $('body').prepend(html);
@@ -50,7 +48,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
         getOrigin: function () {
             var origin = utilCommon.getParam('origin');
             if (origin === '' || origin === null) {
-                origin = -1;
+                origin = 'TCSDCAR888';//不是经过扫描店铺二维码进入的
             }
             return origin;
         },
