@@ -208,6 +208,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             console.log('handleUrlToWxOauth()-wxOauth2='+wxOauth2);
             return wxOauth2;
         },
+        getParam: function (param) {
+            var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        },
         getClearCodeUrl: function () {
             var url = window.location.href;
             var code = this.getParam('code');

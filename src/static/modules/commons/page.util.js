@@ -99,7 +99,7 @@ define(['jquery', 'config', 'jea', 'fastclick'], function ($, config, jea, fastc
                 return
             }
 
-            utilOAuth2.init();
+            // utilOAuth2.init();
         },
 
         statistics: function () {
