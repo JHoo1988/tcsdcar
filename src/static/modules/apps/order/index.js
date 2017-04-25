@@ -11,6 +11,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
 
     var App = function () {
         this.origin = this.getOrigin();
+        utilBrands.origin.setOrigin(this.origin);//保存店铺编码
     };
 
     App.prototype = {
@@ -24,7 +25,6 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             this.renderPage();
             this.bind();
             fastclick.attach(document.body);
-            console.log(utilBrands.product.getProduct());
         },
 
         /**
@@ -32,15 +32,14 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          * @desc 渲染页面
          */
         renderPage: function () {
-            var origin = this.origin;
-            this.getProductList(function (addressList) {
-                var pageData = {};
-                if (origin === -1) {
-                }
-                pageData.data = addressList.content;
-                var html = new EJS({ url: '../views/products/index.ejs' }).render(pageData);
-                $('body').prepend(html);
-            });
+            var html = new EJS({ url: '../views/order/index.ejs' }).render();
+            $('body').prepend(html);
+            // this.getAddressList(function (addressList) {
+            //     var pageData = {};
+            //     pageData.data = addressList;
+            //     var html = new EJS({ url: '../views/order/index.ejs' }).render(pageData);
+            //     $('body').prepend(html);
+            // });
         },
 
         /**
@@ -50,7 +49,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
         getOrigin: function () {
             var origin = utilCommon.getParam('origin');
             if (origin === '' || origin === null) {
-                origin = -1;
+                origin = 'TCSDCAR888';//不是经过扫描店铺二维码进入的
             }
             return origin;
         },
@@ -59,15 +58,10 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          * @func
          * @desc 获取品牌列表
          */
-        getProductList: function (callback) {
-            var url = config.url.findProductList;
-            var par = {};
-            var brand = utilBrands.brands.getBrand();
-            par.brands=brand.id;
-            par.pageIndex=1;
-            par.pageSize=999999;
+        getAddressList: function (callback) {
+            var url = config.url.findAllProductBrands;
             // var userId = utilUser.user.getUserId();
-            jea.get(url, par, function (result) {
+            jea.get(url, null, function (result) {
                 if (result&&result.code=='200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }
@@ -87,13 +81,21 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='../order/index.html';
+                window.location.href='../products/index.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });
         },
         setUserSelected: function (data) {
-            utilBrands.product.setProduct(data);
+            // var keys = {
+            //     "1": "address", // 家电清洗
+            //     "3": "install", // 家电安装
+            //     "2": "repair", // 家电维修
+            //     "4": "phoneRepair",   // 手机维修 - 上门
+            //     "5": "phoneRepair"   // 手机维修 - 邮寄
+            // };
+            // var key = keys[this.origin] || keys['1'];
+            utilBrands.brands.setBrand(data);
         }
     };
     return new App();
