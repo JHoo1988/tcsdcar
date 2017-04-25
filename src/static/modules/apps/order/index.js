@@ -61,8 +61,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                                 $(this).addClass('hide');
                             }
                         });
-                        //设置价格
-                        $('.price-num').text($this.product.twelveCyclePrice);
+                        //设置36期价格
+                        $('.price-num').text($this.product.thirtySixCyclePrice);
                     }else if($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if($(this).hasClass('time-tow')){
@@ -71,7 +71,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                                 $(this).addClass('hide');
                             }
                         });
-                        //设置价格
+                        //设置24期价格
                         $('.price-num').text($this.product.twentyFourCyclePrice);
                     }else if($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
@@ -81,8 +81,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                                 $(this).addClass('hide');
                             }
                         });
-                        //设置价格
-                        $('.price-num').text($this.product.thirtySixCyclePrice);
+                        //设置12期价格
+                        $('.price-num').text($this.product.twelveCyclePrice);
                     }
                 }
             });
