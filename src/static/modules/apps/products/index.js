@@ -82,7 +82,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             var self = this;
             var $body = $('body');
             // 选中
-            $body.on('click', '.address-item', function () {
+            $body.on('click', '.list-item', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
                 var $this = $(this);
                 var json = $this.data('json');
