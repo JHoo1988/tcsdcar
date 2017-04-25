@@ -44,6 +44,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
          */
         bind: function () {
             var $this = this;
+            // 选择质保时间
             $('.placeholder').click(function () {
                 if(!$(this).hasClass('selectd')){
                     $('.placeholder').each(function(){
@@ -85,6 +86,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                         $('.price-num').text($this.product.twelveCyclePrice);
                     }
                 }
+            });
+            // 确定
+            $('#btn-order').click(function () {
+                
             });
         }
     };
