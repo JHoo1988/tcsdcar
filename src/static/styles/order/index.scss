@@ -5,11 +5,69 @@
 .order {
   .com-main {
     .banner {
+      background-color: #FFFFFF;
       .banner-img {
         width: 100%;
       }
     }
-
+    .discription{
+      background-color: #FFFFFF;
+      font-size: px2rem(26);
+      font-family: "微软雅黑";
+      color: #999999;
+      padding: px2rem(10) px2rem(30);
+      box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
+    }
+    .selected-cartype{
+      background-color: #FFFFFF;
+      margin-top: px2rem(18);
+      padding: px2rem(15) px2rem(30);
+      //border-bottom: 1px solid #ddd;
+      //border-top: 1px solid #ddd;
+      box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
+      span{
+        color: #666666;
+        font-size: px2rem(30);
+        font-family: "微软雅黑";
+      }
+    }
+    .select-time{
+      background-color: #FFFFFF;
+      margin-top: px2rem(18);
+      padding: px2rem(15) px2rem(30);
+      box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
+      .select-time-tips{
+        font-size: px2rem(28);
+        font-family: "微软雅黑";
+        color: #666666;
+      }
+      .weui-flex{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        .weui-flex__item {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+          .placeholder {
+            margin: 5px;
+            padding: 0 10px;
+            background-color: #009688;
+            height: 2.3em;
+            line-height: 2.3em;
+            text-align: center;
+            color: #ffffff;
+          }
+          .selectd{
+            background-color: #5FB878;
+          }
+        }
+      }
+      .time-discription{
+        padding: px2rem(16) 0;
+        color: #999;
+      }
+    }
   }
   .action-bottom {
     position: fixed;
@@ -50,16 +108,22 @@
         width: 40%;
       }
       .price-num {
-        font-size: px2rem(30);
+        font-size: px2rem(36);
       }
       .btn {
-        border-radius: 4px;
+        border-radius: 0px;
         padding: px2rem(21) px2rem(48);
         border: 1px solid #00BBFF;
         color: #fff;
         background: #00BBFF;
         font-size: px2rem(32);
         line-height: px2rem(32);
+      }
+      .blue {
+        color: #0af!important;
+      }
+      .orange {
+        color: #ff6c60!important;
       }
     }
   }
