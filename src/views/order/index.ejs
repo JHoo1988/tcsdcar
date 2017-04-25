@@ -21,7 +21,7 @@
         </div>
         <div class="selected-cartype">
             <span>车型：</span>
-            <span>宝马X5</span>
+            <span><%=brand.name+product.productName%></span>
         </div>
         <div class="select-time">
             <span class="select-time-tips">选择质保时间</span>
@@ -46,7 +46,8 @@
             <li>
                 <div>
                     <span class="price-title">金额：</span>
-                    <span class="price-num blue">￥0</span>
+                    <span class="blue">￥</span>
+                    <span class="price-num blue"><%=product.thirtySixCyclePrice%></span>
                 </div>
             </li>
             <li>
