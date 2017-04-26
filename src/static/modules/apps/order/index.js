@@ -21,6 +21,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 初始化函数
          */
         init: function () {
+            var originLocal = utilBrands.origin.getOrigin();
+            if(!originLocal||originLocal === '' || originLocal === null){
+                window.location.href='brands.html';
+                return;
+            }
             utilPage.ready();
             this.renderPage();
             this.bind();

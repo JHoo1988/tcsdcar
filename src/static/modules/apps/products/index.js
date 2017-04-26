@@ -20,6 +20,11 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          * @desc 初始化函数
          */
         init: function () {
+            var originLocal = utilBrands.origin.getOrigin();
+            if(!originLocal){
+                window.location.href='brands.html';
+                return;
+            }
             utilPage.ready();
             this.renderPage();
             this.bind();
@@ -50,7 +55,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
         getOrigin: function () {
             var origin = utilCommon.getParam('origin');
             if (origin === '' || origin === null) {
-                origin = -1;
+                origin = 'TCSDCAR888';//不是经过扫描店铺二维码进入的
             }
             return origin;
         },
