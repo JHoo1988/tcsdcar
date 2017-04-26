@@ -48,6 +48,19 @@ define(['jquery','config'],function ($,config) {
             clearOpenId : function(){
                 sessionStorage.removeItem(config.key.brands.openid);
             }
+        },
+        orderNo:{//orderNo自己这边的订单号
+            setOrderNo : function(orderNo){
+                // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
+                sessionStorage.setItem(config.key.brands.orderNo,orderNo);
+            },
+            getOrderNo : function(){
+                // return JSON.parse(sessionStorage.getItem(config.key.brands.origin) || "{}");
+                return sessionStorage.getItem(config.key.brands.orderNo);
+            },
+            clearOrderNo : function(){
+                sessionStorage.removeItem(config.key.brands.orderNo);
+            }
         }
     };
 });

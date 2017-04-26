@@ -30,14 +30,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                     _self.renderPage();
                     _self.bind();
                     fastclick.attach(document.body);
-                    console.log(utilBrands.brands.getBrand());
                 }else{
                     _self.getWechatUserOpenId(function () {
                         utilPage.ready();
                         _self.renderPage();
                         _self.bind();
                         fastclick.attach(document.body);
-                        console.log(utilBrands.brands.getBrand());
                     });
                 }
 
@@ -47,7 +45,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                 _self.renderPage();
                 _self.bind();
                 fastclick.attach(document.body);
-                console.log(utilBrands.brands.getBrand());
             }
         },
 
@@ -142,8 +139,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
             var authUrl;
             var url;
             if (code) {
-                console.log(544, window.location.href);
-                console.log('getWechatUserOpenId()-code=' + code);
                 $.ajax({
                     url: config.url.getWeiXinOpenIdByCode + code,
                     type: 'GET',
@@ -152,7 +147,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                         self.hideLoadin();
                         if (undefined != data && null != data && data.code == 200) {
                             utilBrands.openid.setOpenId(data.data);
-                            console.log('getWechatUserOpenId()-openId=' + data.data);
                             callback();
                         } else {
                             layer.msg('openid获取失败', { time: 1200 });
@@ -162,7 +156,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                     //             // 获取openId失败则重进一次页面
                     //             url = tablevue.getClearCodeUrl();
                     //             authUrl = tablevue.handleUrlToWxOauth(url, 'base');
-                    //             console.log('555', authUrl);
                     //             window.location.href = authUrl;
                     //             return false;
                     // }
@@ -170,7 +163,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
             } else {
                 url = self.getClearCodeUrl();
                 authUrl = self.handleUrlToWxOauth(url, 'base');
-                console.log('563', authUrl);
                 window.location.href = authUrl;
             }
         },
@@ -188,7 +180,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
             } else {
                 wxOauth2 = wxOauth2.replace("SCOPE", "snsapi_base");
             }
-            console.log('handleUrlToWxOauth()-wxOauth2='+wxOauth2);
             return wxOauth2;
         },
         getParam: function (param) {

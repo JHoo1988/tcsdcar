@@ -126,8 +126,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $(this).hide();
             });
             $('.submit').click(function () {
-                window.location.href='paysuccess.html';
-                return;
                 var phoneNum = $.trim($("input[type='tel'][name='phonenum']").val());
                 if (!utilCommon.checkIsMobile(phoneNum)) {
                     $('.weui_dialog_bd').text('请填写正确的手机号码');
@@ -141,8 +139,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
                 }
-                $this.showLoadin('提交订单...');
+
                 if($this.isWeChat()&&$this.openid){
+                    $this.showLoadin('提交订单...');
                     // 如果是在微信里面就用微信支付
                     var b_version = navigator.appVersion;
                     var version = parseFloat(b_version);
@@ -164,8 +163,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             success: function (data) {
                                 if (undefined != data && null != data && data.code == 200) {
                                     var result = data.data;
-                                    console.log('payment()-result.package='+result.package+',result.paySign='+result.paySign+',result.randomStr='+result.randomStr
-                                        +',result.nonceStr='+result.nonceStr);
+                                    if(result.orderNo){
+                                        utilBrands.orderNo.setOrderNo(result.orderNo);
+                                    }
                                     $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
                                 } else {
                                     $this.hideLoadin();
@@ -187,6 +187,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     }
                 }else{
                     // 使用支付宝支付
+                    $this.showLoadin('等待支付宝通过审核');
                 }
             });
         },
