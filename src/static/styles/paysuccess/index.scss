@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+html,body{
+  background-color: #ffffff;
+}
+.weui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  .weui-flex__item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    .placeholder1 {
+      //margin: 5px;
+      //height: 2.3em;
+      //line-height: 2.3em;
+      text-align: right;
+      color: #888;
+    }
+    .placeholder2 {
+      //margin: 5px;
+      //height: 2.3em;
+      //line-height: 2.3em;
+      text-align: left;
+      color: #888;
+    }
+  }
+}

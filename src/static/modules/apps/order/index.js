@@ -126,6 +126,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $(this).hide();
             });
             $('.submit').click(function () {
+                window.location.href='paysuccess.html';
+                return;
                 var phoneNum = $.trim($("input[type='tel'][name='phonenum']").val());
                 if (!utilCommon.checkIsMobile(phoneNum)) {
                     $('.weui_dialog_bd').text('请填写正确的手机号码');
