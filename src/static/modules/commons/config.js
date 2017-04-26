@@ -71,6 +71,8 @@
             getWeiXinOpenIdByCode: base + 'weixin/getWeiXinOpenIdByCode/',
             //创建订单
             unifiedOrder: base + 'weixin/unifiedOrder',
+            //支付完成查询订单
+            getunifiedOrder: base + 'weixin/',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
