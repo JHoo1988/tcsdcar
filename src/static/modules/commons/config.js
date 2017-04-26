@@ -471,6 +471,7 @@
                 select_product: 'ha_selected_product',
                 openid: 'ha_openid',
                 orderNo: 'ha_orderNo',
+                timeLimit: 'ha_timeLimit',
                 origin: 'ha_origin'
             },
             wash: {

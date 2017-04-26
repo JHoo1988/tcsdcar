@@ -6,10 +6,13 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
     'use strict';
 
     var utilPage = require('util_page');
-    var utilCommon = require('util_common');
     var utilBrands = require('util_brands');
 
     var App = function () {
+        this.orderNo = utilBrands.orderNo.getOrderNo();
+        this.brand = utilBrands.brands.getBrand();
+        this.product = utilBrands.product.getProduct();
+        this.timeLimit = utilBrands.timeLimit.getTimeLimit();
     };
 
     App.prototype = {
@@ -35,25 +38,26 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
          * @desc 渲染页面
          */
         renderPage: function () {
-            // var origin = this.origin;
-            // this.getunifiedOrder(function (addressList) {
-            //     var pageData = {};
-            //     if (origin === -1) {
-            //     }
-            //     pageData.data = addressList.content;
-            //     var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
-            //     $('body').prepend(html);
-            // });
-            var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render();
+            this.getunifiedOrder(function (data) {
+                // var pageData = {};
+                // pageData.data = data.data;
+                // var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
+                // $('body').prepend(html);
+            });
+            var pageData = {};
+            pageData.orderNo = this.orderNo;
+            pageData.brand = this.brand;
+            pageData.product = this.product;
+            pageData.timeLimit = this.timeLimit;
+
+            var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
             $('body').prepend(html);
         },
 
         //获取订单信息
         getunifiedOrder: function (callback) {
             var url = config.url.getunifiedOrder;
-            var brand = utilBrands.brands.getBrand();
-            // var userId = utilUser.user.getUserId();
-            jea.get(url, null, function (result) {
+            jea.get(url+this.orderNo, null, function (result) {
                 if (result&&result.code=='200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }

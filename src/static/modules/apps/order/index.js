@@ -14,6 +14,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.openid=utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit='36';
+        utilBrands.timeLimit.setTimeLimit(this.timeLimit);
         this.totalAmount=this.product.thirtySixCyclePrice;
     };
 
@@ -150,6 +151,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         var par = {};
                         par.product=$this.product.id;
                         par.timeLimit=$this.timeLimit;
+                        utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                         par.totalAmount=$this.totalAmount;
                         par.mobile=phoneNum;
                         par.carBodyNo=carnum;
