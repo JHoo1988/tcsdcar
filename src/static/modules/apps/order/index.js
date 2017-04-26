@@ -12,6 +12,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.brand = utilBrands.brands.getBrand();
         this.product = utilBrands.product.getProduct();
         this.openid=utilBrands.openid.getOpenId();
+        this.originLocal = utilBrands.origin.getOrigin();
+        this.timeLimit='36';
+        this.totalAmount=this.product.thirtySixCyclePrice;
     };
 
     App.prototype = {
@@ -21,8 +24,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 初始化函数
          */
         init: function () {
-            var originLocal = utilBrands.origin.getOrigin();
-            if(!originLocal||originLocal === '' || originLocal === null){
+
+            if(!this.originLocal||this.originLocal === '' || this.originLocal === null){
                 window.location.href='brands.html';
                 return;
             }
@@ -68,6 +71,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
+                        $this.timeLimit='36';
+                        $this.totalAmount = $this.product.thirtySixCyclePrice;
                         //设置36期价格
                         $('.price-num').text($this.product.thirtySixCyclePrice);
                     } else if ($(this).hasClass('tow')) {
@@ -78,6 +83,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
+                        $this.timeLimit='24';
+                        $this.totalAmount = $this.product.twentyFourCyclePrice;
                         //设置24期价格
                         $('.price-num').text($this.product.twentyFourCyclePrice);
                     } else if ($(this).hasClass('three')) {
@@ -88,6 +95,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
+                        $this.timeLimit='12';
+                        $this.totalAmount = $this.product.twelveCyclePrice;
                         //设置12期价格
                         $('.price-num').text($this.product.twelveCyclePrice);
                     }
@@ -123,15 +132,57 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
                 }
-                var carnum = $.trim($("input[type='text'][name='carnum']").val());
+                var carn = $this.emoji2Str($("input[type='text'][name='carnum']").val());
+                var carnum = $.trim(carn);
                 if (!carnum) {
                     $('.weui_dialog_bd').text('请填写车身识别号');
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
                 }
                 $this.showLoadin('提交订单...');
-                if($this.isWeChat()&& $this.openId){
+                if($this.isWeChat()&&$this.openid){
                     // 如果是在微信里面就用微信支付
+                    var b_version = navigator.appVersion;
+                    var version = parseFloat(b_version);
+                    if (version >= 5.0) {
+                        // 创建订单
+                        var par = {};
+                        par.product=$this.product.id;
+                        par.timeLimit=$this.timeLimit;
+                        par.totalAmount=$this.totalAmount;
+                        par.mobile=phoneNum;
+                        par.carBodyNo=carnum;
+                        par.shopCode=$this.originLocal;
+                        par.openId = $this.openid;
+                        $.ajax({
+                            url: config.url.unifiedOrder,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: par,
+                            success: function (data) {
+                                if (undefined != data && null != data && data.code == 200) {
+                                    var result = data.data;
+                                    console.log('payment()-result.package='+result.package+',result.paySign='+result.paySign+',result.randomStr='+result.randomStr
+                                        +',result.nonceStr='+result.nonceStr);
+                                    $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
+                                } else {
+                                    $this.hideLoadin();
+                                    $('.weui_dialog_bd').text('订单创建失败，请重试');
+                                    $('.weui_dialog_alert').removeClass('hide');
+                                }
+                            }
+                            , error: function (xhr) {
+                                $this.hideLoadin();
+                                $('.weui_dialog_bd').text('订单创建失败，请重试');
+                                $('.weui_dialog_alert').removeClass('hide');
+                                return false;
+                            }
+                        });
+                    } else {
+                        $this.hideLoadin();
+                        $('.weui_dialog_bd').text('微信版本过低，请升级您的微信客户端');
+                        $('.weui_dialog_alert').removeClass('hide');
+                    }
                 }else{
                     // 使用支付宝支付
                 }
@@ -158,6 +209,44 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             if (content) {
                 $('.weui_toast_content').text(content);
             }
+        },
+        // 发起微信支付
+        wxPayOrderById: function (prepay_id,paySign,randomStr,appId,timeStamp, callback, fail) {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', {
+                    "appId": appId,     //公众号名称，由商户传入
+                    "timeStamp": timeStamp.toString(), //时间戳，自1970年以来的秒数
+                    "nonceStr": randomStr, //随机串
+                    "package": prepay_id,
+                    "signType": "MD5",         //微信签名方式：
+                    "paySign": paySign //微信签名
+                },
+                function (res) {
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    } else {
+                        if (typeof fail === 'function') {
+                            fail();
+                        }
+                    }
+                }
+            );
+        },
+        // 微信支付
+        weChatPay: function (prepay_id,paySign,randomStr,appId,timeStamp, successBackUrl) {
+            var $this = this;
+            this.wxPayOrderById(prepay_id, paySign, randomStr,appId,timeStamp, function () {
+                $this.hideLoadin();
+                // 支付成功
+                window.location.href = successBackUrl;
+            }, function () {
+                $this.hideLoadin();
+                $('.weui_dialog_bd').text('支付失败');
+                $('.weui_dialog_alert').removeClass('hide');
+            });
         }
     };
     return new App();

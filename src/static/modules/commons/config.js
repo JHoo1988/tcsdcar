@@ -69,6 +69,8 @@
             findProductList:base+'mobile/findProductList',
             //根据code获取openid接口
             getWeiXinOpenIdByCode: base + 'weixin/getWeiXinOpenIdByCode/',
+            //创建订单
+            unifiedOrder: base + 'weixin/unifiedOrder',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
@@ -109,7 +111,7 @@
             findStreetByAreaId: base + 'region/findStreetByAreaId',
 
             //orderPay
-            unifiedOrder: base + 'pay/unifiedOrder', //param={orderId:719,payWay:0}
+            // unifiedOrder: base + 'pay/unifiedOrder', //param={orderId:719,payWay:0}
             queryOrder: base + 'pay/queryOrder',
             processOrderPayType: base + 'userOrder/processOrderPayType', //param={"orderId":1256,"payType":1}
             //Time
