@@ -35,6 +35,19 @@ define(['jquery','config'],function ($,config) {
             clearOrigin : function(){
                 sessionStorage.removeItem(config.key.brands.origin);
             }
+        },
+        openid:{//userid
+            setOpenId : function(openid){
+                // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
+                sessionStorage.setItem(config.key.brands.openid,openid);
+            },
+            getOpenId : function(){
+                // return JSON.parse(sessionStorage.getItem(config.key.brands.origin) || "{}");
+                return sessionStorage.getItem(config.key.brands.openid);
+            },
+            clearOpenId : function(){
+                sessionStorage.removeItem(config.key.brands.openid);
+            }
         }
     };
 });

@@ -465,6 +465,7 @@
             brands: {
                 select: 'ha_selected_brands',
                 select_product: 'ha_selected_product',
+                openid: 'ha_openid',
                 origin: 'ha_origin'
             },
             wash: {
