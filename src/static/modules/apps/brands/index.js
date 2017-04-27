@@ -70,7 +70,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
         getOrigin: function () {
             var origin = utilCommon.getParam('origin');
             if (origin === '' || origin === null) {
-                origin = 'TCSDCAR888';//不是经过扫描店铺二维码进入的
+                origin = '19296535A7';//不是经过扫描店铺二维码进入的
             }
             return origin;
         },
