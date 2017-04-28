@@ -73,6 +73,8 @@
             unifiedOrder: base + 'weixin/unifiedOrder',
             //支付完成查询订单
             getunifiedOrder: base + 'weixin/',
+            //支付宝创建订单
+            alipayCreateOrder: base + 'alipay/createOrder',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
