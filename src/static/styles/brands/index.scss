@@ -27,6 +27,7 @@
       position: relative;
       overflow: hidden;
       background-color: #FFFFFF;
+      display: none;
       .weui-grid {
         position: relative;
         float: left;
@@ -111,5 +112,25 @@
       -webkit-transform: scaleX(0.5);
       transform: scaleX(0.5);
     }
+  }
+}
+.customerservice {
+  position: fixed;
+  z-index: 9999;
+  top: 45%;
+  left: 82%;
+  width: 16.8%;
+  _display: none;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .close_chat{
+    position: relative;
+    width: 40%;
+  }
+  a{
+    line-height: 0;
   }
 }

@@ -13,9 +13,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.product = utilBrands.product.getProduct();
         this.openid=utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
-        this.timeLimit='36';
+        this.timeLimit='12';
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
-        this.totalAmount=this.product.thirtySixCyclePrice;
+        this.totalAmount=this.product.twelveCyclePrice;
     };
 
     App.prototype = {
@@ -25,8 +25,15 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 初始化函数
          */
         init: function () {
-
+            var out_trade_no = utilCommon.getParam('out_trade_no');
+            var orderNo = utilBrands.orderNo.getOrderNo();
+            if(orderNo&&out_trade_no&&out_trade_no==orderNo){
+                // 支付宝回调该页面后，根据订单号判断是否支付成功
+                window.location.href='paysuccess.html';
+                return;
+            }
             if(!this.originLocal||this.originLocal === '' || this.originLocal === null){
+                console.log('没有来源，跳转到首页');
                 window.location.href='brands.html';
                 return;
             }
@@ -140,9 +147,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
                 }
-
+                $this.showLoadin('提交订单...');
                 if($this.isWeChat()&&$this.openid){
-                    $this.showLoadin('提交订单...');
                     // 如果是在微信里面就用微信支付
                     var b_version = navigator.appVersion;
                     var version = parseFloat(b_version);
@@ -189,7 +195,40 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     }
                 }else{
                     // 使用支付宝支付
-                    $this.showLoadin('等待支付宝通过审核');
+                    var par = {};
+                    par.product=$this.product.id;
+                    par.timeLimit=$this.timeLimit;
+                    utilBrands.timeLimit.setTimeLimit($this.timeLimit);
+                    par.totalAmount=$this.totalAmount;
+                    par.mobile=phoneNum;
+                    par.carBodyNo=carnum;
+                    par.shopCode=$this.originLocal;
+                    $.ajax({
+                        url: config.url.alipayCreateOrder,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: par,
+                        success: function (data) {
+                            if (undefined != data && null != data && data.code == 200) {
+                                var result = data.data;
+                                if(result.orderNo){
+                                    utilBrands.orderNo.setOrderNo(result.orderNo);
+                                }
+                                $('body').append(result.content);
+                                // $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
+                            } else {
+                                $this.hideLoadin();
+                                $('.weui_dialog_bd').text('订单创建失败，请重试');
+                                $('.weui_dialog_alert').removeClass('hide');
+                            }
+                        }
+                        , error: function (xhr) {
+                            $this.hideLoadin();
+                            $('.weui_dialog_bd').text('订单创建失败，请重试');
+                            $('.weui_dialog_alert').removeClass('hide');
+                            return false;
+                        }
+                    });
                 }
             });
         },

@@ -69,7 +69,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
          */
         getOrigin: function () {
             var origin = utilCommon.getParam('origin');
-            if (origin === '' || origin === null) {
+            if (!origin||origin === '' || origin === null) {
                 origin = 'D838D8F0AE';//不是经过扫描店铺二维码进入的
             }
             return origin;
@@ -105,6 +105,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                 window.location.href='products.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
+            });
+            $body.on('click', '.close_chat',function(){
+                $('.customerservice').css('display','none');
             });
         },
         setUserSelected: function (data) {
