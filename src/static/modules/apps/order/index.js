@@ -26,8 +26,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          */
         init: function () {
             var out_trade_no = utilCommon.getParam('out_trade_no');
+            var app_id = utilCommon.getParam('app_id');
             var orderNo = utilBrands.orderNo.getOrderNo();
-            if(orderNo&&out_trade_no&&out_trade_no==orderNo){
+            if(app_id&&app_id=='2017033106497573'&&orderNo&&out_trade_no&&out_trade_no==orderNo){
                 // 支付宝回调该页面后，根据订单号判断是否支付成功
                 window.location.href='paysuccess.html';
                 return;
