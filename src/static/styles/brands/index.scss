@@ -27,7 +27,7 @@
       position: relative;
       overflow: hidden;
       background-color: #FFFFFF;
-      display: none;
+      //display: none;
       .weui-grid {
         position: relative;
         float: left;
@@ -35,7 +35,8 @@
         width: 33.33333333%;
         box-sizing: border-box;
         .weui-grid__icon {
-          width: 85%;
+          //width: 85%;
+          width: 50%;
           height: 38px;
           margin: 0 auto;
           img {
