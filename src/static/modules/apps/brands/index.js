@@ -106,6 +106,16 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });
+            // 选中
+            $body.on('click', '.weui-grid', function () {
+                // $.toastNoIcon('请输入推荐码', 'noicon');
+                var $this = $(this);
+                var json = $this.data('json');
+                self.setUserSelected(json);
+                window.location.href='products.html';
+                // window.location.replace(backUrl);
+                // window.history.go(-1);
+            });
             $body.on('click', '.close_chat',function(){
                 $('.customerservice').css('display','none');
             });
