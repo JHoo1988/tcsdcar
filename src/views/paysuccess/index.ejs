@@ -5,6 +5,7 @@
         <div>
             <div class="order">订单号：<%=orderNo%></div>
         </div>
+        <%if(brand&&brand.name&&product&&product.productName){%>
         <div class="weui-flex">
             <div class="weui-flex__item">
                 <div class="placeholder1">服务产品：</div>
@@ -13,6 +14,8 @@
                 <div class="placeholder2"><%=brand.name+product.productName%></div>
             </div>
         </div>
+        <%}%>
+        <%if(null!=timeLimit&&timeLimit){%>
         <div class="weui-flex">
             <div class="weui-flex__item">
                 <div class="placeholder1">服务时长：</div>
@@ -21,8 +24,17 @@
                 <div class="placeholder2"><%=timeLimit%>个月</div>
             </div>
         </div>
+        <%}%>
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                <div class="placeholder1">客服电话：</div>
+            </div>
+            <div class="weui-flex__item">
+                <div class="placeholder2"><a href="tel:02787877977">027-87877977</a></div>
+            </div>
+        </div>
     </div>
-    <div class="weui_opr_area">
+    <div class="weui_opr_area" style="margin-top: 50%;">
         <p class="weui_btn_area">
             <a href="brands.html" class="weui_btn weui_btn_primary">确定</a>
             <!--<a href="#" class="weui_btn weui_btn_default">取消</a>-->

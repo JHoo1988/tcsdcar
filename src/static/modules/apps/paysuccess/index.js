@@ -7,7 +7,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
 
     var utilPage = require('util_page');
     var utilBrands = require('util_brands');
-
+    var utilCommon = require('util_common');
     var App = function () {
         this.orderNo = utilBrands.orderNo.getOrderNo();
         this.brand = utilBrands.brands.getBrand();
@@ -23,7 +23,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
          */
         init: function () {
             var originLocal = utilBrands.origin.getOrigin();
-            if(!originLocal){
+            var out_trade_no = utilCommon.getParam('out_trade_no');
+            if(!originLocal&&!out_trade_no){
                 window.location.href='brands.html';
                 return;
             }
@@ -49,7 +50,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
             pageData.brand = this.brand;
             pageData.product = this.product;
             pageData.timeLimit = this.timeLimit;
-
+            var out_trade_no = utilCommon.getParam('out_trade_no');
+            if(out_trade_no){
+                pageData.orderNo=out_trade_no;
+            }
             var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
             $('body').prepend(html);
         },
