@@ -159,7 +159,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         par.product=$this.product.id;
                         par.timeLimit=$this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                        par.totalAmount=$this.totalAmount;
+                        // par.totalAmount=$this.totalAmount;
                         par.mobile=phoneNum;
                         par.carBodyNo=carnum;
                         par.shopCode=$this.originLocal;
@@ -200,7 +200,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     par.product=$this.product.id;
                     par.timeLimit=$this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                    par.totalAmount=$this.totalAmount;
+                    // par.totalAmount=$this.totalAmount;
                     par.mobile=phoneNum;
                     par.carBodyNo=carnum;
                     par.shopCode=$this.originLocal;
