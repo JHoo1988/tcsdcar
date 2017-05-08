@@ -74,6 +74,19 @@ define(['jquery','config'],function ($,config) {
             clearTimeLimit : function(){
                 sessionStorage.removeItem(config.key.brands.timeLimit);
             }
+        },
+        checkorder:{//查询到的订单结果集
+            setCheckOrder : function(orderList){
+                // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
+                sessionStorage.setItem(config.key.brands.timeLimit,orderList);
+            },
+            getCheckOrder : function(){
+                // return JSON.parse(sessionStorage.getItem(config.key.brands.origin) || "{}");
+                return sessionStorage.getItem(config.key.brands.orderList);
+            },
+            clearCheckOrder : function(){
+                sessionStorage.removeItem(config.key.brands.orderList);
+            }
         }
     };
 });

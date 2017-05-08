@@ -75,6 +75,8 @@
             getunifiedOrder: base + 'weixin/',
             //支付宝创建订单
             alipayCreateOrder: base + 'alipay/createOrder',
+            //根据手机号和车身识别号订单
+            findOrderListByCarAndMobile: base + 'productOrder/findOrderListByCarAndMobile',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
@@ -474,6 +476,7 @@
                 openid: 'ha_openid',
                 orderNo: 'ha_orderNo',
                 timeLimit: 'ha_timeLimit',
+                orderList: 'orderList',
                 origin: 'ha_origin'
             },
             wash: {
