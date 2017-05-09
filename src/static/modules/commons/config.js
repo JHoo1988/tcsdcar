@@ -22,7 +22,7 @@
 })(this, function (exports, module) {
     "use strict";
 
-    var isDebug = false,
+    var isDebug = true,
         testApiUrl = 'http://localhost:8088/', // 测试后台地址
         // testApiUrl = 'http://base.5ujd.net:88/ha-wechat/v1/', // 测试后台地址
         //testApiUrl = 'http://120.76.101.218:89/ha-wechat/v1/', // 测试后台地址
@@ -76,7 +76,7 @@
             //支付宝创建订单
             alipayCreateOrder: base + 'alipay/createOrder',
             //根据手机号和车身识别号订单
-            findOrderListByCarAndMobile: base + 'productOrder/findOrderListByCarAndMobile',
+            findOrderListByCarAndMobile: base + 'mobile/findOrderListByCarAndMobile',
 
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',

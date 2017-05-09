@@ -76,6 +76,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 utilBrands.orderNo.setCheckOrder(result);
                                 console.log('查询到的订单为：' + result);
                             } else {
+                                $this.hideLoadin();
                                 $('.weui_dialog_bd').text('暂无订单');
                                 $('.weui_dialog_alert').removeClass('hide');
                             }
