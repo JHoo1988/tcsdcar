@@ -29,8 +29,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 渲染页面
          */
         renderPage: function () {
-            var result = utilBrands.checkorder.getCheckOrder()||[];
-            if(result.length>0){
+            var result = utilBrands.checkorder.getCheckOrder();
+            if(result&&result.content&&result.content.length>0){
                 var html = new EJS({ url: 'views/checkorderlist/index.ejs' }).render(result);
                 $('body').prepend(html);
             }else{

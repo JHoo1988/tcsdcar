@@ -77,12 +77,10 @@ define(['jquery','config'],function ($,config) {
         },
         checkorder:{//查询到的订单结果集
             setCheckOrder : function(orderList){
-                // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
-                sessionStorage.setItem(config.key.brands.orderList,orderList);
+                sessionStorage.setItem(config.key.brands.orderList,JSON.stringify(orderList));
             },
             getCheckOrder : function(){
-                // return JSON.parse(sessionStorage.getItem(config.key.brands.origin) || "{}");
-                return sessionStorage.getItem(config.key.brands.orderList);
+                return JSON.parse(sessionStorage.getItem(config.key.brands.orderList) || "{}");
             },
             clearCheckOrder : function(){
                 sessionStorage.removeItem(config.key.brands.orderList);

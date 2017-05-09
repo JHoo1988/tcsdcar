@@ -1,51 +1,68 @@
 <div class="checkorderlist">
     <main class="com-main" style="bottom: 0;top: 0">
+        <%
+        for(var i = 0;i < content.length;i++){
+            var data = content[i];
+        %>
+
         <br>
         <div class="weui-form-preview">
             <div class="weui-form-preview__hd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">付款金额</label>
-                    <em class="weui-form-preview__value">¥0.00</em>
+                    <em class="weui-form-preview__value">¥<%= data.totalAmount %></em>
                 </div>
             </div>
             <div class="weui-form-preview__bd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">商品</label>
-                    <span class="weui-form-preview__value">电动打蛋机</span>
+                    <span class="weui-form-preview__value"><%= data.name %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">订单号</label>
-                    <span class="weui-form-preview__value">电动打蛋机</span>
+                    <span class="weui-form-preview__value"><%= data.orderNo %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">订单状态</label>
+                    <% if (data.statu == 5){ %>
+                    <span class="weui-form-preview__value">理赔已受理</span>
+                    <% } else if (data.statu == 1){ %>
                     <span class="weui-form-preview__value">质保中</span>
+                    <% } else if (data.statu == 2){ %>
+                    <span class="weui-form-preview__value">已赔付</span>
+                    <% } %>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">购买渠道</label>
-                    <span class="weui-form-preview__value">名字名字名字</span>
+                    <span class="weui-form-preview__value"><%= data.shopName %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">购买日期</label>
-                    <span class="weui-form-preview__value">名字名字名字</span>
+                    <span class="weui-form-preview__value"><%= data.createTimeStr %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">服务开始时间</label>
-                    <span class="weui-form-preview__value">很长很长的名字</span>
+                    <span class="weui-form-preview__value"><%= data.createTimeStr %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">服务结束时间</label>
-                    <span class="weui-form-preview__value">很长很长的名字</span>
+                    <span class="weui-form-preview__value"><%= data.endTimeStr %></span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">服务时长</label>
-                    <span class="weui-form-preview__value">很长很长的名字</span>
+                    <span class="weui-form-preview__value"><%= data.timeLimit %>个月</span>
                 </div>
+                <!--<div class="weui-form-preview__item">-->
+                    <!--<label class="weui-form-preview__label">已赔付记录</label>-->
+                    <!--<span class="weui-form-preview__value">2016-05-12 12:05:08  已赔付</span>-->
+                    <!--<span class="weui-form-preview__value">2017-02-12 21:25:18  已赔付</span>-->
+                <!--</div>-->
             </div>
             <div class="weui-form-preview__ft">
                 <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</a>
             </div>
         </div>
+        <% }%>
         <br>
     </main>
 </div>

@@ -72,9 +72,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                     success: function (data) {
                         if (undefined != data && null != data && data.code == 200) {
                             var result = data.data;
-                            if (result.length > 0) {
+                            if (result.content.length > 0) {
                                 utilBrands.checkorder.setCheckOrder(result);
-                                console.log('查询到的订单为：' + result);
+                                $this.hideLoadin();
+                                window.location.href='checkorderlist.html';
                             } else {
                                 $this.hideLoadin();
                                 $('.weui_dialog_bd').text('暂无订单');
