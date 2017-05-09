@@ -2,7 +2,7 @@
  * Created by ryandu on 2017/3/21.
  */
 
-define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], function ($, jea, config, fastclick, layer) {
+define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea, config, fastclick) {
     'use strict';
 
     var utilPage = require('util_page');
@@ -73,7 +73,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         if (undefined != data && null != data && data.code == 200) {
                             var result = data.data;
                             if (result.length > 0) {
-                                utilBrands.orderNo.setCheckOrder(result);
+                                utilBrands.checkorder.setCheckOrder(result);
                                 console.log('查询到的订单为：' + result);
                             } else {
                                 $this.hideLoadin();

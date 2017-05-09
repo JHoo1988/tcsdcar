@@ -78,7 +78,7 @@ define(['jquery','config'],function ($,config) {
         checkorder:{//查询到的订单结果集
             setCheckOrder : function(orderList){
                 // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
-                sessionStorage.setItem(config.key.brands.timeLimit,orderList);
+                sessionStorage.setItem(config.key.brands.orderList,orderList);
             },
             getCheckOrder : function(){
                 // return JSON.parse(sessionStorage.getItem(config.key.brands.origin) || "{}");
