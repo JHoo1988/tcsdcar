@@ -77,7 +77,8 @@
             alipayCreateOrder: base + 'alipay/createOrder',
             //根据手机号和车身识别号订单
             findOrderListByCarAndMobile: base + 'mobile/findOrderListByCarAndMobile',
-
+            //查询订单赔付记录 GET orderId,pageIndex,pageSize
+            findPaidRecordsList: base + 'mobile/findPaidRecordsList',
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
 
