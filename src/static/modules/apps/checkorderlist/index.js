@@ -20,7 +20,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         init: function () {
             utilPage.ready();
             this.renderPage();
-            this.bind();
+            // this.bind();
             fastclick.attach(document.body);
         },
 
@@ -43,6 +43,18 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 绑定事件
          */
         bind: function () {
+            $('.weui-form-preview__ft').click(function () {
+                var pfjl = $(this).parent().find('.weui-form-preview__bd').find('.pfjl');
+                if(pfjl.hasClass('hide')){
+                    pfjl.removeClass('hide');
+                    var html='<label class="weui-form-preview__label">已赔付记录</label>';
+                    console.log('123');
+                    // pfjl.css('background-color', 'red');
+                    html+='<span class="weui-form-preview__value">2016-05-12 12:05:08  已赔付</span>';
+                    html+='<span class="weui-form-preview__value">2016-05-12 12:05:08  已赔付</span>';
+                    pfjl.empty().append(html);
+                }
+            });
         }
     };
     return new App();

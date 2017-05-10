@@ -67,10 +67,9 @@
     .weui-form-preview__ft {
       position: relative;
       line-height: 50px;
-      //display: -webkit-box;
-      //display: -webkit-flex;
-      //display: flex;
-      display: none;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
     }
     .weui-form-preview__ft:before {
       content: " ";
@@ -151,4 +150,7 @@
   .weui-form-preview__btn:first-child:after {
     display: none;
   }
+  //.pfjl{
+  //  display: none;
+  //}
 }
