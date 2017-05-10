@@ -101,7 +101,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
         emoji2Str: function (str) {
             return unescape(escape(str).replace(/\%uD(.{3})/g, '*'));
         },
-        // 判断是否在微信中打开的
         hideLoadin: function () {
             $('#loadingToast').addClass('hide');
         },

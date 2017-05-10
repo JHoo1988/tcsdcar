@@ -20,7 +20,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         init: function () {
             utilPage.ready();
             this.renderPage();
-            // this.bind();
+            this.bind();
             fastclick.attach(document.body);
         },
 
@@ -43,18 +43,61 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 绑定事件
          */
         bind: function () {
+            var _self = this;
             $('.weui-form-preview__ft').click(function () {
                 var pfjl = $(this).parent().find('.weui-form-preview__bd').find('.pfjl');
+                var btn = $(this);
                 if(pfjl.hasClass('hide')){
-                    pfjl.removeClass('hide');
-                    var html='<label class="weui-form-preview__label">已赔付记录</label>';
                     console.log('123');
-                    // pfjl.css('background-color', 'red');
-                    html+='<span class="weui-form-preview__value">2016-05-12 12:05:08  已赔付</span>';
-                    html+='<span class="weui-form-preview__value">2016-05-12 12:05:08  已赔付</span>';
-                    pfjl.empty().append(html);
+                    var id = $(this).data('id');
+                    if (!id) {
+                        return;
+                    } else {
+                        _self.showLoadin();
+                        var param = {};
+                        param.pageIndex = 1;
+                        param.pageSize = 99;
+                        param.orderId = id;
+                        _self.getCheckOrderList(param,function (content) {
+                            _self.hideLoadin();
+                            if (content && content.length > 0) {
+                                pfjl.removeClass('hide');
+                                var html='<label class="weui-form-preview__label">已赔付记录</label>';
+                                for (var i = 0; i < content.length; i++) {
+                                    html+='<span class="weui-form-preview__value">第' + (i+1) + '次赔付时间：' + content[i].createTime+'</span>';
+                                }
+                                pfjl.empty().append(html);
+                                btn.addClass('hide');
+                            } else {
+                                // text += '<p>暂无赔付记录</p><br>';
+                            }
+                        });
+                    }
                 }
             });
+        },
+        getCheckOrderList: function(param,callback){
+            $.ajax({
+                url: config.url.findPaidRecordsList,
+                type: 'GET',
+                dataType: 'json',
+                data: param,
+                success: function (result) {
+                    if (result.code == 200) {
+                        var content = result.data.content;
+                        callback(content);
+                    }
+                }
+            });
+        },
+        hideLoadin: function () {
+            $('#loadingToast').addClass('hide');
+        },
+        showLoadin: function (content) {
+            $('#loadingToast').removeClass('hide');
+            if (content) {
+                $('.weui_toast_content').text(content);
+            }
         }
     };
     return new App();
