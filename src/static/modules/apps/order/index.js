@@ -52,6 +52,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             var data = {};
             data.brand = this.brand;
             data.product = this.product;
+            data.wechatOrigin=this.originLocal;
             var html = new EJS({ url: 'views/order/index.ejs' }).render(data);
             $('body').prepend(html);
         },
@@ -147,6 +148,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.weui_dialog_bd').text('请填写车身识别号');
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
+                }
+                var shopcode = $this.emoji2Str($("input[type='text'][name='shopcode']").val());
+                var shopcodenum = $.trim(shopcode);
+                if (shopcodenum) {
+                    $this.originLocal=shopcodenum;
                 }
                 $this.showLoadin('提交订单...');
                 if($this.isWeChat()&&$this.openid){
