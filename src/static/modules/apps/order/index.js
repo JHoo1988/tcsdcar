@@ -154,8 +154,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 }
                 var shopcode = $this.emoji2Str($("input[type='text'][name='shopcode']").val());
                 var shopcodenum = $.trim(shopcode);
-                if (shopcodenum&&null!=shopcodenum&&'undefined'!=shopcodenum) {
+                if (shopcodenum && null != shopcodenum && 'undefined' != shopcodenum) {
                     $this.originLocal = shopcodenum;
+                } else {
+                    $this.originLocal = utilBrands.origin.getOrigin();
                 }
                 $this.showLoadin('提交订单...');
                 if ($this.isWeChat() && $this.openid) {
@@ -179,7 +181,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             dataType: 'json',
                             data: par,
                             success: function (data) {
-                                if (undefined != data && null != data && data.code == 200) {
+                                if (undefined != data && null != data  && data.code == 200 &&undefined != data.data && null != data.data) {
                                     var result = data.data;
                                     if (result.orderNo) {
                                         utilBrands.orderNo.setOrderNo(result.orderNo);
@@ -219,7 +221,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         dataType: 'json',
                         data: par,
                         success: function (data) {
-                            if (undefined != data && null != data && data.code == 200) {
+                            if (undefined != data && null != data && data.code == 200 &&undefined != data.data && null != data.data ) {
                                 var result = data.data;
                                 if (result.orderNo) {
                                     utilBrands.orderNo.setOrderNo(result.orderNo);
