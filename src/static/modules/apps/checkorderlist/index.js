@@ -60,17 +60,17 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         param.orderId = id;
                         _self.getCheckOrderList(param,function (content) {
                             _self.hideLoadin();
+                            var html='<label class="weui-form-preview__label">已赔付记录</label>';
+                            pfjl.removeClass('hide');
                             if (content && content.length > 0) {
-                                pfjl.removeClass('hide');
-                                var html='<label class="weui-form-preview__label">已赔付记录</label>';
                                 for (var i = 0; i < content.length; i++) {
                                     html+='<span class="weui-form-preview__value">第' + (i+1) + '次赔付时间：' + content[i].createTimeStr+'</span>';
                                 }
-                                pfjl.empty().append(html);
-                                btn.addClass('hide');
                             } else {
-                                // text += '<p>暂无赔付记录</p><br>';
+                                html+='<span class="weui-form-preview__value">暂无赔付</span>';
                             }
+                            pfjl.empty().append(html);
+                            btn.addClass('hide');
                         });
                     }
                 }
