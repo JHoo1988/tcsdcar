@@ -48,7 +48,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 var pfjl = $(this).parent().find('.weui-form-preview__bd').find('.pfjl');
                 var btn = $(this);
                 if(pfjl.hasClass('hide')){
-                    console.log('123');
                     var id = $(this).data('id');
                     if (!id) {
                         return;

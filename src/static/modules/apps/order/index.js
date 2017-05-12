@@ -34,7 +34,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 return;
             }
             if (!this.originLocal || this.originLocal === '' || this.originLocal === null) {
-                console.log('没有来源，跳转到首页');
                 window.location.href = 'brands.html';
                 return;
             }

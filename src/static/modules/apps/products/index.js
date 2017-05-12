@@ -28,7 +28,6 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             this.renderPage();
             this.bind();
             fastclick.attach(document.body);
-            console.log(utilBrands.product.getProduct());
         },
 
         /**
