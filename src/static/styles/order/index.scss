@@ -10,7 +10,7 @@
         width: 100%;
       }
     }
-    .discription{
+    .discription {
       background-color: #FFFFFF;
       font-size: px2rem(26);
       font-family: "微软雅黑";
@@ -18,30 +18,30 @@
       padding: px2rem(10) px2rem(30);
       box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
     }
-    .selected-cartype{
+    .selected-cartype {
       background-color: #FFFFFF;
       margin-top: px2rem(18);
       padding: px2rem(15) px2rem(30);
       //border-bottom: 1px solid #ddd;
       //border-top: 1px solid #ddd;
       box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
-      span{
+      span {
         color: #666666;
         font-size: px2rem(30);
         font-family: "微软雅黑";
       }
     }
-    .select-time{
+    .select-time {
       background-color: #FFFFFF;
       margin-top: px2rem(18);
       padding: px2rem(15) px2rem(30);
       box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
-      .select-time-tips{
+      .select-time-tips {
         font-size: px2rem(28);
         font-family: "微软雅黑";
         color: #666666;
       }
-      .weui-flex{
+      .weui-flex {
         display: -webkit-box;
         display: -webkit-flex;
         display: flex;
@@ -58,12 +58,12 @@
             text-align: center;
             color: #ffffff;
           }
-          .selectd{
+          .selectd {
             background-color: #5FB878;
           }
         }
       }
-      .time-discription{
+      .time-discription {
         padding: px2rem(16) 0;
         color: #999;
       }
@@ -120,10 +120,10 @@
         line-height: px2rem(32);
       }
       .blue {
-        color: #0af!important;
+        color: #0af !important;
       }
       .orange {
-        color: #ff6c60!important;
+        color: #ff6c60 !important;
       }
     }
   }
@@ -134,7 +134,8 @@
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1; }
+    z-index: 1;
+  }
 
   .fixed-bottom-form {
     position: fixed;
@@ -142,8 +143,8 @@
     width: 100%;
     z-index: 1;
     min-width: 320px;
-    color: white;
-    .close_dialog{
+    color: #666666;
+    .close_dialog {
       width: 36px;
       height: 36px;
       //background-color: rgba(0, 0, 0, 0.3);
@@ -151,23 +152,24 @@
       display: flex;
       display: -webkit-flex;
       justify-content: flex-end;
-      img{
-        margin-top: 5px;margin-right: 5px;
+      img {
+        margin-top: 5px;
+        margin-right: 5px;
         width: 50%;
         height: 50%;
       }
     }
-    .clean_float{
+    .clean_float {
       content: '';
       clear: both;
     }
-    .commit_div{
+    .commit_div {
       padding-left: 7.8125%;
       padding-right: 7.8125%;
       padding-bottom: 5%;
       box-shadow: 0px -1px 2px #cccccc;
       background-color: #ffffff;
-      .description{
+      .description {
         color: #666;
         font-size: px2rem(28);
         padding: px2rem(36) 0;
@@ -182,10 +184,10 @@
           display: -webkit-flex;
           display: flex;
           margin-bottom: px2rem(30);
-          .xxdz{
+          .xxdz {
             width: 100%;
             outline: none;
-            border-width:0;
+            border-width: 0;
             padding: 0 8px;
             height: px2rem(90);
             font-size: px2rem(33);
@@ -208,6 +210,39 @@
         padding: px2rem(15) px2rem(30);
         border-width: 0;
         background-color: #009688;
+      }
+      .disabled{
+        color: rgba(255, 255, 255, 0.6);
+        background-color: #71D1C8;
+      }
+    }
+    .commit_zxyy {
+      .check-flag {
+        .icon-check {
+          padding-right: px2rem(16);
+          &:before {
+            font-family: "weui";
+            font-style: normal;
+            font-weight: normal;
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: inherit;
+            text-align: center;
+            font-variant: normal;
+            text-transform: none;
+            content: '\EA01';
+            color: #C9C9C9;
+            font-size: 17px;
+          }
+        }
+        a:link{color: #01AAED;}/*超链接正常状态下的样式*/
+        a:visited{color: #01AAED;}/*访问过的超链接*/
+        .icon-check.checked {
+          &:before {
+            content: '\EA06';
+            color: #009688;
+          }
+        }
       }
     }
   }
