@@ -154,7 +154,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 }
                 var shopcode = $this.emoji2Str($("input[type='text'][name='shopcode']").val());
                 var shopcodenum = $.trim(shopcode);
-                if (shopcodenum) {
+                if (shopcodenum&&null!=shopcodenum&&'undefined'!=shopcodenum) {
                     $this.originLocal = shopcodenum;
                 }
                 $this.showLoadin('提交订单...');
