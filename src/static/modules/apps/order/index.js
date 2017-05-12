@@ -11,11 +11,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
     var App = function () {
         this.brand = utilBrands.brands.getBrand();
         this.product = utilBrands.product.getProduct();
-        this.openid=utilBrands.openid.getOpenId();
+        this.openid = utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
-        this.timeLimit='12';
+        this.timeLimit = '12';
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
-        this.totalAmount=this.product.twelveCyclePrice;
+        this.totalAmount = this.product.twelveCyclePrice;
     };
 
     App.prototype = {
@@ -28,14 +28,14 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             var out_trade_no = utilCommon.getParam('out_trade_no');
             var app_id = utilCommon.getParam('app_id');
             var orderNo = utilBrands.orderNo.getOrderNo();
-            if(app_id&&app_id=='2017033106497573'&&orderNo&&out_trade_no&&out_trade_no==orderNo){
+            if (app_id && app_id == '2017033106497573' && orderNo && out_trade_no && out_trade_no == orderNo) {
                 // 支付宝回调该页面后，根据订单号判断是否支付成功
-                window.location.href='paysuccess.html';
+                window.location.href = 'paysuccess.html';
                 return;
             }
-            if(!this.originLocal||this.originLocal === '' || this.originLocal === null){
+            if (!this.originLocal || this.originLocal === '' || this.originLocal === null) {
                 console.log('没有来源，跳转到首页');
-                window.location.href='brands.html';
+                window.location.href = 'brands.html';
                 return;
             }
             utilPage.ready();
@@ -52,7 +52,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             var data = {};
             data.brand = this.brand;
             data.product = this.product;
-            data.wechatOrigin=this.originLocal;
+            data.wechatOrigin = this.originLocal;
             var html = new EJS({ url: 'views/order/index.ejs' }).render(data);
             $('body').prepend(html);
         },
@@ -81,7 +81,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
-                        $this.timeLimit='36';
+                        $this.timeLimit = '36';
                         $this.totalAmount = $this.product.thirtySixCyclePrice;
                         //设置36期价格
                         $('.price-num').text($this.product.thirtySixCyclePrice);
@@ -93,7 +93,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
-                        $this.timeLimit='24';
+                        $this.timeLimit = '24';
                         $this.totalAmount = $this.product.twentyFourCyclePrice;
                         //设置24期价格
                         $('.price-num').text($this.product.twentyFourCyclePrice);
@@ -105,7 +105,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                                 $(this).addClass('hide');
                             }
                         });
-                        $this.timeLimit='12';
+                        $this.timeLimit = '12';
                         $this.totalAmount = $this.product.twelveCyclePrice;
                         //设置12期价格
                         $('.price-num').text($this.product.twelveCyclePrice);
@@ -136,6 +136,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $(this).hide();
             });
             $('.submit').click(function () {
+                if ($(this).hasClass('disabled')) {
+                    return false;
+                }
                 var phoneNum = $.trim($("input[type='tel'][name='phonenum']").val());
                 if (!utilCommon.checkIsMobile(phoneNum)) {
                     $('.weui_dialog_bd').text('请填写正确的手机号码');
@@ -152,23 +155,23 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 var shopcode = $this.emoji2Str($("input[type='text'][name='shopcode']").val());
                 var shopcodenum = $.trim(shopcode);
                 if (shopcodenum) {
-                    $this.originLocal=shopcodenum;
+                    $this.originLocal = shopcodenum;
                 }
                 $this.showLoadin('提交订单...');
-                if($this.isWeChat()&&$this.openid){
+                if ($this.isWeChat() && $this.openid) {
                     // 如果是在微信里面就用微信支付
                     var b_version = navigator.appVersion;
                     var version = parseFloat(b_version);
                     if (version >= 5.0) {
                         // 创建订单
                         var par = {};
-                        par.product=$this.product.id;
-                        par.timeLimit=$this.timeLimit;
+                        par.product = $this.product.id;
+                        par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                         // par.totalAmount=$this.totalAmount;
-                        par.mobile=phoneNum;
-                        par.carBodyNo=carnum;
-                        par.shopCode=$this.originLocal;
+                        par.mobile = phoneNum;
+                        par.carBodyNo = carnum;
+                        par.shopCode = $this.originLocal;
                         par.openId = $this.openid;
                         $.ajax({
                             url: config.url.unifiedOrder,
@@ -178,10 +181,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             success: function (data) {
                                 if (undefined != data && null != data && data.code == 200) {
                                     var result = data.data;
-                                    if(result.orderNo){
+                                    if (result.orderNo) {
                                         utilBrands.orderNo.setOrderNo(result.orderNo);
                                     }
-                                    $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
+                                    $this.weChatPay(result.package, result.paySign, result.nonceStr, result.appId, result.timeStamp, 'http://www.tcsdcar.com/m/paysuccess.html');
                                 } else {
                                     $this.hideLoadin();
                                     $('.weui_dialog_bd').text('订单创建失败，请重试');
@@ -200,16 +203,16 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $('.weui_dialog_bd').text('微信版本过低，请升级您的微信客户端');
                         $('.weui_dialog_alert').removeClass('hide');
                     }
-                }else{
+                } else {
                     // 使用支付宝支付
                     var par = {};
-                    par.product=$this.product.id;
-                    par.timeLimit=$this.timeLimit;
+                    par.product = $this.product.id;
+                    par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     // par.totalAmount=$this.totalAmount;
-                    par.mobile=phoneNum;
-                    par.carBodyNo=carnum;
-                    par.shopCode=$this.originLocal;
+                    par.mobile = phoneNum;
+                    par.carBodyNo = carnum;
+                    par.shopCode = $this.originLocal;
                     $.ajax({
                         url: config.url.alipayCreateOrder,
                         type: 'POST',
@@ -218,7 +221,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         success: function (data) {
                             if (undefined != data && null != data && data.code == 200) {
                                 var result = data.data;
-                                if(result.orderNo){
+                                if (result.orderNo) {
                                     utilBrands.orderNo.setOrderNo(result.orderNo);
                                 }
                                 $('body').append(result.content);
@@ -236,6 +239,15 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             return false;
                         }
                     });
+                }
+            });
+            $('.icon-check').click(function () {
+                if ($('.icon-check').hasClass('checked')) {
+                    $('.icon-check').removeClass('checked');
+                    $('.submit').addClass('disabled');
+                } else {
+                    $('.icon-check').addClass('checked');
+                    $('.submit').removeClass('disabled');
                 }
             });
         },
@@ -262,7 +274,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             }
         },
         // 发起微信支付
-        wxPayOrderById: function (prepay_id,paySign,randomStr,appId,timeStamp, callback, fail) {
+        wxPayOrderById: function (prepay_id, paySign, randomStr, appId, timeStamp, callback, fail) {
             WeixinJSBridge.invoke(
                 'getBrandWCPayRequest', {
                     "appId": appId,     //公众号名称，由商户传入
@@ -287,9 +299,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             );
         },
         // 微信支付
-        weChatPay: function (prepay_id,paySign,randomStr,appId,timeStamp, successBackUrl) {
+        weChatPay: function (prepay_id, paySign, randomStr, appId, timeStamp, successBackUrl) {
             var $this = this;
-            this.wxPayOrderById(prepay_id, paySign, randomStr,appId,timeStamp, function () {
+            this.wxPayOrderById(prepay_id, paySign, randomStr, appId, timeStamp, function () {
                 $this.hideLoadin();
                 // 支付成功
                 window.location.href = successBackUrl;
