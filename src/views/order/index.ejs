@@ -22,14 +22,20 @@
         </div>
         <div class="selected-cartype">
             <span>车型：</span>
-            <span><%=brand.name+product.productName%></span>
+            <span><%= brand.name + product.productName %></span>
         </div>
         <div class="select-time">
             <span class="select-time-tips">选择质保时间</span>
             <div class="weui-flex">
-                <div class="weui-flex__item"><div class="placeholder three selectd">12期</div></div>
-                <div class="weui-flex__item"><div class="placeholder tow">24期</div></div>
-                <div class="weui-flex__item"><div class="placeholder one">36期</div></div>
+                <div class="weui-flex__item">
+                    <div class="placeholder three selectd">12期</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder tow">24期</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder one">36期</div>
+                </div>
             </div>
             <div class="time-discription time-one hide">
                 质保时间为36个月，超长质保，价格更优，服务更佳！
@@ -48,7 +54,7 @@
                 <div>
                     <span class="price-title">金额：</span>
                     <span class="blue">￥</span>
-                    <span class="price-num blue"><%=product.twelveCyclePrice%></span>
+                    <span class="price-num blue"><%= product.twelveCyclePrice %></span>
                 </div>
             </li>
             <li>
@@ -68,20 +74,23 @@
             <div class="commit_div">
                 <p class="description">为了给您提供更完善更优质的服务，请您务必填写以下信息。</p>
                 <div class="commit_zxyy">
+                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
                     <span class="input_title">手机号码：</span>
                     <div class="commit_zxyy_content">
                         <input name="phonenum" type="tel" class="xxdz" placeholder="请填写您的手机号码">
                     </div>
+                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
                     <span class="input_title">车身识别号：</span>
                     <div class="commit_zxyy_content">
                         <input name="carnum" type="text" class="xxdz" placeholder="车身识别号在挡风玻璃左下角处可查看">
                     </div>
-                    <%if(wechatOrigin=='DE17CE0677'){%>
+                    <% if(wechatOrigin == 'DE17CE0677'){ %>
                     <span class="input_title">店铺编码：</span>
                     <div class="commit_zxyy_content">
-                        <input name="shopcode" type="text" class="xxdz" placeholder="请输入店铺编码">
+                        <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
                     </div>
-                    <%}%>
+                    <% } %>
+                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a href="serviceAgreement.html">《服务协议》</a></div>
                 </div>
                 <input type="submit" value="确定" class="submit">
             </div>
@@ -93,7 +102,7 @@
     <div class="weui_mask"></div>
     <div class="weui_dialog">
         <div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div>
-        <div class="weui_dialog_bd">弹窗内容，告知当前页面信息等</div>
+        <div class="weui_dialog_bd"></div>
         <div class="weui_dialog_ft">
             <a href="#" class="weui_btn_dialog primary">确定</a>
         </div>
