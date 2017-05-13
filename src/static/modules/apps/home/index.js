@@ -16,8 +16,10 @@ define(['jquery', 'fastclick', 'weui', 'ejs'], function ($, fastclick) {
          * @desc 初始化函数
          */
         init: function () {
-            this.renderPage();
-            fastclick.attach(document.body);
+            window.location.href='brands.html';
+            return;
+            // this.renderPage();
+            // fastclick.attach(document.body);
         },
 
         /**

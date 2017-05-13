@@ -218,6 +218,7 @@
     }
     .commit_zxyy {
       .check-flag {
+        color: #999999;
         .icon-check {
           padding-right: px2rem(16);
           &:before {
@@ -232,15 +233,16 @@
             text-transform: none;
             content: '\EA01';
             color: #C9C9C9;
-            font-size: 17px;
+            font-size: 14px;
           }
         }
-        a:link{color: #01AAED;}/*超链接正常状态下的样式*/
-        a:visited{color: #01AAED;}/*访问过的超链接*/
+        a:link{color: #999999;}/*超链接正常状态下的样式*/
+        a:visited{color: #999999;}/*访问过的超链接*/
         .icon-check.checked {
           &:before {
             content: '\EA06';
-            color: #009688;
+            //color: #009688;
+            color: #CCCCCC;
           }
         }
       }
