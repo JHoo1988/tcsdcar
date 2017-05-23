@@ -219,6 +219,7 @@
     .commit_zxyy {
       .check-flag {
         color: #999999;
+        font-size: 12px;
         .icon-check {
           padding-right: px2rem(16);
           &:before {
@@ -233,7 +234,7 @@
             text-transform: none;
             content: '\EA01';
             color: #C9C9C9;
-            font-size: 14px;
+            font-size: 12px;
           }
         }
         a:link{color: #999999;}/*超链接正常状态下的样式*/
