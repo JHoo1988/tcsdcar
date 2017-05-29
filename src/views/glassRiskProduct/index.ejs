@@ -1,0 +1,42 @@
+<%
+var len = data.length;
+%>
+<div class="brands">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            <%=title%>
+        </span>
+        <!--<div class="info" style="display: none;">-->
+        <!--<a id="btn-address-detail-cancel" href="javascript:;" class="text">-->
+        <!--取消-->
+        <!--</a>-->
+        <!--</div>-->
+    </header>
+    <main class="com-main" style="bottom: 0;">
+        <% if(len > 0 ){ %>
+        <div class="weui_cells weui_cells_access list-wrapper phone-list">
+            <%
+            for(var i=0;i<len;i++){
+                var d = data[i];
+            %>
+            <a class="weui_cell list-item" href="javascript:;"  data-id="<%= d.id %>" data-name="<%= d.productName %>" data-json='<%= JSON.stringify(d) %>'>
+                <div class="weui_cell_hd img-wrapper">
+                    <img src="../../../images/product/<%= data[i].id %>.png" alt="icon" class="img-icon">
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>
+                        <span><%= d.productName %></span>
+                    </p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>
+            <%}%>
+        </div>
+        <%}else{%>
+        <p class="no-data">该品牌暂无型号</p>
+        <%}%>
+    </main>
+</div>

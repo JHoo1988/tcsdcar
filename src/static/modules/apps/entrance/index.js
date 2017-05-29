@@ -106,14 +106,24 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href = 'order.html';
+                window.location.href='glassRiskProduct.html';
+                // window.location.replace(backUrl);
+                // window.history.go(-1);
+            });
+            // 选中
+            $body.on('click', '.weui-grid', function () {
+                // $.toastNoIcon('请输入推荐码', 'noicon');
+                var $this = $(this);
+                var json = $this.data('json');
+                self.setUserSelected(json);
+                window.location.href='glassRiskProduct.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });
         },
         setUserSelected: function (data) {
-            utilBrands.product.setProduct(data);
-        }
+            utilBrands.brands.setBrand(data);
+        },
     };
     return new App();
 });
