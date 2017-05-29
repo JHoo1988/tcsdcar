@@ -35,7 +35,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 return;
             }
             if (!this.originLocal || this.originLocal === '' || this.originLocal === null) {
-                window.location.href = 'brands.html';
+                window.location.href = 'entrance.html';
                 return;
             }
             utilPage.ready();
