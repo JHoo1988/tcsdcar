@@ -23,9 +23,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
             var _self = this;
             utilPage.ready();
             fastclick.attach(document.body);
-            Q.all([_self.getCbrands(),_self.getQCMBrands()])
+            Q.all([_self.getCbrands(), _self.getQCMBrands()])
                 .then(function (datas) {
-                    _self.renderPage(datas[0]);
+                    _self.renderPage(datas[0], datas[1]);
                     _self.bind();
                 })
                 .finally(function () {
@@ -37,15 +37,18 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
          * @func
          * @desc 渲染页面
          */
-        renderPage: function (data1) {
-            var html = new EJS({ url: 'views/entrance/index.ejs' }).render(data1);
+        renderPage: function (data1, data2) {
+            var html = new EJS({ url: 'views/entrance/index.ejs' }).render({
+                data1: data1,
+                data2: data2
+            });
             $('body').prepend(html);
         },
         //获取汽车品牌列表
-        getCbrands:function () {
+        getCbrands: function () {
             var _self = this;
-            return new Q.Promise(function(resolve, reject) {
-                _self.getCarBrandsList(function(result) {
+            return new Q.Promise(function (resolve, reject) {
+                _self.getCarBrandsList(function (result) {
                     if (result) {
                         resolve(result);
                     } else {
@@ -68,8 +71,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
         //获取汽车膜品牌列表
         getQCMBrands: function () {
             var _self = this;
-            return new Q.Promise(function(resolve, reject) {
-                _self.getQCMBrandsList(function(result) {
+            return new Q.Promise(function (resolve, reject) {
+                _self.getQCMBrandsList(function (result) {
                     if (result) {
                         resolve(result);
                     } else {

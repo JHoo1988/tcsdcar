@@ -176,5 +176,46 @@
       -webkit-transform: scaleX(0.5);
       transform: scaleX(0.5);
     }
+    .bottom {
+      padding-top: px2rem(120);
+      background-color: #B1B3BF;
+      .code {
+        text-align: center;
+        font-size: px2rem(20);
+        color: #ffffff;
+        img {
+          display: inline-block;
+          width: px2rem(210);
+        }
+      }
+      .copyright {
+        text-align: center;
+        padding: px2rem(20) 0;
+        font-size: px2rem(18);
+        color: #ffffff;
+        a {
+          text-decoration: none;
+          color: #ffffff;
+        }
+      }
+      .gongan {
+        text-align: center;
+        padding-bottom: px2rem(40);
+        a {
+          display: inline-block;
+          text-decoration: none;
+          height: px2rem(40);
+          line-height: px2rem(40);
+          p {
+            float: left;
+            height: px2rem(40);
+            line-height: px2rem(40);
+            margin: 0px 0px 0px px2rem(10);
+            color: #ffffff;
+            font-size: px2rem(18);
+          }
+        }
+      }
+    }
   }
 }
