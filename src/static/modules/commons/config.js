@@ -81,7 +81,8 @@
             findPaidRecordsList: base + 'mobile/findPaidRecordsList',
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
-
+            // 同创盛大店铺编码
+            defaltShopCode:'D838D8F0AE',
             //UserAddress
             findUserAddressByUserId: base + 'userAddress/findUserAddressByUserId',
             findUserAddressByAddressId: base + 'userAddress/findUserAddressByAddressId',
