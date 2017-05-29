@@ -1,0 +1,132 @@
+<div class="order">
+    <header class="com-header">
+        <div class="action">
+            <a class="back" href="javascript:window.history.go(-1);"></a>
+        </div>
+        <span class="title">
+            玻璃险
+        </span>
+        <!--<div class="info" style="display: none;">-->
+        <!--<a id="btn-address-detail-cancel" href="javascript:;" class="text">-->
+        <!--取消-->
+        <!--</a>-->
+        <!--</div>-->
+    </header>
+    <main class="com-main">
+        <div class="banner">
+            <img class="banner-img" src="../../m/static/images/order/qcm_banner.jpg" alt="">
+        </div>
+        <div class="discription">
+            <!--<p>汽车膜质保服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
+            <p>玻璃贴膜保障为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
+        </div>
+        <div class="selected-cartype">
+            <span>车型：</span>
+            <span><%= brand.name + product.productName %></span>
+        </div>
+        <div class="select-time">
+            <span class="select-time-tips">选择质保时间</span>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder three selectd">12期</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder tow">24期</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder one">36期</div>
+                </div>
+            </div>
+            <div class="time-discription time-one hide">
+                质保时间为36个月，超长质保，价格更优，服务更佳！
+            </div>
+            <div class="time-discription time-tow hide">
+                质保时间为24个月，服务周到，省心！
+            </div>
+            <div class="time-discription time-three">
+                质保时间为12个月。
+            </div>
+        </div>
+    </main>
+    <div class="action-bottom">
+        <ul class="notification-menu">
+            <li>
+                <div>
+                    <span class="price-title">金额：</span>
+                    <span class="blue">￥</span>
+                    <span class="price-num blue"><%= product.twelveCyclePrice %></span>
+                </div>
+            </li>
+            <li>
+                <a id="btn-order" href="javascript:;" class="btn">
+                    确定
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="fixed-mask-layer" style="display: none"></div>
+    <div class="fixed-bottom-form" style="display: none">
+        <div class="js-form-subscribe">
+            <div class="close_dialog">
+                <img src="../../m/static/images/order/close_dialog.png"/>
+            </div>
+            <div class="commit_div">
+                <p class="description">为了给您提供更完善更优质的服务，请您务必填写以下信息。</p>
+                <div class="commit_zxyy">
+                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
+                    <span class="input_title">手机号码：</span>
+                    <div class="commit_zxyy_content">
+                        <input name="phonenum" type="tel" class="xxdz" placeholder="请填写您的手机号码">
+                    </div>
+                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
+                    <span class="input_title">车身识别号：</span>
+                    <div class="commit_zxyy_content">
+                        <input name="carnum" type="text" class="xxdz" placeholder="车身识别号在挡风玻璃左下角处可查看">
+                    </div>
+                    <% if(wechatOrigin == 'DE17CE0677'){ %>
+                    <span class="input_title">店铺编码：</span>
+                    <div class="commit_zxyy_content">
+                        <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
+                    </div>
+                    <% } %>
+                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a href="serviceAgreement.html">《服务协议》</a></div>
+                </div>
+                <input type="submit" value="确定" class="submit">
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="weui_dialog_alert hide">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div>
+        <div class="weui_dialog_bd"></div>
+        <div class="weui_dialog_ft">
+            <a href="#" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+
+<div id="loadingToast" class="weui_loading_toast hide">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <div class="weui_loading">
+            <!-- :) -->
+            <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+        </div>
+        <p class="weui_toast_content">数据加载中</p>
+    </div>
+</div>

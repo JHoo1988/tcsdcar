@@ -22,7 +22,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
         init: function () {
             var originLocal = utilBrands.origin.getOrigin();
             if(!originLocal){
-                window.location.href='brands.html';
+                window.location.href='entrance.html';
                 return;
             }
             utilPage.ready();
@@ -79,7 +79,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='order.html';
+                window.location.href='glassRiskProductOrder.html';
             });
         },
         setUserSelected: function (data) {
