@@ -24,8 +24,18 @@
             <span>车型：</span>
             <span><%= brand.name + product.productName %></span>
         </div>
+        <div class="weui_cells weui_cells_access">
+            <div class="weui_cell" id="js-order-yhm">
+                <input class="weui_input" type="hidden" name="promoCode" id="promoCode">
+                <a class="weui_cell_hd weui_cell_primary yhm-icon" href="javascript:;">
+                    <span class="promo-code-text">购买 玻璃险+汽车膜质保 优惠套餐，赠送5次免费洗车~！</span>
+                    <p class="gray promo-desc hide"></p>
+                </a>
+                <div class="weui_cell_ft weui_cell_ft_mini"></div>
+            </div>
+        </div>
         <div class="select-time">
-            <span class="select-time-tips">选择质保时间</span>
+            <span class="select-time-tips">选择玻璃险质保时间</span>
             <div class="weui-flex">
                 <div class="weui-flex__item">
                     <div class="placeholder three selectd">12期</div>
