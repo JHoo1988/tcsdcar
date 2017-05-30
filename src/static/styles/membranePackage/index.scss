@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+
+.membranePackage {
+  .com-main {
+    background-color: #ffffff;
+    .me-action-list {
+      background: #fff;
+      margin-top: px2rem(21);
+      .weui_grid {
+        padding: px2rem(36) 0;
+        .weui_grid_icon {
+          width: px2rem(51);
+          height: px2rem(51);
+          margin: 0 auto;
+        }
+        .weui_grid_label {
+          color: #666;
+          font-size: px2rem(24);
+          margin-top: px2rem(18);
+        }
+      }
+    }
+  }
+
+}

@@ -252,6 +252,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.submit').removeClass('disabled');
                 }
             });
+            $('#js-order-yhm').click(function () {
+                window.location.href='membranePackage.html'
+            });
         },
         //emoji表情转换为字符
         emoji2Str: function (str) {
