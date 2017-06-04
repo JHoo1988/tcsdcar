@@ -369,7 +369,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.submit').removeClass('disabled');
                 }
             });
-            $('.icon-yy-check').click(function () {
+            $('.check-yy-flag').click(function () {
                 if ($('.icon-yy-check').hasClass('checked')) {
                     $('.icon-yy-check').removeClass('checked');
                     $(".panel").slideToggle("normal");
