@@ -16,7 +16,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit = '12';
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
-        this.totalAmount = this.product.twelveCyclePrice;
     };
 
     App.prototype = {
@@ -83,9 +82,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             }
                         });
                         $this.timeLimit = '36';
-                        $this.totalAmount = $this.product.thirtySixCyclePrice;
                         //设置36期价格
-                        $('.price-num').text($this.product.thirtySixCyclePrice);
+                        $('.price-num').text($this.productList.content[0].thirtySixCyclePrice);
                     } else if ($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-tow')) {
@@ -95,9 +93,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             }
                         });
                         $this.timeLimit = '24';
-                        $this.totalAmount = $this.product.twentyFourCyclePrice;
                         //设置24期价格
-                        $('.price-num').text($this.product.twentyFourCyclePrice);
+                        $('.price-num').text($this.productList.content[0].twentyFourCyclePrice);
                     } else if ($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-three')) {
@@ -107,9 +104,54 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             }
                         });
                         $this.timeLimit = '12';
-                        $this.totalAmount = $this.product.twelveCyclePrice;
                         //设置12期价格
-                        $('.price-num').text($this.product.twelveCyclePrice);
+                        $('.price-num').text($this.productList.content[0].twelveCyclePrice);
+                    }
+                }
+            });
+            // 选择玻璃险服务时间
+            $('.placeholder-blx').click(function () {
+                if (!$(this).hasClass('selectd')) {
+                    $('.placeholder-blx').each(function () {
+                        if ($(this).hasClass('selectd')) {
+                            $(this).removeClass('selectd');
+                        }
+                    });
+                    $(this).addClass('selectd');
+
+                    if ($(this).hasClass('one')) {
+                        $('.time-discription').each(function () {
+                            if ($(this).hasClass('time-one')) {
+                                $(this).removeClass('hide');
+                            } else {
+                                $(this).addClass('hide');
+                            }
+                        });
+                        $this.timeLimit = '36';
+                        //设置36期价格
+                        $('.price-num-blx').text($this.productList.content[0].thirtySixCyclePrice);
+                    } else if ($(this).hasClass('tow')) {
+                        $('.time-discription').each(function () {
+                            if ($(this).hasClass('time-tow')) {
+                                $(this).removeClass('hide');
+                            } else {
+                                $(this).addClass('hide');
+                            }
+                        });
+                        $this.timeLimit = '24';
+                        //设置24期价格
+                        $('.price-num-blx').text($this.productList.content[0].twentyFourCyclePrice);
+                    } else if ($(this).hasClass('three')) {
+                        $('.time-discription').each(function () {
+                            if ($(this).hasClass('time-three')) {
+                                $(this).removeClass('hide');
+                            } else {
+                                $(this).addClass('hide');
+                            }
+                        });
+                        $this.timeLimit = '12';
+                        //设置12期价格
+                        $('.price-num-blx').text($this.productList.content[0].twelveCyclePrice);
                     }
                 }
             });
@@ -178,7 +220,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         par.product = $this.product.id;
                         par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                        // par.totalAmount=$this.totalAmount;
                         par.mobile = phoneNum;
                         par.carBodyNo = carnum;
                         par.shopCode = $this.originLocal;
@@ -219,7 +260,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     par.product = $this.product.id;
                     par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                    // par.totalAmount=$this.totalAmount;
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
                     par.shopCode = $this.originLocal;
@@ -287,7 +327,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         par.product = $this.product.id;
                         par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                        // par.totalAmount=$this.totalAmount;
                         par.mobile = phoneNum;
                         par.carBodyNo = carnum;
                         par.shopCode = $this.originLocal;
@@ -328,7 +367,6 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     par.product = $this.product.id;
                     par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
-                    // par.totalAmount=$this.totalAmount;
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
                     par.shopCode = $this.originLocal;
@@ -369,13 +407,22 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.submit').removeClass('disabled');
                 }
             });
-            $('.check-yy-flag').click(function () {
-                if ($('.icon-yy-check').hasClass('checked')) {
-                    $('.icon-yy-check').removeClass('checked');
-                    $(".panel").slideToggle("normal");
+            $('.check-yy-flag-qcm').click(function () {
+                if ($('.icon-yy-check-qcm').hasClass('checked')) {
+                    $('.icon-yy-check-qcm').removeClass('checked');
+                    $(".panel-qcm").slideToggle("normal");
                 } else {
-                    $('.icon-yy-check').addClass('checked');
-                    $(".panel").slideToggle("normal");
+                    $('.icon-yy-check-qcm').addClass('checked');
+                    $(".panel-qcm").slideToggle("normal");
+                }
+            });
+            $('.check-yy-flag-blx').click(function () {
+                if ($('.icon-yy-check-blx').hasClass('checked')) {
+                    $('.icon-yy-check-blx').removeClass('checked');
+                    $(".panel-blx").slideToggle("normal");
+                } else {
+                    $('.icon-yy-check-blx').addClass('checked');
+                    $(".panel-blx").slideToggle("normal");
                 }
             });
         },

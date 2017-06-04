@@ -82,7 +82,7 @@
               -webkit-box-flex: 1;
               -webkit-flex: 1;
               flex: 1;
-              .placeholder {
+              .placeholder,.placeholder-blx {
                 margin: 5px;
                 padding: 0 10px;
                 background-color: #009688;
@@ -107,7 +107,7 @@
           padding: px2rem(15) px2rem(30);
           box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
           border-bottom: 1px solid #ddd;
-          .check-yy-flag {
+          .check-yy-flag-qcm,.check-yy-flag-blx {
             content: '';
             clear: both;
             display: block;
@@ -117,11 +117,11 @@
               width: 85%;
               margin-left: px2rem(30);
             }
-            .icon-yy-check.checked:before {
+            .icon-yy-check-blx.checked:before,.icon-yy-check-qcm.checked:before {
               content: '\EA06';
               color: #5FB878;
             }
-            .icon-yy-check:before {
+            .icon-yy-check-blx:before,.icon-yy-check-qcm:before {
               font-family: "weui";
               font-style: normal;
               font-weight: 400;
@@ -136,7 +136,7 @@
               font-size: 27px;
             }
           }
-          .panel{
+          .panel-qcm,.panel-blx{
             display:none;
             border-top: 1px solid #ddd;
             .weui-flex {
@@ -211,7 +211,7 @@
         text-align: right;
         width: 40%;
       }
-      .price-num {
+      .price-num,.price-num-blx {
         font-size: px2rem(36);
       }
       .btn {
