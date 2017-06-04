@@ -101,6 +101,68 @@
             color: #999;
           }
         }
+        .select-yy {
+          background-color: #FFFFFF;
+          margin-top: px2rem(18);
+          padding: px2rem(15) px2rem(30);
+          box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
+          border-bottom: 1px solid #ddd;
+          .check-flag {
+            content: '';
+            clear: both;
+            display: block;
+            height: px2rem(180);
+            .yy-discription {
+              float: left;
+              width: 85%;
+              margin-left: px2rem(30);
+            }
+            .icon-yy-check.checked:before {
+              content: '\EA06';
+              color: #5FB878;
+            }
+            .icon-yy-check:before {
+              font-family: "weui";
+              font-style: normal;
+              font-weight: 400;
+              display: inline-block;
+              vertical-align: middle;
+              text-decoration: inherit;
+              text-align: center;
+              font-variant: normal;
+              text-transform: none;
+              content: '\EA01';
+              color: #C9C9C9;
+              font-size: 27px;
+            }
+          }
+          .panel{
+            display:none;
+            .weui-flex {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: flex;
+              .weui-flex__item {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                flex: 1;
+                .placeholder {
+                  margin: 5px;
+                  padding: 0 10px;
+                  background-color: #009688;
+                  height: 2.3em;
+                  line-height: 2.3em;
+                  text-align: center;
+                  color: #ffffff;
+                }
+                .selectd {
+                  background-color: #5FB878;
+                }
+              }
+            }
+          }
+        }
+
       }
       .weui_tab_bd_item.weui_tab_bd_item_active {
         display: block;
@@ -252,7 +314,7 @@
         border-width: 0;
         background-color: #009688;
       }
-      .disabled{
+      .disabled {
         color: rgba(255, 255, 255, 0.6);
         background-color: #71D1C8;
       }
@@ -278,8 +340,14 @@
             font-size: 12px;
           }
         }
-        a:link{color: #999999;}/*超链接正常状态下的样式*/
-        a:visited{color: #999999;}/*访问过的超链接*/
+        a:link {
+          color: #999999;
+        }
+        /*超链接正常状态下的样式*/
+        a:visited {
+          color: #999999;
+        }
+        /*访问过的超链接*/
         .icon-check.checked {
           &:before {
             content: '\EA06';
