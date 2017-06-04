@@ -76,8 +76,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                var selectProduct=utilBrands.product.getProduct();
+                var selectProduct = utilBrands.product.getProduct();
                 self.getProduct(selectProduct.id);
+            });
+            // 取消提示框
+            $body.on('click', '.weui_btn_dialog', function () {
+                $('.weui_dialog_alert').addClass('hide');
             });
         },
         setUserSelected: function (data) {
@@ -98,7 +102,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 if (result && result.code == '200' && result.data) {
                     utilBrands.productList.setProductList(result.data);
                     _self.hideLoadin();
-                    window.location.href = 'order.html';
+                    if (result.data.content && result.data.content.length > 0) {
+                        window.location.href = 'order.html';
+                    } else {
+                        $('.weui_dialog_bd').text('该车型暂无服务产品');
+                        $('.weui_dialog_alert').removeClass('hide');
+                    }
 
                 }
             });

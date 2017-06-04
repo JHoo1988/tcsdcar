@@ -10,7 +10,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
     var utilCommon = require('util_common');
     var App = function () {
         this.brand = utilBrands.brands.getBrand();
-        this.product = utilBrands.product.getProduct();
+        this.product = utilBrands.product.getProduct();// 车型相关
         this.productList = utilBrands.productList.getProductList();
         this.openid = utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
@@ -51,9 +51,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         renderPage: function () {
             var data = {};
             data.brand = this.brand;
-            data.product = this.product;
+            data.product = this.product;// 车型相关
             data.wechatOrigin = this.originLocal;
-            data.productList = this.productList;
+            data.productList = this.productList;// 车型相关的产品
             var html = new EJS({ url: 'views/order/index.ejs' }).render(data);
             $('body').prepend(html);
         },
