@@ -22,7 +22,7 @@
 })(this, function (exports, module) {
     "use strict";
 
-    var isDebug = false,
+    var isDebug = true,
         testApiUrl = 'http://localhost:8088/', // 测试后台地址
         // testApiUrl = 'http://base.5ujd.net:88/ha-wechat/v1/', // 测试后台地址
         //testApiUrl = 'http://120.76.101.218:89/ha-wechat/v1/', // 测试后台地址
@@ -42,31 +42,31 @@
     module.exports = {
         test: isDebug,
         testOpenIdList: [
-            {name: '陶赛', openid: 'oSGb3tyuJGcgicA1eInVCjCdKimE'},
-            {name: '欧阳', openid: 'oSGb3t0oLbuHu4pRR4BM7mOQFYHc'},
-            {name: 'leo', openid: 'oSGb3t5nnUmXhq4vqMzfNeSdllIE'},
-            {name: 'arvin', openid: 'oSGb3t6ildys9U_O6DswpGqBWQaA'},
-            {name: 'rock', openid: 'oSGb3t4ELvx5rE_za-9zdkI4cSA4'},
-            {name: 'jason', openid: 'oSGb3tzm5_i9mCEnIeh4F8SABEdo'},
-            {name: 'Amy', openid: 'oSGb3tyUJUrp_SgtsUw3flUF9sAE'},
-            {name: 'jime', openid: 'oSGb3tyhYzzAUbO4apwCZPbIohF0'},
-            {name: 'du', openid: 'oSGb3t1YRvWQUMSV73c50DVU7I5c'},
-            {name: 'boy', openid: 'oSGb3t1P6-pzueAMw99UkDulyFSs'},
-            {name: '窦康', openid: 'oSGb3t7PHlINdJUqPIjtaBH6myIE'},
-            {name: '焦红', openid: 'oSGb3t3rbkQ1Ci2ft-qf3Dl6MiV8'},
-            {name: 'Frank', openid: 'oSGb3t18AOaUp2Iw3hJkDGGVtfck'},
-            {name: '郭利宣', openid: 'oSGb3tyKDZTXzlpNxd8saQbZjDCI'},
-            {name: 'kenny', openid: 'oSGb3tx2xs8fu2kAGyWeGre3SXtg'},
-            {name: '山博', openid: 'oSGb3t6gvCNOij9zt5xwFiV08OH0'},
-            {name: 'bill', openid: 'oSGb3t_3XxxjFqBWcR9Zm3pLaj4Q'},
-            {name: '朱旻景', openid: 'oSGb3tyy9P01MzwxJdKDX1m15XFY'},
-            {name: '第三方测试人员', openid: 'oSGb3t6imlvl88IT7SDmGtL2-JVY'},
+            { name: '陶赛', openid: 'oSGb3tyuJGcgicA1eInVCjCdKimE' },
+            { name: '欧阳', openid: 'oSGb3t0oLbuHu4pRR4BM7mOQFYHc' },
+            { name: 'leo', openid: 'oSGb3t5nnUmXhq4vqMzfNeSdllIE' },
+            { name: 'arvin', openid: 'oSGb3t6ildys9U_O6DswpGqBWQaA' },
+            { name: 'rock', openid: 'oSGb3t4ELvx5rE_za-9zdkI4cSA4' },
+            { name: 'jason', openid: 'oSGb3tzm5_i9mCEnIeh4F8SABEdo' },
+            { name: 'Amy', openid: 'oSGb3tyUJUrp_SgtsUw3flUF9sAE' },
+            { name: 'jime', openid: 'oSGb3tyhYzzAUbO4apwCZPbIohF0' },
+            { name: 'du', openid: 'oSGb3t1YRvWQUMSV73c50DVU7I5c' },
+            { name: 'boy', openid: 'oSGb3t1P6-pzueAMw99UkDulyFSs' },
+            { name: '窦康', openid: 'oSGb3t7PHlINdJUqPIjtaBH6myIE' },
+            { name: '焦红', openid: 'oSGb3t3rbkQ1Ci2ft-qf3Dl6MiV8' },
+            { name: 'Frank', openid: 'oSGb3t18AOaUp2Iw3hJkDGGVtfck' },
+            { name: '郭利宣', openid: 'oSGb3tyKDZTXzlpNxd8saQbZjDCI' },
+            { name: 'kenny', openid: 'oSGb3tx2xs8fu2kAGyWeGre3SXtg' },
+            { name: '山博', openid: 'oSGb3t6gvCNOij9zt5xwFiV08OH0' },
+            { name: 'bill', openid: 'oSGb3t_3XxxjFqBWcR9Zm3pLaj4Q' },
+            { name: '朱旻景', openid: 'oSGb3tyy9P01MzwxJdKDX1m15XFY' },
+            { name: '第三方测试人员', openid: 'oSGb3t6imlvl88IT7SDmGtL2-JVY' },
         ],
         url: {
             //brands
-            findAllProductBrands:base+'mobile/findAllProductBrands',
+            findAllProductBrands: base + 'mobile/findAllProductBrands',
             // 查询产品
-            findProductList:base+'mobile/findProductList',
+            findProductList: base + 'mobile/findProductList',
             //根据code获取openid接口
             getWeiXinOpenIdByCode: base + 'weixin/getWeiXinOpenIdByCode/',
             //创建订单
@@ -82,7 +82,15 @@
             //User
             loadUserByOpenId: base + 'user/loadUserByOpenId',
             // 同创盛大店铺编码
-            defaltShopCode:'D838D8F0AE',
+            defaltShopCode: 'D838D8F0AE',
+            // 同创盛大店铺编码
+            // 手机端车型分页查询
+            // findAllProductModel: base + 'productModel/findAllProductModel',
+            findAllProductModel: base + 'mobile/findAllProductModel',
+            // // 同创盛大店铺编码
+            // defaltShopCode: 'D838D8F0AE',
+
+
             //UserAddress
             findUserAddressByUserId: base + 'userAddress/findUserAddressByUserId',
             findUserAddressByAddressId: base + 'userAddress/findUserAddressByAddressId',
@@ -475,6 +483,7 @@
             brands: {
                 select: 'ha_selected_brands',
                 select_product: 'ha_selected_product',
+                getproductList: 'ha_getproductList',
                 openid: 'ha_openid',
                 orderNo: 'ha_orderNo',
                 timeLimit: 'ha_timeLimit',

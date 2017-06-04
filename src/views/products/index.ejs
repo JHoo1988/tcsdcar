@@ -19,24 +19,46 @@ var len = data.length;
         <% if(len > 0 ){ %>
         <div class="weui_cells weui_cells_access list-wrapper phone-list">
             <%
-            for(var i=0;i<len;i++){
+            for(var i = 0;i < len;i++){
                 var d = data[i];
             %>
-            <a class="weui_cell list-item" href="javascript:;"  data-id="<%= d.id %>" data-name="<%= d.productName %>" data-json='<%= JSON.stringify(d) %>'>
+            <a class="weui_cell list-item" href="javascript:;" data-id="<%= d.id %>" data-name="<%= d.name %>"
+               data-json='<%= JSON.stringify(d) %>'>
                 <div class="weui_cell_hd img-wrapper">
                     <img src="../../../images/product/<%= data[i].id %>.png" alt="icon" class="img-icon">
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>
-                        <span><%= d.productName %></span>
+                        <span><%= d.name %></span>
                     </p>
                 </div>
                 <div class="weui_cell_ft"></div>
             </a>
-            <%}%>
+            <% } %>
         </div>
-        <%}else{%>
-            <p class="no-data">该品牌暂无型号</p>
-        <%}%>
+        <% }else{ %>
+        <p class="no-data">该品牌暂无型号</p>
+        <% } %>
     </main>
+</div>
+<div id="loadingToast" class="weui_loading_toast hide">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <div class="weui_loading">
+            <!-- :) -->
+            <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+        </div>
+        <p class="weui_toast_content">数据加载中</p>
+    </div>
 </div>

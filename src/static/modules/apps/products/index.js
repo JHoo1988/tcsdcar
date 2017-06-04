@@ -2,7 +2,7 @@
  * Created by ryandu on 2017/3/21.
  */
 
-define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function ($, jea, config, fastclick,layer) {
+define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], function ($, jea, config, fastclick, layer) {
     'use strict';
 
     var utilPage = require('util_page');
@@ -20,8 +20,8 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          */
         init: function () {
             var originLocal = utilBrands.origin.getOrigin();
-            if(!originLocal){
-                window.location.href='brands.html';
+            if (!originLocal) {
+                window.location.href = 'brands.html';
                 return;
             }
             utilPage.ready();
@@ -45,18 +45,18 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
 
         /**
          * @func
-         * @desc 获取品牌列表
+         * @desc 获取车型列表
          */
         getProductList: function (callback) {
-            var url = config.url.findProductList;
+            var url = config.url.findAllProductModel;
             var par = {};
             var brand = utilBrands.brands.getBrand();
-            par.brands=brand.id;
-            par.pageIndex=1;
-            par.pageSize=999999;
+            par.brands = brand.id;
+            par.pageIndex = 1;
+            par.pageSize = 999999;
             // var userId = utilUser.user.getUserId();
             jea.get(url, par, function (result) {
-                if (result&&result.code=='200' && result.data && typeof callback === 'function') {
+                if (result && result.code == '200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }
             });
@@ -72,16 +72,45 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             // 选中
             $body.on('click', '.list-item', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
+                self.showLoadin();
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='order.html';
-                // window.location.replace(backUrl);
-                // window.history.go(-1);
+                var selectProduct=utilBrands.product.getProduct();
+                self.getProduct(selectProduct.id);
             });
         },
         setUserSelected: function (data) {
             utilBrands.product.setProduct(data);
+        },
+        /**
+         * 获取产品
+         */
+        getProduct: function (productModelId) {
+            var _self = this;
+            var url = config.url.findProductList;
+            var par = {};
+            par.productModelId = productModelId;
+            par.pageIndex = 1;
+            par.pageSize = 999;
+            // var userId = utilUser.user.getUserId();
+            jea.get(url, par, function (result) {
+                if (result && result.code == '200' && result.data) {
+                    utilBrands.productList.setProductList(result.data);
+                    _self.hideLoadin();
+                    window.location.href = 'order.html';
+
+                }
+            });
+        },
+        hideLoadin: function () {
+            $('#loadingToast').addClass('hide');
+        },
+        showLoadin: function (content) {
+            $('#loadingToast').removeClass('hide');
+            if (content) {
+                $('.weui_toast_content').text(content);
+            }
         }
     };
     return new App();

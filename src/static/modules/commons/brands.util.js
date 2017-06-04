@@ -23,6 +23,17 @@ define(['jquery','config'],function ($,config) {
                 sessionStorage.removeItem(config.key.brands.select_product);
             }
         },
+        productList:{//某汽车型号下的产品
+            setProductList : function(productList){
+                sessionStorage.setItem(config.key.brands.getproductList,JSON.stringify(productList));
+            },
+            getProductList : function(){
+                return JSON.parse(sessionStorage.getItem(config.key.brands.getproductList) || "{}");
+            },
+            clearProductList : function(){
+                sessionStorage.removeItem(config.key.brands.getproductList);
+            }
+        },
         origin:{//来源的店铺
             setOrigin : function(origin){
                 // sessionStorage.setItem(config.key.brands.origin,JSON.stringify(origin));
