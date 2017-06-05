@@ -323,7 +323,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     if (version >= 5.0) {
                         // 创建订单
                         var par = {};
-                        par.product = JSON.stringify(product);
+                        // par.product = JSON.stringify(product);
+                        par.product = product.join('#');
                         // par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                         par.mobile = phoneNum;
@@ -363,7 +364,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 } else {
                     // 使用支付宝支付
                     var par = {};
-                    par.product = JSON.stringify(product);
+                    // par.product = JSON.stringify(product);
+                    par.product = product.join('#');
                     // par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     par.mobile = phoneNum;
@@ -435,7 +437,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     if (version >= 5.0) {
                         // 创建订单
                         var par = {};
-                        par.product = JSON.stringify(product);
+                        // par.product = JSON.stringify(product);
+                        par.product = product.join('#');
                         // par.timeLimit = $this.timeLimitblx;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                         par.mobile = phoneNum;
@@ -475,7 +478,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 } else {
                     // 使用支付宝支付
                     var par = {};
-                    par.product = JSON.stringify(product);
+                    // par.product = JSON.stringify(product);
+                    par.product = product.join('#');
                     // par.timeLimit = $this.timeLimitblx;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                     par.mobile = phoneNum;
