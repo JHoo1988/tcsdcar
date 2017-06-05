@@ -2,29 +2,10 @@
     <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
     <div class="weui_text_area">
         <h2 class="weui_msg_title">支付成功</h2>
-        <div>
-            <div class="order">订单号：<%=orderNo%></div>
+        <div class="code">
+            <img src="http://www.tcsdcar.com/images/officialwebsite/qrcode_for_gh_dc958df6045d_258.jpg" alt="同创盛大汽车服务微信公众号">
+            <div class="code-desc">查询订单，使用优惠，请关注公众号</div>
         </div>
-        <%if(brand&&brand.name&&product&&product.productName){%>
-        <div class="weui-flex">
-            <div class="weui-flex__item">
-                <div class="placeholder1">服务产品：</div>
-            </div>
-            <div class="weui-flex__item">
-                <div class="placeholder2"><%=brand.name+product.productName%></div>
-            </div>
-        </div>
-        <%}%>
-        <%if(null!=timeLimit&&timeLimit){%>
-        <div class="weui-flex">
-            <div class="weui-flex__item">
-                <div class="placeholder1">服务时长：</div>
-            </div>
-            <div class="weui-flex__item">
-                <div class="placeholder2"><%=timeLimit%>个月</div>
-            </div>
-        </div>
-        <%}%>
         <div class="weui-flex">
             <div class="weui-flex__item">
                 <div class="placeholder1">客服电话：</div>

@@ -9,10 +9,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
     var utilBrands = require('util_brands');
     var utilCommon = require('util_common');
     var App = function () {
-        this.orderNo = utilBrands.orderNo.getOrderNo();
-        this.brand = utilBrands.brands.getBrand();
-        this.product = utilBrands.product.getProduct();
-        this.timeLimit = utilBrands.timeLimit.getTimeLimit();
+        // this.orderNo = utilBrands.orderNo.getOrderNo();
+        // this.brand = utilBrands.brands.getBrand();
+        // this.product = utilBrands.product.getProduct();
+        // this.timeLimit = utilBrands.timeLimit.getTimeLimit();
     };
 
     App.prototype = {
@@ -39,22 +39,22 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
          * @desc 渲染页面
          */
         renderPage: function () {
-            this.getunifiedOrder(function (data) {
-                // var pageData = {};
-                // pageData.data = data.data;
-                // var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
-                // $('body').prepend(html);
-            });
-            var pageData = {};
-            pageData.orderNo = this.orderNo;
-            pageData.brand = this.brand;
-            pageData.product = this.product;
-            pageData.timeLimit = this.timeLimit;
-            var out_trade_no = utilCommon.getParam('out_trade_no');
-            if(out_trade_no){
-                pageData.orderNo=out_trade_no;
-            }
-            var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
+            // this.getunifiedOrder(function (data) {
+            //     // var pageData = {};
+            //     // pageData.data = data.data;
+            //     // var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render(pageData);
+            //     // $('body').prepend(html);
+            // });
+            // var pageData = {};
+            // pageData.orderNo = this.orderNo;
+            // pageData.brand = this.brand;
+            // pageData.product = this.product;
+            // pageData.timeLimit = this.timeLimit;
+            // var out_trade_no = utilCommon.getParam('out_trade_no');
+            // if(out_trade_no){
+            //     pageData.orderNo=out_trade_no;
+            // }
+            var html = new EJS({ url: 'views/paysuccess/index.ejs' }).render();
             $('body').prepend(html);
         },
 
