@@ -34,7 +34,7 @@
                         <p>玻璃贴膜保障为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
                     </div>
                     <div class="selected-cartype">
-                        <span>车型：</span>
+                        <span>已选车型：</span>
                         <span><%= brand.name + product.name %></span>
                     </div>
                     <div class="select-time">
@@ -70,30 +70,37 @@
 
                         </div>
                         <div class="panel-qcm">
-                            <p class="select-time-tips">选择玻璃贴膜质保服务时间</p>
+                            <p class="select-time-tips">选择玻璃险服务时间</p>
                             <div class="weui-flex">
                                 <div class="weui-flex__item">
-                                    <div class="placeholder three selectd">12期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy three active"
+                                         data-price="<%= productList.content[1].twelveCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">12期</p>
+                                            <p class="desc">￥<%= productList.content[1].twelveCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="weui-flex__item">
-                                    <div class="placeholder tow">24期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy tow"
+                                         data-price="<%= productList.content[1].twentyFourCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">24期</p>
+                                            <p class="desc">￥<%= productList.content[1].twentyFourCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="weui-flex__item">
-                                    <div class="placeholder one">36期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy one"
+                                         data-price="<%= productList.content[1].thirtySixCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">36期</p>
+                                            <p class="desc">￥<%= productList.content[1].thirtySixCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="time-discription time-one hide">
-                                质保时间为36个月，超长质保，价格更优，服务更佳！
-                            </div>
-                            <div class="time-discription time-tow hide">
-                                质保时间为24个月，服务周到，省心！
-                            </div>
-                            <div class="time-discription time-three">
-                                质保时间为12个月。
                             </div>
                         </div>
-
-
                     </div>
                     <div class="action-bottom">
                         <ul class="notification-menu">
@@ -155,7 +162,7 @@
                         <p>玻璃险为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
                     </div>
                     <div class="selected-cartype">
-                        <span>车型：</span>
+                        <span>已选车型：</span>
                         <span><%= brand.name + product.name %></span>
                     </div>
                     <div class="select-time">
@@ -194,27 +201,34 @@
                             <p class="select-time-tips">选择玻璃贴膜质保服务时间</p>
                             <div class="weui-flex">
                                 <div class="weui-flex__item">
-                                    <div class="placeholder three selectd">12期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy three active"
+                                         data-price="<%= productList.content[0].twelveCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">12期</p>
+                                            <p class="desc">￥<%= productList.content[0].twelveCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="weui-flex__item">
-                                    <div class="placeholder tow">24期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy tow"
+                                         data-price="<%= productList.content[0].twentyFourCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">24期</p>
+                                            <p class="desc">￥<%= productList.content[0].twentyFourCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="weui-flex__item">
-                                    <div class="placeholder one">36期</div>
+                                    <div class="placeholder-blx-yy placeholder-yy one"
+                                         data-price="<%= productList.content[0].thirtySixCyclePrice %>">
+                                        <div class="item-info">
+                                            <p class="title">36期</p>
+                                            <p class="desc">￥<%= productList.content[0].thirtySixCyclePrice %></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="time-discription time-one hide">
-                                质保时间为36个月，超长质保，价格更优，服务更佳！
-                            </div>
-                            <div class="time-discription time-tow hide">
-                                质保时间为24个月，服务周到，省心！
-                            </div>
-                            <div class="time-discription time-three">
-                                质保时间为12个月。
                             </div>
                         </div>
-
-
                     </div>
                     <div class="action-bottom">
                         <ul class="notification-menu">

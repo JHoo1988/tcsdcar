@@ -82,7 +82,7 @@
               -webkit-box-flex: 1;
               -webkit-flex: 1;
               flex: 1;
-              .placeholder,.placeholder-blx {
+              .placeholder, .placeholder-blx {
                 margin: 5px;
                 padding: 0 10px;
                 background-color: #009688;
@@ -107,7 +107,7 @@
           padding: px2rem(15) px2rem(30);
           box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
           border-bottom: 1px solid #ddd;
-          .check-yy-flag-qcm,.check-yy-flag-blx {
+          .check-yy-flag-qcm, .check-yy-flag-blx {
             content: '';
             clear: both;
             display: block;
@@ -117,11 +117,11 @@
               width: 85%;
               margin-left: px2rem(30);
             }
-            .icon-yy-check-blx.checked:before,.icon-yy-check-qcm.checked:before {
+            .icon-yy-check-blx.checked:before, .icon-yy-check-qcm.checked:before {
               content: '\EA06';
               color: #5FB878;
             }
-            .icon-yy-check-blx:before,.icon-yy-check-qcm:before {
+            .icon-yy-check-blx:before, .icon-yy-check-qcm:before {
               font-family: "weui";
               font-style: normal;
               font-weight: 400;
@@ -136,8 +136,8 @@
               font-size: 27px;
             }
           }
-          .panel-qcm,.panel-blx{
-            display:none;
+          .panel-qcm, .panel-blx {
+            display: none;
             border-top: 1px solid #ddd;
             .weui-flex {
               display: -webkit-box;
@@ -158,6 +158,37 @@
                 }
                 .selectd {
                   background-color: #5FB878;
+                }
+                .placeholder-yy {
+                  text-align: center;
+                  border: 1px solid #ddd;
+                  border-radius: px2rem(13);
+                  height: px2rem(126);
+                  display: table;
+                  width: 90%;
+                  margin: px2rem(15) auto;
+                  .item-info {
+                    display: table-cell;
+                    vertical-align: middle;
+                  }
+                  .title {
+                    font-size: px2rem(36);
+                    color: #333;
+                  }
+                  .desc {
+                    color: #999;
+                    font-size: px2rem(24);
+                  }
+                }
+                .placeholder-yy.active {
+                  color: #5FB878;
+                  border-color: #5FB878;
+                  .title {
+                    color: #5FB878;
+                  }
+                  .desc {
+                    color: #5FB878;
+                  }
                 }
               }
             }
@@ -211,7 +242,7 @@
         text-align: right;
         width: 40%;
       }
-      .price-num,.price-num-blx {
+      .price-num, .price-num-blx {
         font-size: px2rem(36);
       }
       .btn {
