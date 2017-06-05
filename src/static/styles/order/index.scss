@@ -69,11 +69,6 @@
           margin-top: px2rem(18);
           padding: px2rem(15) px2rem(30);
           box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
-          .select-time-tips {
-            font-size: px2rem(28);
-            font-family: "微软雅黑";
-            color: #666666;
-          }
           .weui-flex {
             display: -webkit-box;
             display: -webkit-flex;
@@ -104,18 +99,28 @@
         .select-yy {
           background-color: #FFFFFF;
           margin-top: px2rem(18);
-          padding: px2rem(15) px2rem(30);
+          margin-bottom: px2rem(18);
+          padding: 0 px2rem(30);
           box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
           border-bottom: 1px solid #ddd;
           .check-yy-flag-qcm, .check-yy-flag-blx {
             content: '';
             clear: both;
             display: block;
-            height: px2rem(180);
+            height: px2rem(120);
+            padding: px2rem(15) 0;
             .yy-discription {
               float: left;
               width: 85%;
               margin-left: px2rem(30);
+              .yyzh-span {
+                border: 1px solid #F7B824;
+                padding: px2rem(12);
+                border-radius: 6px;
+                color: #F7B824;
+                margin: 3px 0;
+                display: inline-block;
+              }
             }
             .icon-yy-check-blx.checked:before, .icon-yy-check-qcm.checked:before {
               content: '\EA06';
@@ -139,6 +144,14 @@
           .panel-qcm, .panel-blx {
             display: none;
             border-top: 1px solid #ddd;
+            padding: px2rem(15) 0;
+            .select-time-tips {
+              font-size: px2rem(28);
+              font-family: "微软雅黑";
+              color: #5FB878;
+              margin-top: px2rem(30);
+              display: inline-block;
+            }
             .weui-flex {
               display: -webkit-box;
               display: -webkit-flex;
