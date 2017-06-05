@@ -16,6 +16,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit = '12';
         this.timeLimitblx = '12';
+        this.timeLimit_qcm_zh_blx = '12';// 汽车膜质保tab中选择的玻璃险的期数
+        this.timeLimitblx_blx_zh_qcm = '12';
+        this.qcm_price = this.productList.content[0].twelveCyclePrice;// 汽车膜质保tab中选择的期数对应的价格
+        this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
     };
 
@@ -85,6 +89,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimit = '36';
                         //设置36期价格
                         $('.price-num').text($this.productList.content[0].thirtySixCyclePrice);
+                        $this.qcm_price = $this.productList.content[0].thirtySixCyclePrice;
                     } else if ($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-tow')) {
@@ -96,6 +101,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimit = '24';
                         //设置24期价格
                         $('.price-num').text($this.productList.content[0].twentyFourCyclePrice);
+                        $this.qcm_price = $this.productList.content[0].twentyFourCyclePrice;
                     } else if ($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-three')) {
@@ -107,6 +113,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimit = '12';
                         //设置12期价格
                         $('.price-num').text($this.productList.content[0].twelveCyclePrice);
+                        $this.qcm_price = $this.productList.content[0].twelveCyclePrice;
                     }
                 }
             });
@@ -153,6 +160,37 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimitblx = '12';
                         //设置12期价格
                         $('.price-num-blx').text($this.productList.content[1].twelveCyclePrice);
+                    }
+                }
+            });
+            // 选择汽车膜质保选项卡中的玻璃险服务时间
+            $('.placeholder-blx-yy').click(function () {
+                if (!$(this).hasClass('active')) {
+                    $('.placeholder-blx-yy').each(function () {
+                        if ($(this).hasClass('active')) {
+                            $(this).removeClass('active');
+                        }
+                    });
+                    $(this).addClass('active');
+
+                    if ($(this).hasClass('one')) {
+                        $this.timeLimit_qcm_zh_blx = '36';
+                        //设置36期价格
+                        $this.price_blx_yy = $this.productList.content[1].thirtySixCyclePrice;
+                        var price = $this.qcm_price + $this.price_blx_yy;
+                        $('.price-num').text(price);
+                    } else if ($(this).hasClass('tow')) {
+                        $this.timeLimit_qcm_zh_blx = '24';
+                        //设置24期价格
+                        $this.price_blx_yy = $this.productList.content[1].twentyFourCyclePrice;
+                        var price = $this.qcm_price + $this.price_blx_yy;
+                        $('.price-num').text(price);
+                    } else if ($(this).hasClass('three')) {
+                        $this.timeLimit_qcm_zh_blx = '12';
+                        //设置12期价格
+                        $this.price_blx_yy = $this.productList.content[1].twelveCyclePrice;
+                        var price = $this.qcm_price + $this.price_blx_yy;
+                        $('.price-num').text(price);
                     }
                 }
             });
@@ -231,7 +269,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             dataType: 'json',
                             data: par,
                             success: function (data) {
-                                if (undefined != data && null != data  && data.code == 200 &&undefined != data.data && null != data.data) {
+                                if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
                                     var result = data.data;
                                     if (result.orderNo) {
                                         utilBrands.orderNo.setOrderNo(result.orderNo);
@@ -270,7 +308,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         dataType: 'json',
                         data: par,
                         success: function (data) {
-                            if (undefined != data && null != data && data.code == 200 &&undefined != data.data && null != data.data ) {
+                            if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
                                 var result = data.data;
                                 if (result.orderNo) {
                                     utilBrands.orderNo.setOrderNo(result.orderNo);
@@ -338,7 +376,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                             dataType: 'json',
                             data: par,
                             success: function (data) {
-                                if (undefined != data && null != data  && data.code == 200 &&undefined != data.data && null != data.data) {
+                                if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
                                     var result = data.data;
                                     if (result.orderNo) {
                                         utilBrands.orderNo.setOrderNo(result.orderNo);
@@ -377,7 +415,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         dataType: 'json',
                         data: par,
                         success: function (data) {
-                            if (undefined != data && null != data && data.code == 200 &&undefined != data.data && null != data.data ) {
+                            if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
                                 var result = data.data;
                                 if (result.orderNo) {
                                     utilBrands.orderNo.setOrderNo(result.orderNo);
@@ -412,9 +450,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 if ($('.icon-yy-check-qcm').hasClass('checked')) {
                     $('.icon-yy-check-qcm').removeClass('checked');
                     $(".panel-qcm").slideToggle("normal");
+                    $('.price-num').text($this.qcm_price);
                 } else {
                     $('.icon-yy-check-qcm').addClass('checked');
                     $(".panel-qcm").slideToggle("normal");
+                    var price = $this.qcm_price + $this.price_blx_yy;
+                    $('.price-num').text(price);
                 }
             });
             $('.check-yy-flag-blx').click(function () {
