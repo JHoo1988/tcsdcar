@@ -92,8 +92,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimit = '36';
                         //设置36期价格
-                        $('.price-num').text($this.productList.content[0].thirtySixCyclePrice);
                         $this.qcm_price = $this.productList.content[0].thirtySixCyclePrice;
+                        if ($this.product_qcm.id) {
+                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
+                        }else{
+                            $('.price-num').text($this.qcm_price);
+                        }
                     } else if ($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-tow')) {
@@ -104,8 +108,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimit = '24';
                         //设置24期价格
-                        $('.price-num').text($this.productList.content[0].twentyFourCyclePrice);
                         $this.qcm_price = $this.productList.content[0].twentyFourCyclePrice;
+                        if ($this.product_qcm.id) {
+                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
+                        }else{
+                            $('.price-num').text($this.qcm_price);
+                        }
                     } else if ($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-three')) {
@@ -116,8 +124,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimit = '12';
                         //设置12期价格
-                        $('.price-num').text($this.productList.content[0].twelveCyclePrice);
                         $this.qcm_price = $this.productList.content[0].twelveCyclePrice;
+                        if ($this.product_qcm.id) {
+                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
+                        }else{
+                            $('.price-num').text($this.qcm_price);
+                        }
                     }
                 }
             });
@@ -141,8 +153,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimitblx = '36';
                         //设置36期价格
-                        $('.price-num-blx').text($this.productList.content[1].thirtySixCyclePrice);
                         $this.blx_price = $this.productList.content[1].thirtySixCyclePrice;
+                        if ($this.product_blx.id) {
+                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
+                        }else{
+                            $('.price-num-blx').text($this.blx_price);
+                        }
                     } else if ($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-tow')) {
@@ -153,8 +169,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimitblx = '24';
                         //设置24期价格
-                        $('.price-num-blx').text($this.productList.content[1].twentyFourCyclePrice);
                         $this.blx_price = $this.productList.content[1].twentyFourCyclePrice;
+                        if ($this.product_blx.id) {
+                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
+                        }else{
+                            $('.price-num-blx').text($this.blx_price);
+                        }
                     } else if ($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-three')) {
@@ -165,8 +185,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         });
                         $this.timeLimitblx = '12';
                         //设置12期价格
-                        $('.price-num-blx').text($this.productList.content[1].twelveCyclePrice);
                         $this.blx_price = $this.productList.content[1].twelveCyclePrice;
+                        if ($this.product_blx.id) {
+                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
+                        }else{
+                            $('.price-num-blx').text($this.blx_price);
+                        }
                     }
                 }
             });
