@@ -17,11 +17,13 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.timeLimit = '12';
         this.timeLimitblx = '12';
         this.timeLimit_qcm_zh_blx = '12';// 汽车膜质保tab中选择的玻璃险的期数
-        this.timeLimitblx_blx_zh_qcm = '12';
+        this.timeLimitblx_blx_zh_qcm = '12';// 玻璃险tab中选择的汽车膜质保的期数
         this.qcm_price = this.productList.content[0].twelveCyclePrice;// 汽车膜质保tab中选择的期数对应的价格
         this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
         this.blx_price = this.productList.content[1].twelveCyclePrice;// 玻璃险tab中选择的期数对应的价格
         this.price_qcm_yy = this.productList.content[0].twelveCyclePrice;// 玻璃险tab中选择的汽车膜质保的价格
+        this.product_qcm = {};//汽车膜质保tab中选择的玻璃险的组装数据的临时对象
+        this.product_blx = {};//玻璃险tab中选择的汽车膜质保的组装数据的临时对象
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
     };
 
@@ -264,6 +266,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 if ($(this).hasClass('disabled')) {
                     return false;
                 }
+                var product = [];
+                product.push($this.productList.content[0].id + ',' + $this.timeLimit);
+                if ($this.product_qcm.id) {
+                    product.push($this.product_qcm.id + ',' + $this.timeLimit_qcm_zh_blx);
+                }
                 var phoneNum = $.trim($("#vip-balance input[type='tel'][name='phonenum']").val());
                 if (!utilCommon.checkIsMobile(phoneNum)) {
                     $('.weui_dialog_bd').text('请填写正确的手机号码');
@@ -292,8 +299,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     if (version >= 5.0) {
                         // 创建订单
                         var par = {};
-                        par.product = $this.product.id;
-                        par.timeLimit = $this.timeLimit;
+                        par.product = JSON.stringify(product);
+                        // par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                         par.mobile = phoneNum;
                         par.carBodyNo = carnum;
@@ -332,8 +339,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 } else {
                     // 使用支付宝支付
                     var par = {};
-                    par.product = $this.product.id;
-                    par.timeLimit = $this.timeLimit;
+                    par.product = JSON.stringify(product);
+                    // par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
@@ -371,6 +378,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 if ($(this).hasClass('disabled')) {
                     return false;
                 }
+                var product = new Array();
+                product.push($this.productList.content[1].id + ',' + $this.timeLimitblx);
+                if ($this.product_blx.id) {
+                    product.push($this.product_blx.id + ',' + $this.timeLimitblx_blx_zh_qcm);
+                }
                 var phoneNum = $.trim($("#vip-rechargecard input[type='tel'][name='phonenum']").val());
                 if (!utilCommon.checkIsMobile(phoneNum)) {
                     $('.weui_dialog_bd').text('请填写正确的手机号码');
@@ -399,8 +411,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     if (version >= 5.0) {
                         // 创建订单
                         var par = {};
-                        par.product = $this.product.id;
-                        par.timeLimit = $this.timeLimitblx;
+                        par.product = JSON.stringify(product);
+                        // par.timeLimit = $this.timeLimitblx;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                         par.mobile = phoneNum;
                         par.carBodyNo = carnum;
@@ -439,8 +451,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 } else {
                     // 使用支付宝支付
                     var par = {};
-                    par.product = $this.product.id;
-                    par.timeLimit = $this.timeLimitblx;
+                    par.product = JSON.stringify(product);
+                    // par.timeLimit = $this.timeLimitblx;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
@@ -487,11 +499,13 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.icon-yy-check-qcm').removeClass('checked');
                     $(".panel-qcm").slideToggle("normal");
                     $('.price-num').text($this.qcm_price);
+                    delete $this.product_qcm.id;
                 } else {
                     $('.icon-yy-check-qcm').addClass('checked');
                     $(".panel-qcm").slideToggle("normal");
                     var price = $this.qcm_price + $this.price_blx_yy;
                     $('.price-num').text(price);
+                    $this.product_qcm.id = $this.productList.content[1].id;
                 }
             });
             $('.check-yy-flag-blx').click(function () {
@@ -499,11 +513,15 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.icon-yy-check-blx').removeClass('checked');
                     $(".panel-blx").slideToggle("normal");
                     $('.price-num-blx').text($this.blx_price);
+                    delete $this.product_blx.id;
+                    delete $this.product_blx.time;
                 } else {
                     $('.icon-yy-check-blx').addClass('checked');
                     $(".panel-blx").slideToggle("normal");
                     var price = $this.blx_price + $this.price_qcm_yy;
                     $('.price-num-blx').text(price);
+                    $this.product_blx.id = $this.productList.content[1].id;
+                    $this.product_blx.time = $this.timeLimitblx_blx_zh_qcm;
                 }
             });
         },
