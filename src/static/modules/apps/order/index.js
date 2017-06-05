@@ -20,6 +20,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.timeLimitblx_blx_zh_qcm = '12';
         this.qcm_price = this.productList.content[0].twelveCyclePrice;// 汽车膜质保tab中选择的期数对应的价格
         this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
+        this.blx_price = this.productList.content[1].twelveCyclePrice;// 玻璃险tab中选择的期数对应的价格
+        this.price_qcm_yy = this.productList.content[0].twelveCyclePrice;// 玻璃险tab中选择的汽车膜质保的价格
         utilBrands.timeLimit.setTimeLimit(this.timeLimit);
     };
 
@@ -138,6 +140,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimitblx = '36';
                         //设置36期价格
                         $('.price-num-blx').text($this.productList.content[1].thirtySixCyclePrice);
+                        $this.blx_price = $this.productList.content[1].thirtySixCyclePrice;
                     } else if ($(this).hasClass('tow')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-tow')) {
@@ -149,6 +152,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimitblx = '24';
                         //设置24期价格
                         $('.price-num-blx').text($this.productList.content[1].twentyFourCyclePrice);
+                        $this.blx_price = $this.productList.content[1].twentyFourCyclePrice;
                     } else if ($(this).hasClass('three')) {
                         $('.time-discription').each(function () {
                             if ($(this).hasClass('time-three')) {
@@ -160,6 +164,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.timeLimitblx = '12';
                         //设置12期价格
                         $('.price-num-blx').text($this.productList.content[1].twelveCyclePrice);
+                        $this.blx_price = $this.productList.content[1].twelveCyclePrice;
                     }
                 }
             });
@@ -191,6 +196,37 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         $this.price_blx_yy = $this.productList.content[1].twelveCyclePrice;
                         var price = $this.qcm_price + $this.price_blx_yy;
                         $('.price-num').text(price);
+                    }
+                }
+            });
+            // 选择玻璃险选项卡中的汽车膜质保服务时间
+            $('.placeholder-qcm-yy').click(function () {
+                if (!$(this).hasClass('active')) {
+                    $('.placeholder-qcm-yy').each(function () {
+                        if ($(this).hasClass('active')) {
+                            $(this).removeClass('active');
+                        }
+                    });
+                    $(this).addClass('active');
+
+                    if ($(this).hasClass('one')) {
+                        $this.timeLimitblx_blx_zh_qcm = '36';
+                        //设置36期价格
+                        $this.price_qcm_yy = $this.productList.content[0].thirtySixCyclePrice;
+                        var price = $this.blx_price + $this.price_qcm_yy;
+                        $('.price-num-blx').text(price);
+                    } else if ($(this).hasClass('tow')) {
+                        $this.timeLimitblx_blx_zh_qcm = '24';
+                        //设置24期价格
+                        $this.price_qcm_yy = $this.productList.content[0].twentyFourCyclePrice;
+                        var price = $this.blx_price + $this.price_qcm_yy;
+                        $('.price-num-blx').text(price);
+                    } else if ($(this).hasClass('three')) {
+                        $this.timeLimitblx_blx_zh_qcm = '12';
+                        //设置12期价格
+                        $this.price_qcm_yy = $this.productList.content[0].twelveCyclePrice;
+                        var price = $this.blx_price + $this.price_qcm_yy;
+                        $('.price-num-blx').text(price);
                     }
                 }
             });
@@ -462,9 +498,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 if ($('.icon-yy-check-blx').hasClass('checked')) {
                     $('.icon-yy-check-blx').removeClass('checked');
                     $(".panel-blx").slideToggle("normal");
+                    $('.price-num-blx').text($this.blx_price);
                 } else {
                     $('.icon-yy-check-blx').addClass('checked');
                     $(".panel-blx").slideToggle("normal");
+                    var price = $this.blx_price + $this.price_qcm_yy;
+                    $('.price-num-blx').text(price);
                 }
             });
         },
