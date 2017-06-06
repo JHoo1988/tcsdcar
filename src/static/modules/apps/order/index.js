@@ -324,7 +324,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         // 创建订单
                         var par = {};
                         // par.product = JSON.stringify(product);
-                        par.product = product.join('#');
+                        par.productStr = product.join('#');
                         // par.timeLimit = $this.timeLimit;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                         par.mobile = phoneNum;
@@ -365,7 +365,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     // 使用支付宝支付
                     var par = {};
                     // par.product = JSON.stringify(product);
-                    par.product = product.join('#');
+                    par.productStr = product.join('#');
                     // par.timeLimit = $this.timeLimit;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     par.mobile = phoneNum;
@@ -438,7 +438,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         // 创建订单
                         var par = {};
                         // par.product = JSON.stringify(product);
-                        par.product = product.join('#');
+                        par.productStr = product.join('#');
                         // par.timeLimit = $this.timeLimitblx;
                         utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                         par.mobile = phoneNum;
@@ -479,7 +479,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     // 使用支付宝支付
                     var par = {};
                     // par.product = JSON.stringify(product);
-                    par.product = product.join('#');
+                    par.productStr = product.join('#');
                     // par.timeLimit = $this.timeLimitblx;
                     utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
                     par.mobile = phoneNum;
@@ -522,6 +522,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $('.submit').removeClass('disabled');
                 }
             });
+            // 购买玻璃险的套餐
             $('.check-yy-flag-qcm').click(function () {
                 if ($('.icon-yy-check-qcm').hasClass('checked')) {
                     $('.icon-yy-check-qcm').removeClass('checked');
@@ -536,6 +537,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $this.product_qcm.id = $this.productList.content[1].id;
                 }
             });
+            // 购买汽车膜的套餐
             $('.check-yy-flag-blx').click(function () {
                 if ($('.icon-yy-check-blx').hasClass('checked')) {
                     $('.icon-yy-check-blx').removeClass('checked');
@@ -548,7 +550,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     $(".panel-blx").slideToggle("normal");
                     var price = $this.blx_price + $this.price_qcm_yy;
                     $('.price-num-blx').text(price);
-                    $this.product_blx.id = $this.productList.content[1].id;
+                    $this.product_blx.id = $this.productList.content[0].id;
                     $this.product_blx.time = $this.timeLimitblx_blx_zh_qcm;
                 }
             });
