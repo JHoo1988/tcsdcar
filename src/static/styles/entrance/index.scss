@@ -52,8 +52,8 @@
       .weui_grid {
         padding: px2rem(36) 0;
         .weui_grid_icon {
-          width: px2rem(51);
-          height: px2rem(51);
+          width: px2rem(76);
+          height: px2rem(76);
           margin: 0 auto;
         }
         .weui_grid_label {
@@ -99,8 +99,8 @@
         box-sizing: border-box;
         .weui-grid__icon {
           //width: 85%;
-          width: 38px;
-          height: 38px;
+          width: px2rem(76);
+          height: px2rem(76);
           margin: 0 auto;
           img {
             display: block;

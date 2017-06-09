@@ -104,9 +104,13 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
         },
         //获取汽车膜品牌列表
         getQCMBrandsList: function (callback) {
-            var url = config.url.findAllProductBrands;
-            // var userId = utilUser.user.getUserId();
-            jea.get(url, null, function (result) {
+            var url = config.url.findAllProductBrandsCategory;
+            var param = {};
+            param.pageIndex=1;
+            param.pageSize=999;
+            param.level='2';
+            // param.parent='c67e4492823049cface10b9ae8c11524';//这个要改成数据库中对应的id
+            jea.get(url, param, function (result) {
                 if (result && result.code == '200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }

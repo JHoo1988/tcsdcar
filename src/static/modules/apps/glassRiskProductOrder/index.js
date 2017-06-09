@@ -255,6 +255,21 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             $('#js-order-yhm').click(function () {
                 window.location.href='membranePackage.html'
             });
+            // 购买玻璃险的套餐
+            $('.check-yy-flag-qcm').click(function () {
+                if ($('.icon-yy-check-qcm').hasClass('checked')) {
+                    $('.icon-yy-check-qcm').removeClass('checked');
+                    $(".panel-qcm").slideToggle("normal");
+                    // $('.price-num').text($this.qcm_price);
+                    // delete $this.product_qcm.id;
+                } else {
+                    $('.icon-yy-check-qcm').addClass('checked');
+                    $(".panel-qcm").slideToggle("normal");
+                    // var price = $this.qcm_price + $this.price_blx_yy;
+                    // $('.price-num').text(price);
+                    // $this.product_qcm.id = $this.productList.content[1].id;
+                }
+            });
         },
         //emoji表情转换为字符
         emoji2Str: function (str) {

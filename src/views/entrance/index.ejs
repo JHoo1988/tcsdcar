@@ -1,6 +1,8 @@
 <%
 var data1 = data1;
 var len = data1.data.length;
+var data2 = data2;
+var blxlen = data2.content.length;
 %>
 <div class="entrance">
     <header class="com-header">
@@ -29,34 +31,25 @@ var len = data1.data.length;
                 </div>
             </div>
             <div class="weui_tab_bd">
+                <!--产品品牌列表-->
+                <% if(blxlen > 0){ %>
                 <div id="vip-balance" class="weui_tab_bd_item weui_tab_bd_item_active">
                     <div class="weui_grids me-action-list">
-                        <a href="http://125.93.53.91:31337/app/chat.html?appname=tenant_APPshifen" class="weui_grid">
+                        <% var con = data2.content;
+                        for(var k = 0;k < blxlen;k++){ %>
+                        <a data-json="<%= JSON.stringify(con[k]) %>" class="weui_grid">
                             <div class="weui_grid_icon">
-                                <img src="../static/images/my/zaixiankefu.png" alt="">
+                                <!--<img src="../../../images/brand/<%= con[k].id %>.png" alt="icon">-->
+                                <img src="http://www.tcsdcar.com/images/brand/36ee4dd84f8448ab9343cff51899813a.png" alt="icon">
                             </div>
                             <p class="weui_grid_label">
-                                在线客服
+                                <%=con[k].name%>
                             </p>
                         </a>
-                        <a href="tel:4008300100" class="weui_grid">
-                            <div class="weui_grid_icon">
-                                <img src="../static/images/my/kefurexian.png" alt="">
-                            </div>
-                            <p class="weui_grid_label">
-                                客服热线
-                            </p>
-                        </a>
-                        <a href="javascript:;" id="js-to-feedback" class="weui_grid">
-                            <div class="weui_grid_icon">
-                                <img src="../static/images/my/feedback.png" alt="">
-                            </div>
-                            <p class="weui_grid_label">
-                                意见反馈
-                            </p>
-                        </a>
+                        <%}%>
                     </div>
                 </div>
+                <% } %>
                 <div id="vip-rechargecard" class="weui_tab_bd_item">
                     <% if(len > 0 ){ %>
                     <!--<p style="background-color: #ffffff;text-align: center;padding:10px 0;color: #666;font-size: 16px">请选择您的汽车品牌</p>-->

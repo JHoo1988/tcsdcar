@@ -83,12 +83,13 @@
             loadUserByOpenId: base + 'user/loadUserByOpenId',
             // 同创盛大店铺编码
             defaltShopCode: 'D838D8F0AE',
-            // 同创盛大店铺编码
             // 手机端车型分页查询
             // findAllProductModel: base + 'productModel/findAllProductModel',
             findAllProductModel: base + 'mobile/findAllProductModel',
-            // // 同创盛大店铺编码
-            // defaltShopCode: 'D838D8F0AE',
+            // 手机端查询产品品牌
+            findAllProductBrandsCategory: base + 'mobile/findAllProductBrandsCategory',
+            // 手机端查询产品
+            findBrandsProductList: base + 'mobile/findBrandsProductList',
 
 
             //UserAddress

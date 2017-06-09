@@ -53,7 +53,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          */
         getProductList: function (callback) {
             var _self = this;
-            var url = config.url.findProductList;
+            var url = config.url.findAllProductModel;
             var par = {};
             par.brands=_self.brand.id;
             par.pageIndex=1;

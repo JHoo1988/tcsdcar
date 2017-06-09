@@ -17,25 +17,25 @@
             <img class="banner-img" src="../../m/static/images/order/qcm_banner.jpg" alt="">
         </div>
         <div class="discription">
-            <!--<p>汽车膜质保服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
+            <!--<p>汽车膜服务服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
             <p>玻璃贴膜保障为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
         </div>
         <div class="selected-cartype">
-            <span>车型：</span>
-            <span><%= brand.name + product.productName %></span>
+            <span>已选车型：</span>
+            <span><%= brand.name + product.name %></span>
         </div>
         <div class="weui_cells weui_cells_access">
             <div class="weui_cell" id="js-order-yhm">
                 <input class="weui_input" type="hidden" name="promoCode" id="promoCode">
                 <a class="weui_cell_hd weui_cell_primary yhm-icon" href="javascript:;">
-                    <span class="promo-code-text">购买 玻璃险+汽车膜质保 优惠套餐，赠送5次免费洗车~！</span>
+                    <span class="promo-code-text">购买 玻璃险+汽车膜服务 优惠套餐，赠送5次免费洗车~！</span>
                     <p class="gray promo-desc hide"></p>
                 </a>
                 <div class="weui_cell_ft weui_cell_ft_mini"></div>
             </div>
         </div>
         <div class="select-time">
-            <span class="select-time-tips">选择玻璃险质保时间</span>
+            <span class="select-time-tips">选择玻璃破损服务时间</span>
             <div class="weui-flex">
                 <div class="weui-flex__item">
                     <div class="placeholder three selectd">12期</div>
@@ -48,13 +48,22 @@
                 </div>
             </div>
             <div class="time-discription time-one hide">
-                质保时间为36个月，超长质保，价格更优，服务更佳！
+                服务时间为36个月，超长服务，价格更优，服务更佳！
             </div>
             <div class="time-discription time-tow hide">
-                质保时间为24个月，服务周到，省心！
+                服务时间为24个月，服务周到，省心！
             </div>
             <div class="time-discription time-three">
-                质保时间为12个月。
+                服务时间为12个月。
+            </div>
+        </div>
+        <div class="select-yy">
+            <div class="check-yy-flag-qcm">
+                <i class="icon-yy-check-qcm" style="float: left"></i>
+                <div class="yy-discription">
+                    <span class="yyzh-span">领取洗车券</span>
+                </div>
+
             </div>
         </div>
     </main>
@@ -100,7 +109,8 @@
                         <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
                     </div>
                     <% } %>
-                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a href="serviceAgreement.html">《服务协议》</a></div>
+                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a href="serviceAgreement.html">《服务协议》</a>
+                    </div>
                 </div>
                 <input type="submit" value="确定" class="submit">
             </div>
