@@ -2,7 +2,7 @@
  * Created by 焦红 on 2017/5/29.
  * tel:18971057583
  */
-define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function ($, jea, config, fastclick,layer) {
+define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], function ($, jea, config, fastclick, layer) {
     'use strict';
 
     var utilPage = require('util_page');
@@ -10,7 +10,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
     var utilBrands = require('util_brands');
 
     var App = function () {
-        this.productBrands = utilBrands.productBrands.getProductBrands();
+        this.productBrands = utilBrands.brands.getBrand();
     };
 
     App.prototype = {
@@ -21,8 +21,8 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
          */
         init: function () {
             var originLocal = utilBrands.origin.getOrigin();
-            if(!originLocal){
-                window.location.href='entrance.html';
+            if (!originLocal) {
+                window.location.href = 'entrance.html';
                 return;
             }
             utilPage.ready();
@@ -49,14 +49,15 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
 
         getProductList: function (callback) {
             var _self = this;
-            var url = config.url.findBrandsProductList;
+            var url = config.url.findAllProductModel;
             var par = {};
-            par.bigBrandsCategory=_self.productBrands.id;
-            par.pageIndex=1;
-            par.pageSize=999999;
+            var brand = utilBrands.brands.getBrand();
+            par.brands = brand.id;
+            par.pageIndex = 1;
+            par.pageSize = 999999;
             // var userId = utilUser.user.getUserId();
             jea.get(url, par, function (result) {
-                if (result&&result.code=='200' && result.data && typeof callback === 'function') {
+                if (result && result.code == '200' && result.data && typeof callback === 'function') {
                     callback(result.data)
                 }
             });
@@ -68,15 +69,52 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             // 选中
             $body.on('click', '.list-item', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
+                self.showLoadin();
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='glassRiskProductOrder.html';
+                var selectProduct = utilBrands.product.getProduct();
+                self.getProduct(selectProduct.id);
             });
         },
         setUserSelected: function (data) {
-            utilBrands.productSC.setProductSC(data);
+            utilBrands.product.setProduct(data);
+        },
+        /**
+         * 获取产品
+         */
+        getProduct: function (productModelId) {
+            var _self = this;
+            var url = config.url.findProductList;
+            var par = {};
+            par.productModelId = productModelId;
+            par.pageIndex = 1;
+            par.pageSize = 999;
+            // var userId = utilUser.user.getUserId();
+            jea.get(url, par, function (result) {
+                if (result && result.code == '200' && result.data) {
+                    utilBrands.productList.setProductList(result.data);
+                    _self.hideLoadin();
+                    if (result.data.content && result.data.content.length > 0) {
+                        window.location.href = 'glassRiskProductOrder.html';
+                    } else {
+                        $('.weui_dialog_bd').text('该车型暂无服务产品');
+                        $('.weui_dialog_alert').removeClass('hide');
+                    }
+
+                }
+            });
+        },
+        hideLoadin: function () {
+            $('#loadingToast').addClass('hide');
+        },
+        showLoadin: function (content) {
+            $('#loadingToast').removeClass('hide');
+            if (content) {
+                $('.weui_toast_content').text(content);
+            }
         }
-    };
+    }
+    ;
     return new App();
 });

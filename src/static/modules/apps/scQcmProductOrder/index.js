@@ -10,8 +10,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
     var utilBrands = require('util_brands');
     var utilCommon = require('util_common');
     var App = function () {
-        this.brand = utilBrands.brands.getBrand();
-        this.product = utilBrands.product.getProduct();// 车型相关
+        this.brand = utilBrands.productBrands.getProductBrands();
+        this.product = utilBrands.productSC.getProductSC();
         this.openid = utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit = '12';
@@ -56,7 +56,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             data.brand = this.brand;
             data.product = this.product;
             data.wechatOrigin = this.originLocal;
-            var html = new EJS({ url: 'views/glassRiskProductOrder/index.ejs' }).render(data);
+            var html = new EJS({ url: 'views/scQcmProductOrder/index.ejs' }).render(data);
             $('body').prepend(html);
         },
 

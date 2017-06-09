@@ -124,29 +124,32 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
         bind: function () {
             var self = this;
             var $body = $('body');
-            // 选中
+            // 玻璃险选中
             $body.on('click', '.list-item', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
                 var $this = $(this);
                 var json = $this.data('json');
-                self.setUserSelected(json);
+                self.setUserSelectedBrands(json);
                 window.location.href='glassRiskProduct.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });
-            // 选中
+            // 汽车膜选中
             $body.on('click', '.weui_grid', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='glassRiskProduct.html';
+                window.location.href='scQcmProduct.html';
                 // window.location.replace(backUrl);
                 // window.history.go(-1);
             });
         },
         setUserSelected: function (data) {
             utilBrands.productBrands.setProductBrands(data);
+        },
+        setUserSelectedBrands: function (data) {
+            utilBrands.brands.setBrand(data);
         },
         /**
          * 获取来源（）
