@@ -10,7 +10,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
     var utilBrands = require('util_brands');
 
     var App = function () {
-        this.brand = utilBrands.brands.getBrand();
+        this.productBrands = utilBrands.productBrands.getProductBrands();
     };
 
     App.prototype = {
@@ -26,9 +26,9 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
                 return;
             }
             utilPage.ready();
+            fastclick.attach(document.body);
             this.renderPage();
             this.bind();
-            fastclick.attach(document.body);
         },
 
         /**
@@ -38,7 +38,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
         renderPage: function () {
             var _self = this;
             this.getProductList(function (addressList) {
-                var title = _self.brand.name;
+                var title = _self.productBrands.name;
                 var pageData = {};
                 pageData.data = addressList.content;
                 pageData.title = title;
@@ -47,15 +47,11 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             });
         },
 
-        /**
-         * @func
-         * @desc 获取品牌列表
-         */
         getProductList: function (callback) {
             var _self = this;
-            var url = config.url.findAllProductModel;
+            var url = config.url.findBrandsProductList;
             var par = {};
-            par.brands=_self.brand.id;
+            par.bigBrandsCategory=_self.productBrands.id;
             par.pageIndex=1;
             par.pageSize=999999;
             // var userId = utilUser.user.getUserId();
@@ -66,10 +62,6 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             });
         },
 
-        /**
-         * @func
-         * @desc 绑定事件
-         */
         bind: function () {
             var self = this;
             var $body = $('body');
@@ -83,7 +75,7 @@ define(['jquery', 'jea', 'config', 'fastclick','layer', 'weui', 'ejs'], function
             });
         },
         setUserSelected: function (data) {
-            utilBrands.product.setProduct(data);
+            utilBrands.productSC.setProductSC(data);
         }
     };
     return new App();

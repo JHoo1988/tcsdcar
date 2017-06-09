@@ -10,8 +10,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
     var utilBrands = require('util_brands');
     var utilCommon = require('util_common');
     var App = function () {
-        this.brand = utilBrands.brands.getBrand();
-        this.product = utilBrands.product.getProduct();
+        this.brand = utilBrands.productBrands.getProductBrands();
+        this.product = utilBrands.productSC.getProductSC();
         this.openid = utilBrands.openid.getOpenId();
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit = '12';
@@ -39,9 +39,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 return;
             }
             utilPage.ready();
+            fastclick.attach(document.body);
             this.renderPage();
             this.bind();
-            fastclick.attach(document.body);
         },
 
         /**

@@ -484,6 +484,8 @@
             brands: {
                 select: 'ha_selected_brands',
                 select_product: 'ha_selected_product',
+                product_brands: 'ha_product_brands',
+                product_SC: 'ha_product_SC',
                 getproductList: 'ha_getproductList',
                 openid: 'ha_openid',
                 orderNo: 'ha_orderNo',

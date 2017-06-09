@@ -135,7 +135,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
                 // window.history.go(-1);
             });
             // 选中
-            $body.on('click', '.weui-grid', function () {
+            $body.on('click', '.weui_grid', function () {
                 // $.toastNoIcon('请输入推荐码', 'noicon');
                 var $this = $(this);
                 var json = $this.data('json');
@@ -146,7 +146,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'rsvp', 'weui', 'ejs'],
             });
         },
         setUserSelected: function (data) {
-            utilBrands.brands.setBrand(data);
+            utilBrands.productBrands.setProductBrands(data);
         },
         /**
          * 获取来源（）

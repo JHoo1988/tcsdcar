@@ -22,13 +22,13 @@ var len = data.length;
             for(var i=0;i<len;i++){
                 var d = data[i];
             %>
-            <a class="weui_cell list-item" href="javascript:;"  data-id="<%= d.id %>" data-name="<%= d.name %>" data-json='<%= JSON.stringify(d) %>'>
+            <a class="weui_cell list-item" href="javascript:;"  data-id="<%= d.id %>" data-name="<%= d.productName %>" data-json='<%= JSON.stringify(d) %>'>
                 <div class="weui_cell_hd img-wrapper">
                     <img src="../../../images/product/<%= data[i].id %>.png" alt="icon" class="img-icon">
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>
-                        <span><%= d.name %></span>
+                        <span><%= d.productName %></span>
                     </p>
                 </div>
                 <div class="weui_cell_ft"></div>
@@ -36,7 +36,7 @@ var len = data.length;
             <%}%>
         </div>
         <%}else{%>
-        <p class="no-data">该品牌暂无型号</p>
+        <p class="no-data">该品牌暂无产品</p>
         <%}%>
     </main>
 </div>

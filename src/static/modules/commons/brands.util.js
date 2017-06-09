@@ -86,6 +86,28 @@ define(['jquery','config'],function ($,config) {
                 sessionStorage.removeItem(config.key.brands.timeLimit);
             }
         },
+        productBrands :{//从产品品牌列表选择了一个品牌，进入了产品列表，市场店铺入口
+            setProductBrands : function(brandInfo){
+                sessionStorage.setItem(config.key.brands.product_brands,JSON.stringify(brandInfo));
+            },
+            getProductBrands : function(){
+                return JSON.parse(sessionStorage.getItem(config.key.brands.product_brands) || "{}");
+            },
+            clearProductBrands : function(){
+                sessionStorage.removeItem(config.key.brands.product_brands);
+            }
+        },
+        productSC :{//从产品列表选择了一个产品，进入了下单界面，市场店铺入口
+            setProductSC : function(brandInfo){
+                sessionStorage.setItem(config.key.brands.product_SC,JSON.stringify(brandInfo));
+            },
+            getProductSC : function(){
+                return JSON.parse(sessionStorage.getItem(config.key.brands.product_SC) || "{}");
+            },
+            clearProductSC : function(){
+                sessionStorage.removeItem(config.key.brands.product_SC);
+            }
+        },
         checkorder:{//查询到的订单结果集
             setCheckOrder : function(orderList){
                 sessionStorage.setItem(config.key.brands.orderList,JSON.stringify(orderList));
