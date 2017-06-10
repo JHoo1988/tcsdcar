@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+
+.brands {
+  .com-main {
+    .weui_cell_primary{
+      margin-left:px2rem(24);
+    }
+    .img-icon{
+      width: px2rem(120);
+    }
+    .brands_szm {
+      background-color: #F0EFF5;
+      padding-left: px2rem(34);
+      span{
+        font-size: px2rem(26);
+      }
+    }
+    .no-data{
+      font-size: px2rem(28);
+      text-align: center;
+      color: #CCCCCC;
+      margin-top: px2rem(72);
+    }
+  }
+}

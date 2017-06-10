@@ -71,14 +71,14 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='products.html';
+                window.location.href='productsscyy.html';
             });
             // 选中
             $body.on('click', '.weui-grid', function () {
                 var $this = $(this);
                 var json = $this.data('json');
                 self.setUserSelected(json);
-                window.location.href='products.html';
+                window.location.href='productsscyy.html';
             });
         },
         setUserSelected: function (data) {
