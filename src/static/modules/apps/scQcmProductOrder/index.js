@@ -265,7 +265,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 }
             });
             $('#js-order-yhm').click(function () {
-                window.location.href='membranePackage.html'
+                window.location.href='brandsscyy.html'
             });
             // 购买玻璃险的套餐
             $('.check-yy-flag-qcm').click(function () {
