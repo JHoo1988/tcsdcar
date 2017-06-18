@@ -372,8 +372,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
-                    par.shopCode = '81F20ED8CF';
-                    // par.shopCode = $this.originLocal;
+                    // par.shopCode = '81F20ED8CF';
+                    par.shopCode = $this.originLocal;
                     $.ajax({
                         url: config.url.alipayCreateOrder,
                         type: 'POST',
