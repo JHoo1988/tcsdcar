@@ -1,0 +1,59 @@
+@charset "UTF-8";
+@import "../variables";
+@import "../utilities";
+
+.card {
+  margin: px2rem(21) px2rem(15);
+  align-items: stretch;
+  cursor: pointer;
+  .card-head {
+    background: url('../../images/checkcoupon/yhq_bg_1.png') no-repeat;
+    color: #fff;
+    background-size: 100% 100%;
+    width: 25%;
+    text-align: center;
+    border: none;
+    .num {
+      font-size: px2rem(78);
+    }
+    .card-flag {
+      font-size: px2rem(24);
+    }
+  }
+  .card-body {
+    text-align: left;
+    padding: px2rem(24) px2rem(21);
+    background: #fff;
+    .card-info {
+      i {
+        display: inline-block;
+        margin-right: px2rem(6);
+        font-size: px2rem(21);
+      }
+      .card-title {
+        font-size: px2rem(24);
+        color: #666;
+        span {
+          vertical-align: middle;
+        }
+      }
+      .card-desc {
+        font-size: px2rem(24);
+        color: #666;
+      }
+      .card-time {
+        color: #666;
+        font-size: px2rem(21);
+      }
+    }
+  }
+  .card-foot {
+    background: #fff;
+    .card-btn {
+      display: block;
+      margin-right: px2rem(15);
+      height: px2rem(30);
+    }
+  }
+
+}

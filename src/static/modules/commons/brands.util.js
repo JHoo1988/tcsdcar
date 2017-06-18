@@ -118,6 +118,17 @@ define(['jquery','config'],function ($,config) {
             clearCheckOrder : function(){
                 sessionStorage.removeItem(config.key.brands.orderList);
             }
+        },
+        checkcoupon:{//查询到的优惠券结果集
+            setCheckCoupon : function(orderList){
+                sessionStorage.setItem(config.key.brands.couponList,JSON.stringify(orderList));
+            },
+            getCheckCoupon : function(){
+                return JSON.parse(sessionStorage.getItem(config.key.brands.couponList) || "{}");
+            },
+            clearCheckCoupon : function(){
+                sessionStorage.removeItem(config.key.brands.couponList);
+            }
         }
     };
 });

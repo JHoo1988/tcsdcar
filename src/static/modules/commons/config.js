@@ -90,6 +90,8 @@
             findAllProductBrandsCategory: base + 'mobile/findAllProductBrandsCategory',
             // 手机端查询产品
             findBrandsProductList: base + 'mobile/findBrandsProductList',
+            // 手机端查询卡券
+            findCustomerCouponConsumRecord: base + 'mobile/findCustomerCouponConsumRecord',
 
 
             //UserAddress
@@ -491,6 +493,7 @@
                 orderNo: 'ha_orderNo',
                 timeLimit: 'ha_timeLimit',
                 orderList: 'orderList',
+                couponList: 'couponList',
                 origin: 'ha_origin'
             },
             wash: {

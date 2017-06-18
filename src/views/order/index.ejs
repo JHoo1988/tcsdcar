@@ -4,7 +4,7 @@
             <a class="back" href="javascript:window.history.go(-1);"></a>
         </div>
         <span class="title">
-            选择服务产品
+            玻璃贴膜质保服务
         </span>
         <!--<div class="info" style="display: none;">-->
         <!--<a id="btn-address-detail-cancel" href="javascript:;" class="text">-->
@@ -13,277 +13,136 @@
         <!--</div>-->
     </header>
     <main class="com-main">
-        <div class="weui_tab" style="height: auto;">
-            <div class="vip-tab">
-                <div class="weui_navbar">
-                    <a data-target="#vip-balance" href="#vip-balance" class="weui_navbar_item weui_bar_item_on">
-                        <span>玻璃贴膜质保</span>
-                    </a>
-                    <a data-target="#vip-rechargecard" href="#vip-rechargecard" class="weui_navbar_item">
-                        <span>玻璃破损服务</span>
-                    </a>
+        <div id="vip-balance">
+            <div class="banner">
+                <img class="banner-img" src="../../m/static/images/order/qcm_banner.jpg" alt="">
+            </div>
+            <div class="discription">
+                <!--<p>汽车膜质保服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
+                <p>玻璃贴膜保障为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
+            </div>
+            <div class="selected-cartype">
+                <span>已选车型：</span>
+                <span><%= brand.name + product.name %></span>
+            </div>
+            <div class="select-time">
+                <span class="select-time-tips">选择玻璃贴膜质保服务时间</span>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="placeholder three selectd">12期</div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="placeholder tow">24期</div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="placeholder one">36期</div>
+                    </div>
+                </div>
+                <div class="time-discription time-one hide">
+                    服务时间为36个月，超长质保，价格更优，服务更佳！
+                </div>
+                <div class="time-discription time-tow hide">
+                    服务时间为24个月，服务周到，省心！
+                </div>
+                <div class="time-discription time-three">
+                    服务时间为12个月。
                 </div>
             </div>
-            <div class="weui_tab_bd">
-                <div id="vip-balance" class="weui_tab_bd_item weui_tab_bd_item_active">
-                    <div class="banner">
-                        <img class="banner-img" src="../../m/static/images/order/qcm_banner.jpg" alt="">
+            <% if(productList.content.length > 1 && productList.content[1]){ %>
+            <div class="select-yy">
+                <div class="check-yy-flag-qcm">
+                    <i class="icon-yy-check-qcm" style="float: left"></i>
+                    <div class="yy-discription">
+                        <span class="yyzh-span">领取现金券</span>
                     </div>
-                    <div class="discription">
-                        <!--<p>汽车膜质保服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
-                        <p>玻璃贴膜保障为汽车使用过程中玻璃贴膜意外破损保障服务，若玻璃贴膜在服务期内出现破损，可免费更换。</p>
-                    </div>
-                    <div class="selected-cartype">
-                        <span>已选车型：</span>
-                        <span><%= brand.name + product.name %></span>
-                    </div>
-                    <div class="select-time">
-                        <span class="select-time-tips">选择玻璃贴膜质保服务时间</span>
-                        <div class="weui-flex">
-                            <div class="weui-flex__item">
-                                <div class="placeholder three selectd">12期</div>
-                            </div>
-                            <div class="weui-flex__item">
-                                <div class="placeholder tow">24期</div>
-                            </div>
-                            <div class="weui-flex__item">
-                                <div class="placeholder one">36期</div>
-                            </div>
-                        </div>
-                        <div class="time-discription time-one hide">
-                            服务时间为36个月，超长质保，价格更优，服务更佳！
-                        </div>
-                        <div class="time-discription time-tow hide">
-                            服务时间为24个月，服务周到，省心！
-                        </div>
-                        <div class="time-discription time-three">
-                            服务时间为12个月。
-                        </div>
-                    </div>
-                    <div class="select-yy">
-                        <div class="check-yy-flag-qcm">
-                            <i class="icon-yy-check-qcm" style="float: left"></i>
-                            <div class="yy-discription">
-                                <span class="yyzh-span">领取洗车券</span>
-                            </div>
 
-                        </div>
-                        <div class="panel-qcm">
-                            <p style="color: #c2c2c2">同时购买玻璃贴膜质保服务+玻璃破损服务，赠送5次免费洗车服务！</p>
-                            <p class="select-time-tips">选择玻璃破损服务时间</p>
-                            <div class="weui-flex">
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-blx-yy placeholder-yy three active"
-                                         data-price="<%= productList.content[1].twelveCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">12期</p>
-                                            <p class="desc">￥<%= productList.content[1].twelveCyclePrice %></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-blx-yy placeholder-yy tow"
-                                         data-price="<%= productList.content[1].twentyFourCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">24期</p>
-                                            <p class="desc">￥<%= productList.content[1].twentyFourCyclePrice %></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-blx-yy placeholder-yy one"
-                                         data-price="<%= productList.content[1].thirtySixCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">36期</p>
-                                            <p class="desc">￥<%= productList.content[1].thirtySixCyclePrice %></p>
-                                        </div>
-                                    </div>
+                </div>
+                <div class="panel-qcm">
+                    <p style="color: #c2c2c2">同时购买玻璃贴膜质保服务+玻璃破损服务，赠送无门槛现金券！现金券可直接在合作门店消费。</p>
+                    <p class="select-time-tips">选择玻璃破损服务时间</p>
+                    <div class="weui-flex">
+                        <div class="weui-flex__item">
+                            <div class="placeholder-blx-yy placeholder-yy three active"
+                                 data-price="<%= productList.content[1].twelveCyclePrice %>">
+                                <div class="item-info">
+                                    <p class="title">12期</p>
+                                    <p class="desc">￥<%= productList.content[1].twelveCyclePrice %></p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="action-bottom">
-                        <ul class="notification-menu">
-                            <li>
-                                <div>
-                                    <span class="price-title">金额：</span>
-                                    <span class="blue">￥</span>
-                                    <span class="price-num blue"><%= productList.content[0].twelveCyclePrice %></span>
+                        <div class="weui-flex__item">
+                            <div class="placeholder-blx-yy placeholder-yy tow"
+                                 data-price="<%= productList.content[1].twentyFourCyclePrice %>">
+                                <div class="item-info">
+                                    <p class="title">24期</p>
+                                    <p class="desc">￥<%= productList.content[1].twentyFourCyclePrice %></p>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="btn-order btn">
-                                    确定
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="fixed-mask-layer" style="display: none"></div>
-                    <div class="fixed-bottom-form" style="display: none">
-                        <div class="js-form-subscribe">
-                            <div class="close_dialog">
-                                <img src="../../m/static/images/order/close_dialog.png"/>
                             </div>
-                            <div class="commit_div">
-                                <p class="description">为了给您提供更完善更优质的服务，请您务必填写以下信息。</p>
-                                <div class="commit_zxyy">
-                                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
-                                    <span class="input_title">手机号码：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="phonenum" type="tel" class="xxdz" placeholder="请填写您的手机号码">
-                                    </div>
-                                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
-                                    <span class="input_title">车身识别号：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="carnum" type="text" class="xxdz" placeholder="车身识别号在挡风玻璃左下角处可查看">
-                                    </div>
-                                    <% if(wechatOrigin == 'DE17CE0677'){ %>
-                                    <span class="input_title">店铺编码：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
-                                    </div>
-                                    <% } %>
-                                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a
-                                                href="serviceAgreement.html">《服务协议》</a>
-                                    </div>
+                        </div>
+                        <div class="weui-flex__item">
+                            <div class="placeholder-blx-yy placeholder-yy one"
+                                 data-price="<%= productList.content[1].thirtySixCyclePrice %>">
+                                <div class="item-info">
+                                    <p class="title">36期</p>
+                                    <p class="desc">￥<%= productList.content[1].thirtySixCyclePrice %></p>
                                 </div>
-                                <input type="submit" value="确定" class="submit">
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div id="vip-rechargecard" class="weui_tab_bd_item">
-                    <div class="banner">
-                        <img class="banner-img" src="../../m/static/images/order/qcm_banner.jpg" alt="">
+            </div>
+            <%}%>
+            <div class="action-bottom">
+                <ul class="notification-menu">
+                    <li>
+                        <div>
+                            <span class="price-title">金额：</span>
+                            <span class="blue">￥</span>
+                            <span class="price-num blue"><%= productList.content[0].twelveCyclePrice %></span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="btn-order btn">
+                            确定
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fixed-mask-layer" style="display: none"></div>
+            <div class="fixed-bottom-form" style="display: none">
+                <div class="js-form-subscribe">
+                    <div class="close_dialog">
+                        <img src="../../m/static/images/order/close_dialog.png"/>
                     </div>
-                    <div class="discription">
-                        <!--<p>汽车膜质保服务为汽车膜的保障服务，若您的汽车膜在服务期内出现自然损坏，可以免费维修，保养或更换。</p>-->
-                        <p>汽车玻璃破损服务为，汽车在使用过程中出现意外破损的保障服务，若汽车玻璃在保障服务期限内出现单独或全部破损（不包括天窗玻璃）可免费更换。</p>
-                    </div>
-                    <div class="selected-cartype">
-                        <span>已选车型：</span>
-                        <span><%= brand.name + product.name %></span>
-                    </div>
-                    <div class="select-time">
-                        <span class="select-time-tips">选择玻璃破损服务时间</span>
-                        <div class="weui-flex">
-                            <div class="weui-flex__item">
-                                <div class="placeholder-blx three selectd">12期</div>
+                    <div class="commit_div">
+                        <p class="description">为了给您提供更完善更优质的服务，请您务必填写以下信息。</p>
+                        <div class="commit_zxyy">
+                            <span class="x" style="color: #ff0048;font-size: 16px">*</span>
+                            <span class="input_title">手机号码：</span>
+                            <div class="commit_zxyy_content">
+                                <input name="phonenum" type="tel" class="xxdz" placeholder="请填写您的手机号码">
                             </div>
-                            <div class="weui-flex__item">
-                                <div class="placeholder-blx tow">24期</div>
+                            <span class="x" style="color: #ff0048;font-size: 16px">*</span>
+                            <span class="input_title">车身识别号：</span>
+                            <div class="commit_zxyy_content">
+                                <input name="carnum" type="text" class="xxdz" placeholder="车身识别号在挡风玻璃左下角处可查看">
                             </div>
-                            <div class="weui-flex__item">
-                                <div class="placeholder-blx one">36期</div>
+                            <% if(wechatOrigin == 'DE17CE0677'){ %>
+                            <span class="input_title">店铺编码：</span>
+                            <div class="commit_zxyy_content">
+                                <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
+                            </div>
+                            <% } %>
+                            <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a
+                                        href="serviceAgreement.html">《服务协议》</a>
                             </div>
                         </div>
-                        <div class="time-discription time-one hide">
-                            服务时间为36个月，超长质保，价格更优，服务更佳！
-                        </div>
-                        <div class="time-discription time-tow hide">
-                            服务时间为24个月，服务周到，省心！
-                        </div>
-                        <div class="time-discription time-three">
-                            服务时间为12个月。
-                        </div>
+                        <input type="submit" value="确定" class="submit">
                     </div>
-                    <div class="select-yy">
-                        <div class="check-yy-flag-blx">
-                            <i class="icon-yy-check-blx" style="float: left"></i>
-                            <div class="yy-discription">
-                                <span class="yyzh-span">领取洗车券</span>
-                            </div>
 
-                        </div>
-                        <div class="panel-blx">
-                            <p style="color: #c2c2c2">同时购买玻璃贴膜质保服务+玻璃破损服务，赠送5次免费洗车服务！</p>
-                            <p class="select-time-tips">选择玻璃贴膜质保服务时间</p>
-                            <div class="weui-flex">
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-qcm-yy placeholder-yy three active"
-                                         data-price="<%= productList.content[0].twelveCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">12期</p>
-                                            <p class="desc">￥<%= productList.content[0].twelveCyclePrice %></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-qcm-yy placeholder-yy tow"
-                                         data-price="<%= productList.content[0].twentyFourCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">24期</p>
-                                            <p class="desc">￥<%= productList.content[0].twentyFourCyclePrice %></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="weui-flex__item">
-                                    <div class="placeholder-qcm-yy placeholder-yy one"
-                                         data-price="<%= productList.content[0].thirtySixCyclePrice %>">
-                                        <div class="item-info">
-                                            <p class="title">36期</p>
-                                            <p class="desc">￥<%= productList.content[0].thirtySixCyclePrice %></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="action-bottom">
-                        <ul class="notification-menu">
-                            <li>
-                                <div>
-                                    <span class="price-title">金额：</span>
-                                    <span class="blue">￥</span>
-                                    <span class="price-num-blx blue"><%= productList.content[1].twelveCyclePrice %></span>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="btn-order btn">
-                                    确定
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="fixed-mask-layer" style="display: none"></div>
-                    <div class="fixed-bottom-form" style="display: none">
-                        <div class="js-form-subscribe">
-                            <div class="close_dialog">
-                                <img src="../../m/static/images/order/close_dialog.png"/>
-                            </div>
-                            <div class="commit_div">
-                                <p class="description">为了给您提供更完善更优质的服务，请您务必填写以下信息。</p>
-                                <div class="commit_zxyy">
-                                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
-                                    <span class="input_title">手机号码：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="phonenum" type="tel" class="xxdz" placeholder="请填写您的手机号码">
-                                    </div>
-                                    <span class="x" style="color: #ff0048;font-size: 16px">*</span>
-                                    <span class="input_title">车身识别号：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="carnum" type="text" class="xxdz" placeholder="车身识别号在挡风玻璃左下角处可查看">
-                                    </div>
-                                    <% if(wechatOrigin == 'DE17CE0677'){ %>
-                                    <span class="input_title">店铺编码：</span>
-                                    <div class="commit_zxyy_content">
-                                        <input name="shopcode" type="text" class="xxdz" placeholder="店铺扫码购买，请输入店铺编码">
-                                    </div>
-                                    <% } %>
-                                    <div class="check-flag"><i class="icon-check checked"></i>我已阅读并同意<a
-                                                href="serviceAgreement.html">《服务协议》</a>
-                                    </div>
-                                </div>
-                                <input type="submit" value="确定" class="submit">
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
     </main>
 
 </div>

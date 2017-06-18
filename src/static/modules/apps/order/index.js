@@ -19,8 +19,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.timeLimit_qcm_zh_blx = '12';// 汽车膜质保tab中选择的玻璃险的期数
         this.timeLimitblx_blx_zh_qcm = '12';// 玻璃险tab中选择的汽车膜质保的期数
         this.qcm_price = this.productList.content[0].twelveCyclePrice;// 汽车膜质保tab中选择的期数对应的价格
-        this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
-        this.blx_price = this.productList.content[1].twelveCyclePrice;// 玻璃险tab中选择的期数对应的价格
+        if(this.productList.content.length>1){
+            this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
+            this.blx_price = this.productList.content[1].twelveCyclePrice;// 玻璃险tab中选择的期数对应的价格
+        }
         this.price_qcm_yy = this.productList.content[0].twelveCyclePrice;// 玻璃险tab中选择的汽车膜质保的价格
         this.product_qcm = {};//汽车膜质保tab中选择的玻璃险的组装数据的临时对象
         this.product_blx = {};//玻璃险tab中选择的汽车膜质保的组装数据的临时对象
@@ -370,7 +372,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     utilBrands.timeLimit.setTimeLimit($this.timeLimit);
                     par.mobile = phoneNum;
                     par.carBodyNo = carnum;
-                    par.shopCode = $this.originLocal;
+                    par.shopCode = '81F20ED8CF';
+                    // par.shopCode = $this.originLocal;
                     $.ajax({
                         url: config.url.alipayCreateOrder,
                         type: 'POST',
@@ -399,120 +402,120 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                     });
                 }
             });
-            // 玻璃险提交
-            $('#vip-rechargecard .submit').click(function () {
-                if ($(this).hasClass('disabled')) {
-                    return false;
-                }
-                var product = new Array();
-                product.push($this.productList.content[1].id + ',' + $this.timeLimitblx);
-                if ($this.product_blx.id) {
-                    product.push($this.product_blx.id + ',' + $this.timeLimitblx_blx_zh_qcm);
-                }
-                var phoneNum = $.trim($("#vip-rechargecard input[type='tel'][name='phonenum']").val());
-                if (!utilCommon.checkIsMobile(phoneNum)) {
-                    $('.weui_dialog_bd').text('请填写正确的手机号码');
-                    $('.weui_dialog_alert').removeClass('hide');
-                    return;
-                }
-                var carn = $this.emoji2Str($("#vip-rechargecard input[type='text'][name='carnum']").val());
-                var carnum = $.trim(carn);
-                if (!carnum) {
-                    $('.weui_dialog_bd').text('请填写车身识别号');
-                    $('.weui_dialog_alert').removeClass('hide');
-                    return;
-                }
-                var shopcode = $this.emoji2Str($("#vip-rechargecard input[type='text'][name='shopcode']").val());
-                var shopcodenum = $.trim(shopcode);
-                if (shopcodenum && null != shopcodenum && 'undefined' != shopcodenum) {
-                    $this.originLocal = shopcodenum;
-                } else {
-                    $this.originLocal = utilBrands.origin.getOrigin();
-                }
-                $this.showLoadin('提交订单...');
-                if ($this.isWeChat() && $this.openid) {
-                    // 如果是在微信里面就用微信支付
-                    var b_version = navigator.appVersion;
-                    var version = parseFloat(b_version);
-                    if (version >= 5.0) {
-                        // 创建订单
-                        var par = {};
-                        // par.product = JSON.stringify(product);
-                        par.productStr = product.join('#');
-                        // par.timeLimit = $this.timeLimitblx;
-                        utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
-                        par.mobile = phoneNum;
-                        par.carBodyNo = carnum;
-                        par.shopCode = $this.originLocal;
-                        par.openId = $this.openid;
-                        $.ajax({
-                            url: config.url.unifiedOrder,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: par,
-                            success: function (data) {
-                                if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
-                                    var result = data.data;
-                                    if (result.orderNo) {
-                                        utilBrands.orderNo.setOrderNo(result.orderNo);
-                                    }
-                                    $this.weChatPay(result.package, result.paySign, result.nonceStr, result.appId, result.timeStamp, 'http://www.tcsdcar.com/m/paysuccess.html');
-                                } else {
-                                    $this.hideLoadin();
-                                    $('.weui_dialog_bd').text('订单创建失败，请重试');
-                                    $('.weui_dialog_alert').removeClass('hide');
-                                }
-                            }
-                            , error: function (xhr) {
-                                $this.hideLoadin();
-                                $('.weui_dialog_bd').text('订单创建失败，请重试');
-                                $('.weui_dialog_alert').removeClass('hide');
-                                return false;
-                            }
-                        });
-                    } else {
-                        $this.hideLoadin();
-                        $('.weui_dialog_bd').text('微信版本过低，请升级您的微信客户端');
-                        $('.weui_dialog_alert').removeClass('hide');
-                    }
-                } else {
-                    // 使用支付宝支付
-                    var par = {};
-                    // par.product = JSON.stringify(product);
-                    par.productStr = product.join('#');
-                    // par.timeLimit = $this.timeLimitblx;
-                    utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
-                    par.mobile = phoneNum;
-                    par.carBodyNo = carnum;
-                    par.shopCode = $this.originLocal;
-                    $.ajax({
-                        url: config.url.alipayCreateOrder,
-                        type: 'POST',
-                        dataType: 'json',
-                        data: par,
-                        success: function (data) {
-                            if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
-                                var result = data.data;
-                                if (result.orderNo) {
-                                    utilBrands.orderNo.setOrderNo(result.orderNo);
-                                }
-                                $('body').append(result.content);
-                                // $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
-                            } else {
-                                $this.hideLoadin();
-                                $('.weui_dialog_bd').text('订单创建失败，请重试');
-                                $('.weui_dialog_alert').removeClass('hide');
-                            }
-                        }
-                        , error: function (xhr) {
-                            $this.hideLoadin();
-                            $('.weui_dialog_bd').text('订单创建失败，请重试');
-                            $('.weui_dialog_alert').removeClass('hide');
-                            return false;
-                        }
-                    });
-                }
-            });
+            // // 玻璃险提交
+            // $('#vip-rechargecard .submit').click(function () {
+            //     if ($(this).hasClass('disabled')) {
+            //         return false;
+            //     }
+            //     var product = new Array();
+            //     product.push($this.productList.content[1].id + ',' + $this.timeLimitblx);
+            //     if ($this.product_blx.id) {
+            //         product.push($this.product_blx.id + ',' + $this.timeLimitblx_blx_zh_qcm);
+            //     }
+            //     var phoneNum = $.trim($("#vip-rechargecard input[type='tel'][name='phonenum']").val());
+            //     if (!utilCommon.checkIsMobile(phoneNum)) {
+            //         $('.weui_dialog_bd').text('请填写正确的手机号码');
+            //         $('.weui_dialog_alert').removeClass('hide');
+            //         return;
+            //     }
+            //     var carn = $this.emoji2Str($("#vip-rechargecard input[type='text'][name='carnum']").val());
+            //     var carnum = $.trim(carn);
+            //     if (!carnum) {
+            //         $('.weui_dialog_bd').text('请填写车身识别号');
+            //         $('.weui_dialog_alert').removeClass('hide');
+            //         return;
+            //     }
+            //     var shopcode = $this.emoji2Str($("#vip-rechargecard input[type='text'][name='shopcode']").val());
+            //     var shopcodenum = $.trim(shopcode);
+            //     if (shopcodenum && null != shopcodenum && 'undefined' != shopcodenum) {
+            //         $this.originLocal = shopcodenum;
+            //     } else {
+            //         $this.originLocal = utilBrands.origin.getOrigin();
+            //     }
+            //     $this.showLoadin('提交订单...');
+            //     if ($this.isWeChat() && $this.openid) {
+            //         // 如果是在微信里面就用微信支付
+            //         var b_version = navigator.appVersion;
+            //         var version = parseFloat(b_version);
+            //         if (version >= 5.0) {
+            //             // 创建订单
+            //             var par = {};
+            //             // par.product = JSON.stringify(product);
+            //             par.productStr = product.join('#');
+            //             // par.timeLimit = $this.timeLimitblx;
+            //             utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
+            //             par.mobile = phoneNum;
+            //             par.carBodyNo = carnum;
+            //             par.shopCode = $this.originLocal;
+            //             par.openId = $this.openid;
+            //             $.ajax({
+            //                 url: config.url.unifiedOrder,
+            //                 type: 'POST',
+            //                 dataType: 'json',
+            //                 data: par,
+            //                 success: function (data) {
+            //                     if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
+            //                         var result = data.data;
+            //                         if (result.orderNo) {
+            //                             utilBrands.orderNo.setOrderNo(result.orderNo);
+            //                         }
+            //                         $this.weChatPay(result.package, result.paySign, result.nonceStr, result.appId, result.timeStamp, 'http://www.tcsdcar.com/m/paysuccess.html');
+            //                     } else {
+            //                         $this.hideLoadin();
+            //                         $('.weui_dialog_bd').text('订单创建失败，请重试');
+            //                         $('.weui_dialog_alert').removeClass('hide');
+            //                     }
+            //                 }
+            //                 , error: function (xhr) {
+            //                     $this.hideLoadin();
+            //                     $('.weui_dialog_bd').text('订单创建失败，请重试');
+            //                     $('.weui_dialog_alert').removeClass('hide');
+            //                     return false;
+            //                 }
+            //             });
+            //         } else {
+            //             $this.hideLoadin();
+            //             $('.weui_dialog_bd').text('微信版本过低，请升级您的微信客户端');
+            //             $('.weui_dialog_alert').removeClass('hide');
+            //         }
+            //     } else {
+            //         // 使用支付宝支付
+            //         var par = {};
+            //         // par.product = JSON.stringify(product);
+            //         par.productStr = product.join('#');
+            //         // par.timeLimit = $this.timeLimitblx;
+            //         utilBrands.timeLimit.setTimeLimit($this.timeLimitblx);
+            //         par.mobile = phoneNum;
+            //         par.carBodyNo = carnum;
+            //         par.shopCode = $this.originLocal;
+            //         $.ajax({
+            //             url: config.url.alipayCreateOrder,
+            //             type: 'POST',
+            //             dataType: 'json',
+            //             data: par,
+            //             success: function (data) {
+            //                 if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
+            //                     var result = data.data;
+            //                     if (result.orderNo) {
+            //                         utilBrands.orderNo.setOrderNo(result.orderNo);
+            //                     }
+            //                     $('body').append(result.content);
+            //                     // $this.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
+            //                 } else {
+            //                     $this.hideLoadin();
+            //                     $('.weui_dialog_bd').text('订单创建失败，请重试');
+            //                     $('.weui_dialog_alert').removeClass('hide');
+            //                 }
+            //             }
+            //             , error: function (xhr) {
+            //                 $this.hideLoadin();
+            //                 $('.weui_dialog_bd').text('订单创建失败，请重试');
+            //                 $('.weui_dialog_alert').removeClass('hide');
+            //                 return false;
+            //             }
+            //         });
+            //     }
+            // });
             $('.icon-check').click(function () {
                 if ($('.icon-check').hasClass('checked')) {
                     $('.icon-check').removeClass('checked');
