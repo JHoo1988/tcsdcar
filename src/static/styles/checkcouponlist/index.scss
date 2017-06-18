@@ -55,5 +55,155 @@
       height: px2rem(30);
     }
   }
+}
 
+.fixed-mask-layer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.fixed-bottom-form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  min-width: 320px;
+  color: #666666;
+  .close_dialog {
+    width: 36px;
+    height: 36px;
+    //background-color: rgba(0, 0, 0, 0.3);
+    float: right;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end;
+    img {
+      margin-top: 5px;
+      margin-right: 5px;
+      width: 50%;
+      height: 50%;
+    }
+  }
+  .clean_float {
+    content: '';
+    clear: both;
+  }
+  .commit_div {
+    padding-left: 7.8125%;
+    padding-right: 7.8125%;
+    padding-bottom: 5%;
+    box-shadow: 0px -1px 2px #cccccc;
+    background-color: #ffffff;
+    .description {
+      color: #666;
+      font-size: px2rem(28);
+      padding: px2rem(36) 0;
+    }
+    .commit_zxyy {
+      .input_title {
+        color: #666;
+        font-size: px2rem(24);
+        text-align: center;
+      }
+      .commit_zxyy_content {
+        display: -webkit-flex;
+        display: flex;
+        margin-bottom: px2rem(30);
+        .xxdz {
+          width: 50%;
+          outline: none;
+          border-width: 0;
+          padding: 0 8px;
+          height: px2rem(90);
+          font-size: px2rem(33);
+          color: #595959;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+          float: right;
+        }
+      }
+    }
+    .submit {
+      margin-right: auto;
+      margin-left: auto;
+      width: 40%;
+      color: white;
+      margin-top: 5%;
+      font-size: px2rem(36);
+      padding: px2rem(15) px2rem(30);
+      border-width: 0;
+      background-color: #009688;
+      float: right;
+    }
+    .cancel {
+      margin-right: auto;
+      margin-left: auto;
+      width: 40%;
+      color: #333333;
+      margin-top: 5%;
+      font-size: px2rem(36);
+      padding: px2rem(15) px2rem(30);
+      border-width: 0;
+      background-color: #d2d2d2;
+    }
+    .disabled {
+      color: rgba(255, 255, 255, 0.6);
+      background-color: #71D1C8;
+    }
+  }
+  .commit_div:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .commit_zxyy {
+    .check-flag {
+      color: #999999;
+      font-size: 12px;
+      .icon-check {
+        padding-right: px2rem(16);
+        &:before {
+          font-family: "weui";
+          font-style: normal;
+          font-weight: normal;
+          display: inline-block;
+          vertical-align: middle;
+          text-decoration: inherit;
+          text-align: center;
+          font-variant: normal;
+          text-transform: none;
+          content: '\EA01';
+          color: #C9C9C9;
+          font-size: 12px;
+        }
+      }
+      a:link {
+        color: #999999;
+      }
+      /*超链接正常状态下的样式*/
+      a:visited {
+        color: #999999;
+      }
+      /*访问过的超链接*/
+      .icon-check.checked {
+        &:before {
+          content: '\EA06';
+          //color: #009688;
+          color: #CCCCCC;
+        }
+      }
+    }
+  }
+  .commit_zxyy:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }

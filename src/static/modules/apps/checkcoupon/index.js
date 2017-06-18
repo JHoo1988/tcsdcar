@@ -73,6 +73,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                         if (undefined != data && null != data && data.code == 200) {
                             var result = data.data;
                             if (result.content.length > 0) {
+                                result.mobile = phoneNum;
+                                result.carBodyNo = carnum;
                                 utilBrands.checkcoupon.setCheckCoupon(result);
                                 $this.hideLoadin();
                                 window.location.href='checkcouponlist.html';

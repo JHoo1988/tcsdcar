@@ -19,6 +19,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          */
         init: function () {
             utilPage.ready();
+            this.result = utilBrands.checkcoupon.getCheckCoupon();
             this.renderPage();
             this.bind();
             fastclick.attach(document.body);
@@ -29,12 +30,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 渲染页面
          */
         renderPage: function () {
-            var result = utilBrands.checkcoupon.getCheckCoupon();
-            if(result&&result.content&&result.content.length>0){
-                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render(result);
+            var _self = this;
+            if (_self.result && _self.result.content && _self.result.content.length > 0) {
+                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render(_self.result);
                 $('body').prepend(html);
-            }else{
-                window.location.href='checkcoupon.html';
+            } else {
+                window.location.href = 'checkcoupon.html';
             }
         },
 
@@ -44,49 +45,40 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          */
         bind: function () {
             var _self = this;
-            $('.weui-form-preview__ft').click(function () {
-                var pfjl = $(this).parent().find('.weui-form-preview__bd').find('.pfjl');
-                var btn = $(this);
-                if(pfjl.hasClass('hide')){
-                    var id = $(this).data('id');
-                    if (!id) {
-                        return;
-                    } else {
-                        _self.showLoadin();
-                        var param = {};
-                        param.pageIndex = 1;
-                        param.pageSize = 99;
-                        param.orderId = id;
-                        _self.getCheckOrderList(param,function (content) {
-                            _self.hideLoadin();
-                            var html='<label class="weui-form-preview__label">已赔付记录</label>';
-                            pfjl.removeClass('hide');
-                            if (content && content.length > 0) {
-                                for (var i = 0; i < content.length; i++) {
-                                    html+='<span class="weui-form-preview__value">第' + (i+1) + '次赔付时间：' + content[i].createTimeStr+'</span>';
-                                }
-                            } else {
-                                html+='<span class="weui-form-preview__value">暂无赔付</span>';
-                            }
-                            pfjl.empty().append(html);
-                            btn.addClass('hide');
-                        });
-                    }
-                }
+            var data;
+            //兑换优惠券
+            $('.js-use-my-yhq').click(function () {
+                var json = $(this).data('json');
+                data = JSON.stringify(json);
+
             });
-        },
-        getCheckOrderList: function(param,callback){
-            $.ajax({
-                url: config.url.findPaidRecordsList,
-                type: 'GET',
-                dataType: 'json',
-                data: param,
-                success: function (result) {
-                    if (result.code == 200) {
-                        var content = result.data.content;
-                        callback(content);
+            // 确定
+            $('.submit').click(function () {
+                var par = {};
+                par.mobile = _self.result.mobile;
+                par.carBodyNo = _self.result.carBodyNo;
+                $.ajax({
+                    url: config.url.cousumCoupon,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: par,
+                    success: function (data) {
+                        $this.hideLoadin();
+                        if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
+                            $('.weui_dialog_bd').text('优惠券兑换成功');
+                            $('.weui_dialog_alert').removeClass('hide');
+                        } else {
+                            $('.weui_dialog_bd').text('优惠券兑换失败');
+                            $('.weui_dialog_alert').removeClass('hide');
+                        }
                     }
-                }
+                    , error: function (xhr) {
+                        $this.hideLoadin();
+                        $('.weui_dialog_bd').text('优惠券兑换失败');
+                        $('.weui_dialog_alert').removeClass('hide');
+                        return false;
+                    }
+                });
             });
         },
         hideLoadin: function () {

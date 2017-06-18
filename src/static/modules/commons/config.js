@@ -92,6 +92,8 @@
             findBrandsProductList: base + 'mobile/findBrandsProductList',
             // 手机端查询卡券
             findCustomerCouponConsumRecord: base + 'mobile/findCustomerCouponConsumRecord',
+            // 兑换使用优惠券
+            cousumCoupon: base + 'coupon/cousumCoupon',
 
 
             //UserAddress
