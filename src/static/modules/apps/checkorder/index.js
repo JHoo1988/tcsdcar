@@ -73,9 +73,17 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                         if (undefined != data && null != data && data.code == 200) {
                             var result = data.data;
                             if (result.content.length > 0) {
-                                utilBrands.checkorder.setCheckOrder(result);
+                                for(var a=0;a<result.content.length;a++){
+                                    if(result.content[a].statu!=0){
+                                        utilBrands.checkorder.setCheckOrder(result);
+                                        $this.hideLoadin();
+                                        window.location.href='checkorderlist.html';
+                                        return;
+                                    }
+                                }
                                 $this.hideLoadin();
-                                window.location.href='checkorderlist.html';
+                                $('.weui_dialog_bd').text('暂无订单');
+                                $('.weui_dialog_alert').removeClass('hide');
                             } else {
                                 $this.hideLoadin();
                                 $('.weui_dialog_bd').text('暂无订单');
