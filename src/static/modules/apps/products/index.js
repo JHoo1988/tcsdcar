@@ -51,7 +51,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             var url = config.url.findAllProductModel;
             var par = {};
             var brand = utilBrands.brands.getBrand();
-            par.brands = brand.id;
+            par.brandsId = brand.id;
             par.pageIndex = 1;
             par.pageSize = 999999;
             // var userId = utilUser.user.getUserId();
