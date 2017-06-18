@@ -22,7 +22,7 @@
 })(this, function (exports, module) {
     "use strict";
 
-    var isDebug = true,
+    var isDebug = false,
         testApiUrl = 'http://localhost:8088/', // 测试后台地址
         // testApiUrl = 'http://base.5ujd.net:88/ha-wechat/v1/', // 测试后台地址
         //testApiUrl = 'http://120.76.101.218:89/ha-wechat/v1/', // 测试后台地址
