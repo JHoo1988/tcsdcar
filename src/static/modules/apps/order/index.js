@@ -52,11 +52,12 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             }
             utilPage.ready();
             var categroyId = _self.product.categroyId;
-            if (categroyId == 'bba5f534090b4a27999b5dc2f250d0b4'||categroyId == '05ed41a42dec485bb7d6c0955ab6e0db') {
+            if (categroyId == 'bba5f534090b4a27999b5dc2f250d0b4') {
                 _self.coupon = 30;
             } else if (categroyId == 'a89e758c691f4979b97b766b7ac40c4d' || categroyId == 'ef9f26dbf7ce452788d0c9f231c04b9c' || categroyId == '2e419539044d46a3bc953473f150a44a'
                 || categroyId == '47e29bda83474e2f84c5890ae9dfeb4b' || categroyId == '6beeb4f814a34375a35ee6c2c449ffee' || categroyId == '22663b67f04a4b38b5c12bbbf6baac2f'
-                || categroyId == '8d58afaf309a453d8a1446aa2cf423e9' || categroyId == '0dd9a3650464465a8ea9888f8c036f90' || categroyId == '581ae92cfbd0492393a0c9851a726d6d') {
+                || categroyId == '8d58afaf309a453d8a1446aa2cf423e9' || categroyId == '0dd9a3650464465a8ea9888f8c036f90' || categroyId == '581ae92cfbd0492393a0c9851a726d6d'
+                ||categroyId == '05ed41a42dec485bb7d6c0955ab6e0db') {
                 _self.coupon = 50;
             } else if (categroyId == '930d5882885c453194c4addb50dd9905' || categroyId == 'd0d21bc4913a476db368a7134a67b136' || categroyId == '935d67cea04342cd8a8a916f45381371'
                 || categroyId == 'b8754d6b1d17449884a12bb13a2911ac' || categroyId == '0b81790c6a7a4168ae741e4bb2d24bf8' || categroyId == '03ffcb5adf9e44c18b0ce850e2c47a27'
