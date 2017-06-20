@@ -16,10 +16,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         this.originLocal = utilBrands.origin.getOrigin();
         this.timeLimit = '12';
         this.timeLimitblx = '12';
+        this.coupon = 0;
         this.timeLimit_qcm_zh_blx = '12';// 汽车膜质保tab中选择的玻璃险的期数
         this.timeLimitblx_blx_zh_qcm = '12';// 玻璃险tab中选择的汽车膜质保的期数
         this.qcm_price = this.productList.content[0].twelveCyclePrice;// 汽车膜质保tab中选择的期数对应的价格
-        if(this.productList.content.length>1){
+        if (this.productList.content.length > 1) {
             this.price_blx_yy = this.productList.content[1].twelveCyclePrice;// 汽车膜质保tab中选择的玻璃险的价格
             this.blx_price = this.productList.content[1].twelveCyclePrice;// 玻璃险tab中选择的期数对应的价格
         }
@@ -36,6 +37,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          * @desc 初始化函数
          */
         init: function () {
+            var _self = this;
             var out_trade_no = utilCommon.getParam('out_trade_no');
             var app_id = utilCommon.getParam('app_id');
             var orderNo = utilBrands.orderNo.getOrderNo();
@@ -49,6 +51,25 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 return;
             }
             utilPage.ready();
+            var categroyId = _self.product.categroyId;
+            if (categroyId == 'bba5f534090b4a27999b5dc2f250d0b4'||categroyId == '05ed41a42dec485bb7d6c0955ab6e0db') {
+                _self.coupon = 30;
+            } else if (categroyId == 'a89e758c691f4979b97b766b7ac40c4d' || categroyId == 'ef9f26dbf7ce452788d0c9f231c04b9c' || categroyId == '2e419539044d46a3bc953473f150a44a'
+                || categroyId == '47e29bda83474e2f84c5890ae9dfeb4b' || categroyId == '6beeb4f814a34375a35ee6c2c449ffee' || categroyId == '22663b67f04a4b38b5c12bbbf6baac2f'
+                || categroyId == '8d58afaf309a453d8a1446aa2cf423e9' || categroyId == '0dd9a3650464465a8ea9888f8c036f90' || categroyId == '581ae92cfbd0492393a0c9851a726d6d') {
+                _self.coupon = 50;
+            } else if (categroyId == '930d5882885c453194c4addb50dd9905' || categroyId == 'd0d21bc4913a476db368a7134a67b136' || categroyId == '935d67cea04342cd8a8a916f45381371'
+                || categroyId == 'b8754d6b1d17449884a12bb13a2911ac' || categroyId == '0b81790c6a7a4168ae741e4bb2d24bf8' || categroyId == '03ffcb5adf9e44c18b0ce850e2c47a27'
+                || categroyId == '0e122d2656ce40b7bd667460481b86aa') {
+                _self.coupon = 100;
+            } else if (categroyId == '49aa7e992e6f4b3d83156a3b81561726' || categroyId == '58f34bc4b3ce4fffb1d63255a3680d59' || categroyId == '3741b710a0e54db9a1b6a7f8b3df7fba'
+                || categroyId == '9a1e5f380cc64a46ab453bceef53960f' || categroyId == '01442e12499a4eb5af7445dd8021b1da' ) {
+                _self.coupon = 150;
+            } else if (categroyId == 'fe50ad984438488b8308a5acc13dcacd' || categroyId == '73705e3ae0dd479f894f848b0d46d841') {
+                _self.coupon = 200;
+            } else if (categroyId == 'c02a7d26838d4b94a0b95016f42121e6') {
+                _self.coupon = 300;
+            }
             this.renderPage();
             this.bind();
             fastclick.attach(document.body);
@@ -64,6 +85,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             data.product = this.product;// 车型相关
             data.wechatOrigin = this.originLocal;
             data.productList = this.productList;// 车型相关的产品
+            data.coupon = this.coupon;// 赠送现金券价格
             var html = new EJS({ url: 'views/order/index.ejs' }).render(data);
             $('body').prepend(html);
         },
@@ -96,8 +118,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置36期价格
                         $this.qcm_price = $this.productList.content[0].thirtySixCyclePrice;
                         if ($this.product_qcm.id) {
-                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
-                        }else{
+                            $('.price-num').text($this.qcm_price + $this.price_blx_yy);
+                        } else {
                             $('.price-num').text($this.qcm_price);
                         }
                     } else if ($(this).hasClass('tow')) {
@@ -112,8 +134,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置24期价格
                         $this.qcm_price = $this.productList.content[0].twentyFourCyclePrice;
                         if ($this.product_qcm.id) {
-                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
-                        }else{
+                            $('.price-num').text($this.qcm_price + $this.price_blx_yy);
+                        } else {
                             $('.price-num').text($this.qcm_price);
                         }
                     } else if ($(this).hasClass('three')) {
@@ -128,8 +150,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置12期价格
                         $this.qcm_price = $this.productList.content[0].twelveCyclePrice;
                         if ($this.product_qcm.id) {
-                            $('.price-num').text($this.qcm_price+$this.price_blx_yy);
-                        }else{
+                            $('.price-num').text($this.qcm_price + $this.price_blx_yy);
+                        } else {
                             $('.price-num').text($this.qcm_price);
                         }
                     }
@@ -157,8 +179,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置36期价格
                         $this.blx_price = $this.productList.content[1].thirtySixCyclePrice;
                         if ($this.product_blx.id) {
-                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
-                        }else{
+                            $('.price-num-blx').text($this.blx_price + $this.price_qcm_yy);
+                        } else {
                             $('.price-num-blx').text($this.blx_price);
                         }
                     } else if ($(this).hasClass('tow')) {
@@ -173,8 +195,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置24期价格
                         $this.blx_price = $this.productList.content[1].twentyFourCyclePrice;
                         if ($this.product_blx.id) {
-                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
-                        }else{
+                            $('.price-num-blx').text($this.blx_price + $this.price_qcm_yy);
+                        } else {
                             $('.price-num-blx').text($this.blx_price);
                         }
                     } else if ($(this).hasClass('three')) {
@@ -189,8 +211,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         //设置12期价格
                         $this.blx_price = $this.productList.content[1].twelveCyclePrice;
                         if ($this.product_blx.id) {
-                            $('.price-num-blx').text($this.blx_price+$this.price_qcm_yy);
-                        }else{
+                            $('.price-num-blx').text($this.blx_price + $this.price_qcm_yy);
+                        } else {
                             $('.price-num-blx').text($this.blx_price);
                         }
                     }
