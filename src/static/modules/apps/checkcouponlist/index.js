@@ -32,7 +32,9 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         renderPage: function () {
             var _self = this;
             if (_self.result && _self.result.content && _self.result.content.length > 0) {
-                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render(_self.result);
+                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render({
+                    data:_self.result
+                });
                 $('body').prepend(html);
             } else {
                 window.location.href = 'checkcoupon.html';
