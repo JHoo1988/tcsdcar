@@ -57,39 +57,71 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         bind: function () {
             var _self = this;
             var data;
+            $('.js-to-yhq-rule').click(function () {
+                $('.rule-container').removeClass('hide');
+            });
+            $('.js-close-rule').click(function () {
+                $('.rule-container').addClass('hide');
+                $('.use-yhq').addClass('hide');
+                $('.no-code-tips').css('visibility', 'hidden');
+            });
+            $('.mask-bg').click(function () {
+                $('.rule-container').addClass('hide');
+                $('.use-yhq').addClass('hide');
+                $('.no-code-tips').css('visibility', 'hidden');
+            });
             //兑换优惠券
             $('.js-use-my-yhq').click(function () {
                 var json = $(this).data('json');
-                data = JSON.stringify(json);
-
+                data = json;
+                $('.use-yhq').removeClass('hide');
             });
             // 确定
             $('.submit').click(function () {
+                var shopcode = $('.shopcode').val();
+                if (!$.trim(shopcode)) {
+                    $('.no-code-tips').css('visibility', 'visible');
+                    return;
+                }
+                $('.no-code-tips').css('visibility', 'hidden');
+                $('.rule-container').addClass('hide');
+                $('.use-yhq').addClass('hide');
+                _self.showLoadin('兑换优惠券...');
                 var par = {};
                 par.mobile = _self.result.mobile;
                 par.carBodyNo = _self.result.carBodyNo;
+                par.code = data.code;
+                par.shopCode = shopcode;
                 $.ajax({
                     url: config.url.cousumCoupon,
                     type: 'POST',
                     dataType: 'json',
                     data: par,
                     success: function (data) {
-                        $this.hideLoadin();
+                        $('.shopcode').val('');
+                        _self.hideLoadin();
                         if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
                             $('.weui_dialog_bd').text('优惠券兑换成功');
                             $('.weui_dialog_alert').removeClass('hide');
+                            // 刷新当前页面
+                            location.reload(true);
                         } else {
                             $('.weui_dialog_bd').text('优惠券兑换失败');
                             $('.weui_dialog_alert').removeClass('hide');
                         }
                     }
                     , error: function (xhr) {
-                        $this.hideLoadin();
+                        $('.shopcode').val('');
+                        _self.hideLoadin();
                         $('.weui_dialog_bd').text('优惠券兑换失败');
                         $('.weui_dialog_alert').removeClass('hide');
                         return false;
                     }
                 });
+            });
+            // 关闭toast提示
+            $('.primary').click(function () {
+                $('.weui_dialog_alert').addClass('hide');
             });
         },
         hideLoadin: function () {
@@ -101,6 +133,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $('.weui_toast_content').text(content);
             }
         }
+
     };
     return new App();
 });

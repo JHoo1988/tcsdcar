@@ -133,7 +133,7 @@
 
   }
   .text-center {
-    text-align: center!important;
+    text-align: center !important;
   }
   .js-to-yhq-history {
     display: none;
@@ -191,9 +191,16 @@
       }
     }
     .box-body {
-      padding: px2rem(30) px2rem(42) px2rem(64) px2rem(42);
+      padding: px2rem(30) px2rem(42) px2rem(0) px2rem(42);
       font-size: px2rem(24);
       color: #666;
+      .no-code-tips{
+        color: #FF5722;
+        font-size: px2rem(30);
+        margin-top: px2rem(10);
+        margin-bottom: px2rem(10);
+        visibility: hidden;
+      }
     }
   }
 
@@ -220,4 +227,57 @@
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
+}
+
+.shopcode {
+  height: 50px;
+  border: 1px #ccc solid;
+  width: 80%;
+  font-size: px2rem(36);
+  color: #333;
+  text-align: center;
+}
+
+.weui-btn-area {
+  //padding: ;
+  padding-right: px2rem(50);
+  padding-left: px2rem(50);
+  padding-bottom: px2rem(20);
+}
+
+.weui-btn_primary {
+  background-color: #1AAD19;
+}
+
+.weui-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFFFFF;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+.weui-btn:after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
 }

@@ -32,7 +32,60 @@
                 <input type="submit" value="确定" class="submit">
             </div>
         </div>
+
+        <div class="mask-container use-yhq hide">
+            <div class="mask-bg"></div>
+            <div class="dialog">
+                <div class="box">
+                    <div class="box-heading">
+                        <div class="heading-title">
+                            <span>使用优惠券的店铺</span>
+                            <img class="close-img js-close-rule" src="../static/images/checkcoupon/close.png">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <input class="shopcode" type="text" placeholder="请输入店铺编码">
+                        <p class="no-code-tips">请填写店铺编码</p>
+                    </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_primary submit" href="javascript:" id="showTooltips">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mask-container rule-container hide">
+            <div class="mask-bg"></div>
+            <div class="dialog">
+                <div class="box">
+                    <div class="box-heading">
+                        <div class="heading-title">
+                            <span>优惠券说明</span>
+                            <img class="close-img js-close-rule" src="../static/images/checkcoupon/close.png">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="rule-list">
+                            <p>1、每个订单只能使用一张优惠券，无法与其它优惠券或者优惠码同时使用；</p>
+                            <p>2、优惠券不设找零、不折现，仅限使用一次；</p>
+                            <p>3、如使用后发生退款，优惠券不作为退款款项；</p>
+                            <p>4、优惠券仅限在同创盛大汽车服务公众号兑换使用；</p>
+                            <p>5、本活动最终解释权归同创盛大汽车服务所有。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+</div>
+<div class="weui_dialog_alert hide">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div>
+        <div class="weui_dialog_bd"></div>
+        <div class="weui_dialog_ft">
+            <a href="#" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
 </div>
 <div id="loadingToast" class="weui_loading_toast hide">
     <div class="weui_mask_transparent"></div>
