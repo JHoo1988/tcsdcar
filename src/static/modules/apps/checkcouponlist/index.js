@@ -32,10 +32,19 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
         renderPage: function () {
             var _self = this;
             if (_self.result && _self.result.content && _self.result.content.length > 0) {
-                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render({
-                    data:_self.result
-                });
+                console.log(_self.result);
+                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render();
                 $('body').prepend(html);
+
+                var $p = $('#vip-yhq');
+                var yhqList = _self.result.content || [];
+                var content = new EJS({ url: "views/checkcouponlist/yhq-list.ejs" }).render({
+                    yhqList: yhqList
+                });
+                $p.find('.info-wrapper').append(content);
+                $p.find('.none-wrapper').addClass('hide');
+                $p.find('.info-wrapper').removeClass('hide');
+
             } else {
                 window.location.href = 'checkcoupon.html';
             }

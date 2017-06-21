@@ -2,9 +2,10 @@
 @import "../variables";
 @import "../utilities";
 
-.weui_tab_bd_item{
+.weui_tab_bd_item {
   display: block;
 }
+
 /* 4.优惠券
 ---------------------*/
 #vip-yhq {
@@ -131,8 +132,14 @@
     }
 
   }
-
+  .text-center {
+    text-align: center!important;
+  }
+  .js-to-yhq-history {
+    display: none;
+  }
 }
+
 .mask-container {
   .mask-bg {
     background: rgba(0, 0, 0, .6);
@@ -197,4 +204,20 @@
     color: #999;
   }
 
+}
+
+.flex {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.flex-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
 }
