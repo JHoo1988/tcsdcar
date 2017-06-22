@@ -87,20 +87,33 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $('.rule-container').addClass('hide');
                 $('.use-yhq').addClass('hide');
                 _self.showLoadin('兑换优惠券...');
-                var par = {};
-                par.mobile = _self.result.mobile;
-                par.carBodyNo = _self.result.carBodyNo;
-                par.code = data.code;
-                par.shopCode = shopcode;
+                // var par = {};
+                // par.mobile = _self.result.mobile;
+                // par.carBodyNo = _self.result.carBodyNo;
+                // par.code = data.code;
+                // par.shopCode = shopcode;
+                var formData = new FormData();
+                formData.append('mobile',_self.result.mobile);
+                formData.append('carBodyNo',_self.result.carBodyNo);
+                formData.append('code',data.code);
+                formData.append('shopCode',shopcode);
+                    // $.ajax({
+                    //     url: 'http://119.23.34.22:8080/coupon/consumCoupon',
+                    //     type: 'POST',
+                    //     dataType: 'json',
                 $.ajax({
-                    url: config.url.cousumCoupon,
+                    url: config.url.cousumCoupon,//,'http://119.23.34.22:8080/mobile/cousumCoupon'
                     type: 'POST',
                     dataType: 'json',
-                    data: par,
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success: function (data) {
                         $('.shopcode').val('');
                         _self.hideLoadin();
-                        if (undefined != data && null != data && data.code == 200 && undefined != data.data && null != data.data) {
+                        if (undefined != data && null != data && data.code == 200) {
                             $('.weui_dialog_bd').text('优惠券兑换成功');
                             $('.weui_dialog_alert').removeClass('hide');
                             // 刷新当前页面
