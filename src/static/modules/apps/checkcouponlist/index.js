@@ -9,6 +9,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
     var utilBrands = require('util_brands');
     var utilCommon = require('util_common');
     var App = function () {
+        this.useSuccess = false;
     };
 
     App.prototype = {
@@ -31,23 +32,26 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          */
         renderPage: function () {
             var _self = this;
-            if (_self.result && _self.result.content && _self.result.content.length > 0) {
-                console.log(_self.result);
-                var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render();
-                $('body').prepend(html);
-
+            _self.showLoadin('查询优惠券...');
+            var html = new EJS({ url: 'views/checkcouponlist/index.ejs' }).render();
+            $('body').prepend(html);
+            _self.reload(_self.result.mobile,_self.result.carBodyNo,function (result) {
                 var $p = $('#vip-yhq');
-                var yhqList = _self.result.content || [];
-                var content = new EJS({ url: "views/checkcouponlist/yhq-list.ejs" }).render({
-                    yhqList: yhqList
-                });
-                $p.find('.info-wrapper').append(content);
-                $p.find('.none-wrapper').addClass('hide');
-                $p.find('.info-wrapper').removeClass('hide');
-
-            } else {
-                window.location.href = 'checkcoupon.html';
-            }
+                if (result && result.content && result.content.length > 0) {
+                    var yhqList =result.content || [];
+                    var content = new EJS({ url: "views/checkcouponlist/yhq-list.ejs" }).render({
+                        yhqList: yhqList
+                    });
+                    $p.find('.info-wrapper').append(content);
+                    $p.find('.none-wrapper').addClass('hide');
+                    $p.find('.info-wrapper').removeClass('hide');
+                    $p.find('.link-row').removeClass('hide');
+                }else{
+                    $p.find('.none-wrapper').removeClass('hide');
+                    $p.find('.info-wrapper').addClass('hide');
+                    $p.find('.link-row').addClass('hide');
+                }
+            });
         },
 
         /**
@@ -56,6 +60,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
          */
         bind: function () {
             var _self = this;
+            var $body = $('body');
             var data;
             $('.js-to-yhq-rule').click(function () {
                 $('.rule-container').removeClass('hide');
@@ -71,9 +76,8 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $('.no-code-tips').css('visibility', 'hidden');
             });
             //兑换优惠券
-            $('.js-use-my-yhq').click(function () {
-                var json = $(this).data('json');
-                data = json;
+            $body.on('click', '.js-use-my-yhq', function () {
+                data = $(this).data('json');
                 $('.use-yhq').removeClass('hide');
             });
             // 确定
@@ -87,20 +91,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                 $('.rule-container').addClass('hide');
                 $('.use-yhq').addClass('hide');
                 _self.showLoadin('兑换优惠券...');
-                // var par = {};
-                // par.mobile = _self.result.mobile;
-                // par.carBodyNo = _self.result.carBodyNo;
-                // par.code = data.code;
-                // par.shopCode = shopcode;
                 var formData = new FormData();
                 formData.append('mobile',_self.result.mobile);
                 formData.append('carBodyNo',_self.result.carBodyNo);
                 formData.append('code',data.code);
                 formData.append('shopCode',shopcode);
-                    // $.ajax({
-                    //     url: 'http://119.23.34.22:8080/coupon/consumCoupon',
-                    //     type: 'POST',
-                    //     dataType: 'json',
                 $.ajax({
                     url: config.url.cousumCoupon,//,'http://119.23.34.22:8080/mobile/cousumCoupon'
                     type: 'POST',
@@ -116,8 +111,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
                         if (undefined != data && null != data && data.code == 200) {
                             $('.weui_dialog_bd').text('优惠券兑换成功');
                             $('.weui_dialog_alert').removeClass('hide');
-                            // 刷新当前页面
-                            location.reload(true);
+                            _self.useSuccess = true;
                         } else {
                             $('.weui_dialog_bd').text('优惠券兑换失败');
                             $('.weui_dialog_alert').removeClass('hide');
@@ -134,6 +128,10 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             });
             // 关闭toast提示
             $('.primary').click(function () {
+                if(_self.useSuccess){
+                    // 刷新当前页面
+                    location.reload(true);
+                }
                 $('.weui_dialog_alert').addClass('hide');
             });
         },
@@ -145,6 +143,49 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             if (content) {
                 $('.weui_toast_content').text(content);
             }
+        },
+        reload:function(mobile,carBodyNo,callBack){
+            var _self=this;
+            var par = {};
+            par.mobile = mobile;
+            par.carBodyNo = carBodyNo;
+            par.pageIndex = 1;
+            par.pageSize = 99999;
+            $.ajax({
+                url: config.url.findCustomerCouponConsumRecord,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    _self.hideLoadin();
+                    if (undefined != data && null != data && data.code == 200) {
+                        var result = data.data;
+                        if (result.content.length > 0) {
+                            callBack(result);
+                        }
+                        // else {
+                        //     $('.weui_dialog_bd').text('暂无优惠券');
+                        //     $('.weui_dialog_alert').removeClass('hide');
+                        // }
+                    else{
+                            var $p = $('#vip-yhq');
+                            $p.find('.none-wrapper').removeClass('hide');
+                            $p.find('.info-wrapper').addClass('hide');
+                            $p.find('.link-row').addClass('hide');
+                        }
+                    } else {
+
+                        $('.weui_dialog_bd').text('查询优惠券失败，请重试');
+                        $('.weui_dialog_alert').removeClass('hide');
+                    }
+                }
+                , error: function (xhr) {
+                    _self.hideLoadin();
+                    $('.weui_dialog_bd').text('查询优惠券失败，请重试');
+                    $('.weui_dialog_alert').removeClass('hide');
+                    return false;
+                }
+            });
         }
 
     };

@@ -58,44 +58,11 @@ define(['jquery', 'jea', 'config', 'fastclick', 'weui', 'ejs'], function ($, jea
                     $('.weui_dialog_alert').removeClass('hide');
                     return;
                 }
-                $this.showLoadin('查询优惠券...');
-                var par = {};
-                par.mobile = phoneNum;
-                par.carBodyNo = carnum;
-                par.pageIndex = 1;
-                par.pageSize = 99999;
-                $.ajax({
-                    url: config.url.findCustomerCouponConsumRecord,
-                    type: 'GET',
-                    dataType: 'json',
-                    data: par,
-                    success: function (data) {
-                        if (undefined != data && null != data && data.code == 200) {
-                            var result = data.data;
-                            if (result.content.length > 0) {
-                                result.mobile = phoneNum;
-                                result.carBodyNo = carnum;
-                                utilBrands.checkcoupon.setCheckCoupon(result);
-                                $this.hideLoadin();
-                                window.location.href='checkcouponlist.html';
-                            } else {
-                                $this.hideLoadin();
-                                $('.weui_dialog_bd').text('暂无优惠券');
-                                $('.weui_dialog_alert').removeClass('hide');
-                            }
-                        } else {
-                            $this.hideLoadin();
-                            $('.weui_dialog_bd').text('查询优惠券失败，请重试');
-                            $('.weui_dialog_alert').removeClass('hide');
-                        }
-                    }
-                    , error: function (xhr) {
-                        $this.hideLoadin();
-                        $('.weui_dialog_bd').text('查询优惠券失败，请重试');
-                        $('.weui_dialog_alert').removeClass('hide');
-                        return false;
-                    }
-                });
+                var result={};
+                result.mobile = phoneNum;
+                result.carBodyNo = carnum;
+                utilBrands.checkcoupon.setCheckCoupon(result);
+                window.location.href='checkcouponlist.html';
             });
 
         },
