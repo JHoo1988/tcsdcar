@@ -8,8 +8,8 @@ for(var i=0,len=yhqList.length;i<len;i++){
 <div class="flex card">
 	<div class="card-head">
 		<span>￥</span>
-		<span class="num"><%= !!y.unitStrBefore ? y.couponPrice : y.couponDiscount %></span>
-		<span><%= y.unitStrAfter %></span>
+		<span class="num"><%= y.amount%></span>
+		<span>元</span>
 	</div>
 	<div class="card-body flex-1">
 		<div class="card-info">
@@ -17,8 +17,8 @@ for(var i=0,len=yhqList.length;i<len;i++){
 				<span class="card-flag">现金券</span>
 				<span>无门槛消费</span>
 			</p>
-			<p class="card-desc"><%= y.descStr %></p>
-			<p class="card-time"><%= y.timeStr %></p>
+			<p class="card-desc"></p>
+			<p class="card-time"><%= y.startTimeStr %>至<%= y.expireTimeStr %></p>
 		</div>
 		<a class="card-btn js-use-my-yhq" href="javascript:;" data-json='<%=JSON.stringify(y)%>'>
 			<img src="static/images/checkcoupon/yhq-use-btn.png">
