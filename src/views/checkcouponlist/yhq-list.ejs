@@ -18,7 +18,7 @@ for(var i=0,len=yhqList.length;i<len;i++){
 				<span>无门槛消费</span>
 			</p>
 			<p class="card-desc"></p>
-			<p class="card-time"><%= y.startTimeStr %>至<%= y.expireTimeStr %></p>
+			<p class="card-time">有效期<%= y.startTimeStr %> 至 <%= y.expireTimeStr %></p>
 		</div>
 		<a class="card-btn js-use-my-yhq" href="javascript:;" data-json='<%=JSON.stringify(y)%>'>
 			<img src="static/images/checkcoupon/yhq-use-btn.png">
