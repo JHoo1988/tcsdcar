@@ -94,7 +94,7 @@
             findCustomerCouponConsumRecord: base + 'mobile/findCustomerCouponConsumRecord',
             // 兑换使用优惠券
             // cousumCoupon: base + 'mobile/cousumCoupon',
-            cousumCoupon: base + '/consumCoupon',
+            cousumCoupon: base + 'mobile/consumCoupon',
 
 
             //UserAddress
