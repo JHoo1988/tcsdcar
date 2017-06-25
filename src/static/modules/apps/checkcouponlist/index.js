@@ -151,6 +151,7 @@ define(['jquery', 'jea', 'config', 'fastclick', 'layer', 'weui', 'ejs'], functio
             par.carBodyNo = carBodyNo;
             par.pageIndex = 1;
             par.pageSize = 99999;
+            par.statu = 0;
             $.ajax({
                 url: config.url.findCustomerCouponConsumRecord,
                 type: 'GET',
