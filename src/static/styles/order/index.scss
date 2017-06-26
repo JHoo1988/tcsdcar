@@ -279,7 +279,6 @@
     .select-yy {
       background-color: #FFFFFF;
       margin-top: px2rem(18);
-      margin-bottom: px2rem(150);
       padding: 0 px2rem(30);
       box-shadow: 0 3px 3px rgba(213, 213, 214, 0.5);
       border-bottom: 1px solid #ddd;
@@ -388,9 +387,12 @@
       }
     }
   }
+  .paddin-bottom{
+    height: px2rem(450);
+  }
   .action-bottom {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     right: 0;
     bottom: 0;
